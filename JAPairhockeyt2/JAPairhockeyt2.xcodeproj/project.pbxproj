@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
+		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
+		8AA4C116173EBB3200CE187A /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10F173EBB3200CE187A /* Packet.m */; };
+		8AA4C117173EBB3200CE187A /* PacketServerReady.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C111173EBB3200CE187A /* PacketServerReady.m */; };
+		8AA4C118173EBB3200CE187A /* PacketSignInResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */; };
+		8AA4C11E173EBC4100CE187A /* PacketOtherClientQuit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */; };
+		8AA4C120173EBC7D00CE187A /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4C11F173EBC7D00CE187A /* GameKit.framework */; };
+		8AA4C122173EBCCB00CE187A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4C121173EBCCB00CE187A /* AVFoundation.framework */; };
+		8AA4C125173EBD7500CE187A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C124173EBD7500CE187A /* Player.m */; };
+		8AA4C128173EC79100CE187A /* PeerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C127173EC79100CE187A /* PeerCell.m */; };
+		8AA4C12E173ECD5600CE187A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C12D173ECD5500CE187A /* Game.m */; };
+		8AA4C131173F15CC00CE187A /* NSData+SnapAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */; };
+		8AA4C134173F17F600CE187A /* JoinGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C133173F17EB00CE187A /* JoinGameViewController.m */; };
+		8AAD6443173E77D400142029 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6442173E77D400142029 /* UIKit.framework */; };
+		8AAD6445173E77D400142029 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6444173E77D400142029 /* Foundation.framework */; };
+		8AAD6447173E77D400142029 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6446173E77D400142029 /* CoreGraphics.framework */; };
+		8AAD644D173E77D500142029 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD644B173E77D500142029 /* InfoPlist.strings */; };
+		8AAD644F173E77D500142029 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD644E173E77D500142029 /* main.m */; };
+		8AAD6453173E77D500142029 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6452173E77D500142029 /* AppDelegate.m */; };
+		8AAD6455173E77D500142029 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6454173E77D500142029 /* Default.png */; };
+		8AAD6457173E77D500142029 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6456173E77D500142029 /* Default@2x.png */; };
+		8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6458173E77D500142029 /* Default-568h@2x.png */; };
+		8AAD645C173E77D600142029 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD645A173E77D600142029 /* MainStoryboard.storyboard */; };
+		8AAD6467173E85E100142029 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6466173E85E100142029 /* MainMenuViewController.m */; };
+		8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD646F173E88F800142029 /* HostGameViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
+		8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingClient.m; sourceTree = "<group>"; };
+		8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingServer.h; sourceTree = "<group>"; };
+		8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingServer.m; sourceTree = "<group>"; };
+		8AA4C10E173EBB3200CE187A /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
+		8AA4C10F173EBB3200CE187A /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		8AA4C110173EBB3200CE187A /* PacketServerReady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketServerReady.h; sourceTree = "<group>"; };
+		8AA4C111173EBB3200CE187A /* PacketServerReady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketServerReady.m; sourceTree = "<group>"; };
+		8AA4C112173EBB3200CE187A /* PacketSignInResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketSignInResponse.h; sourceTree = "<group>"; };
+		8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketSignInResponse.m; sourceTree = "<group>"; };
+		8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketOtherClientQuit.h; path = JAPairhockeyt2/PacketOtherClientQuit.h; sourceTree = "<group>"; };
+		8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PacketOtherClientQuit.m; path = JAPairhockeyt2/PacketOtherClientQuit.m; sourceTree = "<group>"; };
+		8AA4C11F173EBC7D00CE187A /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		8AA4C121173EBCCB00CE187A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8AA4C123173EBD7500CE187A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = JAPairhockeyt2/Player.h; sourceTree = "<group>"; };
+		8AA4C124173EBD7500CE187A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = JAPairhockeyt2/Player.m; sourceTree = "<group>"; };
+		8AA4C126173EC79000CE187A /* PeerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerCell.h; path = JAPairhockeyt2/PeerCell.h; sourceTree = "<group>"; };
+		8AA4C127173EC79100CE187A /* PeerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerCell.m; path = JAPairhockeyt2/PeerCell.m; sourceTree = "<group>"; };
+		8AA4C12C173ECD5500CE187A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = JAPairhockeyt2/Game.h; sourceTree = "<group>"; };
+		8AA4C12D173ECD5500CE187A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = JAPairhockeyt2/Game.m; sourceTree = "<group>"; };
+		8AA4C12F173F15CB00CE187A /* NSData+SnapAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SnapAdditions.h"; path = "JAPairhockeyt2/NSData+SnapAdditions.h"; sourceTree = "<group>"; };
+		8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SnapAdditions.m"; path = "JAPairhockeyt2/NSData+SnapAdditions.m"; sourceTree = "<group>"; };
+		8AA4C132173F17EA00CE187A /* JoinGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGameViewController.h; sourceTree = "<group>"; };
+		8AA4C133173F17EB00CE187A /* JoinGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGameViewController.m; sourceTree = "<group>"; };
+		8AAD643F173E77D400142029 /* JAPairhockeyt2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAPairhockeyt2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AAD6442173E77D400142029 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8AAD6444173E77D400142029 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8AAD6446173E77D400142029 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8AAD644A173E77D500142029 /* JAPairhockeyt2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JAPairhockeyt2-Info.plist"; sourceTree = "<group>"; };
+		8AAD644C173E77D500142029 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8AAD644E173E77D500142029 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8AAD6450173E77D500142029 /* JAPairhockeyt2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JAPairhockeyt2-Prefix.pch"; sourceTree = "<group>"; };
+		8AAD6451173E77D500142029 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8AAD6452173E77D500142029 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8AAD6454173E77D500142029 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8AAD6456173E77D500142029 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8AAD6458173E77D500142029 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8AAD645B173E77D600142029 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8AAD6465173E85E100142029 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		8AAD6466173E85E100142029 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		8AAD646E173E88F800142029 /* HostGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameViewController.h; sourceTree = "<group>"; };
+		8AAD646F173E88F800142029 /* HostGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8AAD643C173E77D300142029 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AA4C122173EBCCB00CE187A /* AVFoundation.framework in Frameworks */,
+				8AA4C120173EBC7D00CE187A /* GameKit.framework in Frameworks */,
+				8AAD6443173E77D400142029 /* UIKit.framework in Frameworks */,
+				8AAD6445173E77D400142029 /* Foundation.framework in Frameworks */,
+				8AAD6447173E77D400142029 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8AA4C109173EBAA300CE187A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */,
+				8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */,
+				8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */,
+				8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */,
+				8AA4C10E173EBB3200CE187A /* Packet.h */,
+				8AA4C10F173EBB3200CE187A /* Packet.m */,
+				8AA4C110173EBB3200CE187A /* PacketServerReady.h */,
+				8AA4C111173EBB3200CE187A /* PacketServerReady.m */,
+				8AA4C112173EBB3200CE187A /* PacketSignInResponse.h */,
+				8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		8AA4C135173F183B00CE187A /* Vew Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8AAD6465173E85E100142029 /* MainMenuViewController.h */,
+				8AAD6466173E85E100142029 /* MainMenuViewController.m */,
+				8AAD646E173E88F800142029 /* HostGameViewController.h */,
+				8AAD646F173E88F800142029 /* HostGameViewController.m */,
+				8AA4C132173F17EA00CE187A /* JoinGameViewController.h */,
+				8AA4C133173F17EB00CE187A /* JoinGameViewController.m */,
+				8AAD645A173E77D600142029 /* MainStoryboard.storyboard */,
+			);
+			name = "Vew Controllers";
+			sourceTree = "<group>";
+		};
+		8AAD6436173E77D100142029 = {
+			isa = PBXGroup;
+			children = (
+				8AA4C12F173F15CB00CE187A /* NSData+SnapAdditions.h */,
+				8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */,
+				8AA4C12C173ECD5500CE187A /* Game.h */,
+				8AA4C12D173ECD5500CE187A /* Game.m */,
+				8AA4C126173EC79000CE187A /* PeerCell.h */,
+				8AA4C127173EC79100CE187A /* PeerCell.m */,
+				8AA4C123173EBD7500CE187A /* Player.h */,
+				8AA4C124173EBD7500CE187A /* Player.m */,
+				8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */,
+				8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */,
+				8AAD6448173E77D400142029 /* JAPairhockeyt2 */,
+				8AAD6441173E77D400142029 /* Frameworks */,
+				8AAD6440173E77D400142029 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8AAD6440173E77D400142029 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AAD643F173E77D400142029 /* JAPairhockeyt2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AAD6441173E77D400142029 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8AA4C121173EBCCB00CE187A /* AVFoundation.framework */,
+				8AA4C11F173EBC7D00CE187A /* GameKit.framework */,
+				8AAD6442173E77D400142029 /* UIKit.framework */,
+				8AAD6444173E77D400142029 /* Foundation.framework */,
+				8AAD6446173E77D400142029 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AAD6448173E77D400142029 /* JAPairhockeyt2 */ = {
+			isa = PBXGroup;
+			children = (
+				8AA4C135173F183B00CE187A /* Vew Controllers */,
+				8AA4C109173EBAA300CE187A /* Networking */,
+				8AAD6451173E77D500142029 /* AppDelegate.h */,
+				8AAD6452173E77D500142029 /* AppDelegate.m */,
+				8AAD6449173E77D500142029 /* Supporting Files */,
+			);
+			path = JAPairhockeyt2;
+			sourceTree = "<group>";
+		};
+		8AAD6449173E77D500142029 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8AAD644A173E77D500142029 /* JAPairhockeyt2-Info.plist */,
+				8AAD644B173E77D500142029 /* InfoPlist.strings */,
+				8AAD644E173E77D500142029 /* main.m */,
+				8AAD6450173E77D500142029 /* JAPairhockeyt2-Prefix.pch */,
+				8AAD6454173E77D500142029 /* Default.png */,
+				8AAD6456173E77D500142029 /* Default@2x.png */,
+				8AAD6458173E77D500142029 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8AAD643E173E77D300142029 /* JAPairhockeyt2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AAD6462173E77D600142029 /* Build configuration list for PBXNativeTarget "JAPairhockeyt2" */;
+			buildPhases = (
+				8AAD643B173E77D300142029 /* Sources */,
+				8AAD643C173E77D300142029 /* Frameworks */,
+				8AAD643D173E77D300142029 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JAPairhockeyt2;
+			productName = JAPairhockeyt2;
+			productReference = 8AAD643F173E77D400142029 /* JAPairhockeyt2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8AAD6437173E77D200142029 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Sasan Jafarnejad";
+			};
+			buildConfigurationList = 8AAD643A173E77D200142029 /* Build configuration list for PBXProject "JAPairhockeyt2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8AAD6436173E77D100142029;
+			productRefGroup = 8AAD6440173E77D400142029 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8AAD643E173E77D300142029 /* JAPairhockeyt2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AAD643D173E77D300142029 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AAD644D173E77D500142029 /* InfoPlist.strings in Resources */,
+				8AAD6455173E77D500142029 /* Default.png in Resources */,
+				8AAD6457173E77D500142029 /* Default@2x.png in Resources */,
+				8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */,
+				8AAD645C173E77D600142029 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8AAD643B173E77D300142029 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AAD644F173E77D500142029 /* main.m in Sources */,
+				8AAD6453173E77D500142029 /* AppDelegate.m in Sources */,
+				8AAD6467173E85E100142029 /* MainMenuViewController.m in Sources */,
+				8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */,
+				8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */,
+				8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */,
+				8AA4C116173EBB3200CE187A /* Packet.m in Sources */,
+				8AA4C117173EBB3200CE187A /* PacketServerReady.m in Sources */,
+				8AA4C118173EBB3200CE187A /* PacketSignInResponse.m in Sources */,
+				8AA4C11E173EBC4100CE187A /* PacketOtherClientQuit.m in Sources */,
+				8AA4C125173EBD7500CE187A /* Player.m in Sources */,
+				8AA4C128173EC79100CE187A /* PeerCell.m in Sources */,
+				8AA4C12E173ECD5600CE187A /* Game.m in Sources */,
+				8AA4C131173F15CC00CE187A /* NSData+SnapAdditions.m in Sources */,
+				8AA4C134173F17F600CE187A /* JoinGameViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8AAD644B173E77D500142029 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AAD644C173E77D500142029 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8AAD645A173E77D600142029 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AAD645B173E77D600142029 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8AAD6460173E77D600142029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8AAD6461173E77D600142029 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8AAD6463173E77D600142029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JAPairhockeyt2/JAPairhockeyt2-Prefix.pch";
+				INFOPLIST_FILE = "JAPairhockeyt2/JAPairhockeyt2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8AAD6464173E77D600142029 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JAPairhockeyt2/JAPairhockeyt2-Prefix.pch";
+				INFOPLIST_FILE = "JAPairhockeyt2/JAPairhockeyt2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8AAD643A173E77D200142029 /* Build configuration list for PBXProject "JAPairhockeyt2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AAD6460173E77D600142029 /* Debug */,
+				8AAD6461173E77D600142029 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AAD6462173E77D600142029 /* Build configuration list for PBXNativeTarget "JAPairhockeyt2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AAD6463173E77D600142029 /* Debug */,
+				8AAD6464173E77D600142029 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8AAD6437173E77D200142029 /* Project object */;
+}
