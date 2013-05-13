@@ -8,6 +8,7 @@
 
 #import "JoinGameViewController.h"
 #import "PeerCell.h"
+#import "HostGameConfigViewController.h"
 
 @interface JoinGameViewController ()
 
@@ -28,6 +29,7 @@
 @synthesize nameTextField = _nameTextField;
 @synthesize tableView = _tableView;
 
+@synthesize loadingLabel = _loadingLabel;
 @synthesize waitView = _waitView;
 @synthesize waitLabel = _waitLabel;
 
@@ -127,10 +129,17 @@
     
 	if (_matchmakingClient != nil)
 	{
-		[self.view addSubview:self.waitView];
+		//[self.view addSubview:self.waitView];
         
 		NSString *peerID = [_matchmakingClient peerIDForAvailableServerAtIndex:indexPath.row];
 		[_matchmakingClient connectToServerWithPeerID:peerID];
+        [_loadingLabel setHidden:NO];
+        
+        //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+       // HostGameConfigViewController *viewController = (HostGameConfigViewController *)[storyboard instantiateViewControllerWithIdentifier:@"joinGameLoading"];
+        //[self presentViewController:viewController animated:YES completion:nil];
+        //HostGameConfigViewController *viewController = [[HostGameConfigViewController alloc] init];
+        //[self presentViewController:viewController animated:YES completion:nil];
 	}
 }
 
@@ -169,6 +178,8 @@
 		name = _matchmakingClient.session.displayName;
     
 	[self.delegate joinGameViewController:self startGameWithSession:_matchmakingClient.session playerName:name server:peerID];
+    NSLog(@"connected to server");
+    _loadingLabel.text=@"CONNECED";
 }
 
 - (void)matchmakingClientNoNetwork:(MatchmakingClient *)client

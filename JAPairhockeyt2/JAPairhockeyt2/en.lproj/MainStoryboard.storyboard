@@ -263,6 +263,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-MX-SLe">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="vdM-Ac-iR4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="BACK">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -274,22 +277,6 @@
                                 <connections>
                                     <action selector="exitAction:" destination="UIb-fB-t43" eventType="touchUpInside" id="cNT-31-DwZ"/>
                                     <action selector="goBack:" destination="UIb-fB-t43" eventType="touchUpInside" id="N8a-PM-tA0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-J2-B3f">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="ROv-ue-f9t"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="JOIN GAME">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ngo-9X-Gn1" kind="modal" id="YeT-kC-RKf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="JOINING TO A GAME..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4C-5f-ACl">
@@ -325,10 +312,10 @@
                                     <outlet property="delegate" destination="UIb-fB-t43" id="zWl-mf-3Eq"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="left" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GuU-NF-6Pf">
+                            <tableView clipsSubviews="YES" contentMode="left" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GuU-NF-6Pf">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="5rH-HX-qK6"/>
+                                    <constraint firstAttribute="height" constant="175" id="BMG-x0-aDX"/>
                                     <constraint firstAttribute="width" constant="311" id="RW6-no-d2K"/>
                                 </constraints>
                                 <connections>
@@ -336,24 +323,34 @@
                                     <outlet property="delegate" destination="UIb-fB-t43" id="Dgm-Ry-Qnv"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CONNECTING TO SERVER..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyM-A3-f6y">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Yp6-T2-2B2"/>
+                                    <constraint firstAttribute="width" constant="236" id="atC-Qn-tEl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ieO-MX-SLe" firstAttribute="leading" secondItem="GuU-NF-6Pf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6VA-cP-U1v"/>
                             <constraint firstItem="Yca-rd-4PP" firstAttribute="leading" secondItem="Ml6-Xc-hNi" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8e2-eQ-X4q"/>
-                            <constraint firstItem="GuU-NF-6Pf" firstAttribute="trailing" secondItem="tNy-cT-Kcd" secondAttribute="trailing" type="default" id="CPv-bL-xz1"/>
+                            <constraint firstItem="tNy-cT-Kcd" firstAttribute="trailing" secondItem="GuU-NF-6Pf" secondAttribute="trailing" type="default" id="99t-Fs-qqP"/>
+                            <constraint firstItem="nyM-A3-f6y" firstAttribute="centerY" secondItem="Ml6-Xc-hNi" secondAttribute="centerY" type="default" id="ABT-ve-WLE"/>
                             <constraint firstItem="T4C-5f-ACl" firstAttribute="leading" secondItem="Ml6-Xc-hNi" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="D8G-Bs-4KA"/>
                             <constraint firstItem="GuU-NF-6Pf" firstAttribute="leading" secondItem="p5c-0E-hIS" secondAttribute="leading" type="default" id="D8v-Cs-FR4"/>
-                            <constraint firstItem="rSh-J2-B3f" firstAttribute="leading" secondItem="GuU-NF-6Pf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Duo-v3-Id7"/>
-                            <constraint firstItem="rSh-J2-B3f" firstAttribute="trailing" secondItem="ieO-MX-SLe" secondAttribute="trailing" type="default" id="FGj-kH-EcA"/>
                             <constraint firstAttribute="bottom" secondItem="GuU-NF-6Pf" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Frb-S2-odl"/>
                             <constraint firstItem="p5c-0E-hIS" firstAttribute="leading" secondItem="Ml6-Xc-hNi" secondAttribute="leading" constant="30" id="PGc-81-1OE"/>
+                            <constraint firstItem="nyM-A3-f6y" firstAttribute="centerX" secondItem="Ml6-Xc-hNi" secondAttribute="centerX" type="default" id="X7z-li-AQS"/>
                             <constraint firstAttribute="bottom" secondItem="ieO-MX-SLe" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XiA-rB-kfo"/>
                             <constraint firstItem="Yca-rd-4PP" firstAttribute="top" secondItem="Ml6-Xc-hNi" secondAttribute="top" constant="63" id="eI0-ol-WLJ"/>
                             <constraint firstItem="T4C-5f-ACl" firstAttribute="top" secondItem="Ml6-Xc-hNi" secondAttribute="top" constant="20" symbolic="YES" type="default" id="hhq-0n-XF5"/>
                             <constraint firstItem="tNy-cT-Kcd" firstAttribute="top" secondItem="Ml6-Xc-hNi" secondAttribute="top" constant="59" id="ho6-7j-GgN"/>
                             <constraint firstItem="p5c-0E-hIS" firstAttribute="top" secondItem="tNy-cT-Kcd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sMr-Rz-hcO"/>
-                            <constraint firstItem="ieO-MX-SLe" firstAttribute="top" secondItem="rSh-J2-B3f" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vXu-nT-9KX"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -361,6 +358,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="loadingLabel" destination="nyM-A3-f6y" id="P9B-Au-HLR"/>
                         <outlet property="nameTextField" destination="tNy-cT-Kcd" id="l9f-Ui-MhJ"/>
                         <outlet property="tableView" destination="GuU-NF-6Pf" id="wcg-lY-0uC"/>
                         <outlet property="view" destination="Ml6-Xc-hNi" id="yCV-TR-mtr"/>
@@ -370,56 +368,45 @@
             </objects>
             <point key="canvasLocation" x="-9" y="180"/>
         </scene>
-        <!--Join Game Load View Controller-->
-        <scene sceneID="fYZ-kq-zHn">
-            <objects>
-                <viewController id="ngo-9X-Gn1" customClass="JoinGameLoadViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NiL-zr-UBv">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="WAITING FOR OTHER PLAYERS TO CONNECT..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfa-Wu-gcK">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="419" id="LQB-zN-HJs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5P-ul-EHD">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="vYl-zT-d6f"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="QUIT">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="goBack:" destination="ngo-9X-Gn1" eventType="touchUpInside" id="Cjv-1p-w9j"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="L5P-ul-EHD" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="PYn-1e-Gbu"/>
-                            <constraint firstItem="yfa-Wu-gcK" firstAttribute="centerX" secondItem="NiL-zr-UBv" secondAttribute="centerX" type="default" id="ck5-AG-y4L"/>
-                            <constraint firstItem="yfa-Wu-gcK" firstAttribute="top" secondItem="NiL-zr-UBv" secondAttribute="top" constant="139" id="fxB-fY-FaB"/>
-                            <constraint firstItem="L5P-ul-EHD" firstAttribute="leading" secondItem="NiL-zr-UBv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hxI-XV-LLX"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="geA-u0-iJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="592" y="180"/>
-        </scene>
     </scenes>
+    <classes>
+        <class className="HostGameConfigViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameConfigViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="hostGameIntendedPlayers" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="HostGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="startAction:"/>
+                <relationship kind="outlet" name="hostGameTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="JoinGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="exitAction:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="waitLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="waitView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MainMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

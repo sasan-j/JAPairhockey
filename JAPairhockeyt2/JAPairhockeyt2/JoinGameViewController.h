@@ -28,6 +28,7 @@
 @property (nonatomic, weak) id <JoinGameViewControllerDelegate> delegate;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 - (IBAction)goBack:(id)sender;
 - (IBAction)exitAction:(id)sender;
 
