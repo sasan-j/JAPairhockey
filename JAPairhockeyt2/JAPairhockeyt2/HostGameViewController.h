@@ -22,12 +22,15 @@
 
 @interface HostGameViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MatchmakingServerDelegate>
 
-@property int intendedPlayers;
+
+@property (weak, nonatomic) IBOutlet UILabel *hostGameTitleLabel;
+
+//@property int intendedPlayers;
 @property (nonatomic, weak) id <HostGameViewControllerDelegate> delegate;
+@property (nonatomic) int intendedPlayers;
 
 
 - (IBAction)goBack:(id)sender;
 - (IBAction)startAction:(id)sender;
-
 
 @end

@@ -14,12 +14,10 @@
 
 @interface HostGameViewController ()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 @property (nonatomic, weak) IBOutlet UIButton *startButton;
 
 
 @end
-
 
 
 @implementation HostGameViewController{
@@ -29,11 +27,12 @@
 
 
 
-@synthesize nameTextField = _nameTextField;
 @synthesize tableView = _tableView;
-@synthesize intendedPlayers;
-@synthesize delegate = _delegate;
+@synthesize intendedPlayers= _intendedPlayers;
 @synthesize startButton = _startButton;
+@synthesize hostGameTitleLabel = _hostGameTitleLabel;
+
+@synthesize delegate = _delegate;
 
 
 
@@ -50,47 +49,35 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"host game view did load");
-    
-    ///for dissmissing keyboard
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.nameTextField action:@selector(resignFirstResponder)];
-	gestureRecognizer.cancelsTouchesInView = NO;
-	[self.view addGestureRecognizer:gestureRecognizer];
-     
 
+    _hostGameTitleLabel.text=[NSString stringWithFormat:@"HOSTING A GAME WITH %d PLAYERS...",_intendedPlayers];
+    NSLog(@"start matchmaking process");
+    NSLog(@"intendedPlayers=%d",_intendedPlayers);
+    if (_matchmakingServer == nil)
+    {
+        _matchmakingServer = [[MatchmakingServer alloc] init];
+        _matchmakingServer.maxClients = _intendedPlayers-1;
+        //[_matchmakingServer displayNameForPeerID:self.nameTextField.text];
+        _matchmakingServer.delegate = self;
+        [_matchmakingServer startAcceptingConnectionsForSessionID:SESSION_ID];
+        //self.nameTextField.text = _matchmakingServer.session.displayName;
+        [self.tableView reloadData];
+        //NSLog(@"Starting matchmaking server '%@' for %d players",self.nameTextField.text,_intendedPlayers);
+    }
+    else {
+        //_matchmakingServer.maxClients = _intendedPlayers-1;
+        //[_matchmakingServer displayNameForPeerID:self.nameTextField.text];
+        //NSLog(@"Starting matchmaking server '%@' for %d players",self.nameTextField.text,_intendedPlayers);
+    }
+    NSLog(@"maxClients=%d",_matchmakingServer.maxClients);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-    NSLog(@"host game view did apear");
 
-	if (_matchmakingServer == nil)
-	{
-		_matchmakingServer = [[MatchmakingServer alloc] init];
-		_matchmakingServer.maxClients = 3;
-        _matchmakingServer.delegate = self;
-		[_matchmakingServer startAcceptingConnectionsForSessionID:SESSION_ID];
-        
-		self.nameTextField.text = _matchmakingServer.session.displayName;
-		[self.tableView reloadData];
-	}
 }
 
-
-- (IBAction)startAction:(id)sender
-{
-	if (_matchmakingServer != nil && [_matchmakingServer connectedClientCount] > 0)
-	{
-		NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		if ([name length] == 0)
-			name = _matchmakingServer.session.displayName;
-        
-		[_matchmakingServer stopAcceptingConnections];
-        
-		[self.delegate hostGameViewController:self startGameWithSession:_matchmakingServer.session playerName:name clients:_matchmakingServer.connectedClients];
-	}
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -104,12 +91,39 @@
 }
 
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+/*
+- (IBAction)startAction:(id)sender
+{
+	if (_matchmakingServer != nil && [_matchmakingServer connectedClientCount] > 0)
+	{
+		NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		if ([name length] == 0)
+			name = _matchmakingServer.session.displayName;
+        
+		[_matchmakingServer stopAcceptingConnections];
+        
+		[self.delegate hostGameViewController:self startGameWithSession:_matchmakingServer.session playerName:name clients:_matchmakingServer.connectedClients];
+	}
+}
+*/
+- (IBAction)exitAction:(id)sender
+{
+	_quitReason = QuitReasonUserQuit;
+	[_matchmakingServer endSession];
+	[self.delegate hostGameViewControllerDidCancel:self];
+}
+
+
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView  numberOfRowsInSection:(NSInteger)section
 {
-	if (_matchmakingServer != nil)
-		return [_matchmakingServer connectedClientCount];
+	if (_matchmakingServer != nil){
+		return [_matchmakingServer connectedClientCount];}
 	else
 		return 0;
 }
@@ -124,7 +138,6 @@
     
 	NSString *peerID = [_matchmakingServer peerIDForConnectedClientAtIndex:indexPath.row];
 	cell.textLabel.text = [_matchmakingServer displayNameForPeerID:peerID];
-    
 	return cell;
 }
 
@@ -148,7 +161,8 @@
 - (void)matchmakingServer:(MatchmakingServer *)server clientDidConnect:(NSString *)peerID
 {
 	[self.tableView reloadData];
-    NSLog(@"client connected");
+    NSLog(@"client connected and %d clients total",[_matchmakingServer connectedClientCount]);
+    
 }
 
 - (void)matchmakingServer:(MatchmakingServer *)server clientDidDisconnect:(NSString *)peerID
@@ -170,10 +184,12 @@
 {
 	_quitReason = QuitReasonNoNetwork;
 }
+
 - (IBAction)setGameName:(id)sender {
     //_matchmakingServer.session.    peerID=self.nameTextField.text;
 
 }
+
 
 - (void)dealloc
 {
@@ -181,5 +197,6 @@
 	NSLog(@"dealloc %@", self);
 #endif
 }
+
 
 @end

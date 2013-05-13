@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
+		8A54FBBC17417BE200F04FE6 /* JoinGameLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
 		8AA4C116173EBB3200CE187A /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10F173EBB3200CE187A /* Packet.m */; };
@@ -35,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameConfigViewController.h; sourceTree = "<group>"; };
+		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
+		8A54FBBA17417BDD00F04FE6 /* JoinGameLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGameLoadViewController.h; sourceTree = "<group>"; };
+		8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGameLoadViewController.m; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
 		8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingClient.m; sourceTree = "<group>"; };
 		8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingServer.h; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 		8AA4C135173F183B00CE187A /* Vew Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8A54FBBA17417BDD00F04FE6 /* JoinGameLoadViewController.h */,
+				8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */,
 				8AAD6465173E85E100142029 /* MainMenuViewController.h */,
 				8AAD6466173E85E100142029 /* MainMenuViewController.m */,
 				8AAD646E173E88F800142029 /* HostGameViewController.h */,
@@ -122,6 +130,8 @@
 				8AA4C132173F17EA00CE187A /* JoinGameViewController.h */,
 				8AA4C133173F17EB00CE187A /* JoinGameViewController.m */,
 				8AAD645A173E77D600142029 /* MainStoryboard.storyboard */,
+				8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */,
+				8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */,
 			);
 			name = "Vew Controllers";
 			sourceTree = "<group>";
@@ -272,6 +282,8 @@
 				8AA4C12E173ECD5600CE187A /* Game.m in Sources */,
 				8AA4C131173F15CC00CE187A /* NSData+SnapAdditions.m in Sources */,
 				8AA4C134173F17F600CE187A /* JoinGameViewController.m in Sources */,
+				8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */,
+				8A54FBBC17417BE200F04FE6 /* JoinGameLoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
