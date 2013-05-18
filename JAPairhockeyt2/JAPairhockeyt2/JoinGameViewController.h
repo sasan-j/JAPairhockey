@@ -31,5 +31,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 - (IBAction)goBack:(id)sender;
 - (IBAction)exitAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end

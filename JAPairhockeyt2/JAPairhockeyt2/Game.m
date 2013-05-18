@@ -11,13 +11,16 @@
 #import "PacketSignInResponse.h"
 #import "PacketServerReady.h"
 #import "PacketOtherClientQuit.h"
+#import "GameLogic.h"
 
 typedef enum
 {
 	GameStateWaitingForSignIn,
 	GameStateWaitingForReady,
-	GameStateDealing,
+    GameStateReady,
 	GameStatePlaying,
+	//GameStateDealing,
+    GameStatePause,
 	GameStateGameOver,
 	GameStateQuitting,
 }
@@ -43,6 +46,7 @@ GameState;
 	{
 		_players = [NSMutableDictionary dictionaryWithCapacity:4];
 	}
+    
 	return self;
 }
 
@@ -142,15 +146,22 @@ GameState;
 
 - (void)clientReceivedPacket:(Packet *)packet
 {
+    GameLogic *gameLogic = [GameLogic GetInstance];
 	switch (packet.packetType)
 	{
 		case PacketTypeSignInRequest:
 			if (_state == GameStateWaitingForSignIn)
 			{
+                NSLog(@"received sign in request");
 				_state = GameStateWaitingForReady;
                 
 				Packet *packet = [PacketSignInResponse packetWithPlayerName:_localPlayerName];
-				[self sendPacketToServer:packet];
+                NSLog(@"after packed declaration sign in request");
+                NSLog(@"packet content:%@",packet);
+
+				[gameLogic.game sendPacketToServer:packet];
+                NSLog(@"end of received sign in request");
+
 			}
 			break;
             
@@ -163,7 +174,7 @@ GameState;
 				Packet *packet = [Packet packetWithType:PacketTypeClientReady];
 				[self sendPacketToServer:packet];
                 
-				[self beginGame];                
+				[self beginGame];
 			}
 			break;
             
@@ -204,12 +215,16 @@ GameState;
 			if (_state == GameStateWaitingForSignIn)
 			{
 				player.name = ((PacketSignInResponse *)packet).playerName;
+                NSLog(@"received sign in response for %@",player.name);
+
                 
 				if ([self receivedResponsesFromAllPlayers])
 				{
 					_state = GameStateWaitingForReady;
                     
 					Packet *packet = [PacketServerReady packetWithPlayers:_players];
+                    NSLog(@"server ready sent");
+
 					[self sendPacketToAllClients:packet];
 				}
 			}
@@ -241,8 +256,11 @@ GameState;
 
 - (void)beginGame
 {
-	_state = GameStateDealing;
-	[self.delegate gameDidBegin:self];
+    GameLogic *gameLogic=[GameLogic GetInstance];
+	_state = GameStatePlaying;
+    gameLogic.isGameReady = YES;
+	[self.delegate gameDidBegin:self];//
+    
 }
 
 - (void)changeRelativePositionsOfPlayers
@@ -341,7 +359,6 @@ GameState;
 #ifdef DEBUG
 	NSLog(@"Game: receive data from peer: %@, data: %@, length: %d", peerID, data, [data length]);
 #endif
-  /*
 	Packet *packet = [Packet packetWithData:data];
 	if (packet == nil)
 	{
@@ -359,7 +376,6 @@ GameState;
 		[self serverReceivedPacket:packet fromPlayer:player];
 	else
 		[self clientReceivedPacket:packet];
-   */
 }
 
 #pragma mark - Networking
@@ -389,9 +405,19 @@ GameState;
 
 - (void)sendPacketToServer:(Packet *)packet
 {
+    NSLog(@"sendPacketToServer");
+
 	GKSendDataMode dataMode = GKSendDataReliable;
 	NSData *data = [packet data];
 	NSError *error;
+    
+    
+    //NSLog(@"data mode is:%u",dataMode);
+    //NSLog(@"packet is:%@",data);
+    //NSLog(@"error is:%@",error);
+    
+    //NSLog(@"players are:%@",_players);
+
 	if (![_session sendData:data toPeers:[NSArray arrayWithObject:_serverPeerID] withDataMode:dataMode error:&error])
 	{
 		NSLog(@"Error sending data to server: %@", error);

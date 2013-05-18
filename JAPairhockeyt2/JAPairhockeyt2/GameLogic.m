@@ -19,6 +19,10 @@ static GameLogic *uniqueInstance;
 @synthesize connectedPlayers;
 @synthesize isServer;
 @synthesize serverID;
+@synthesize isGamePause;
+@synthesize isGameReady;
+
+
 
 //player data
 @synthesize playerName;
@@ -164,6 +168,9 @@ static GameLogic *uniqueInstance;
         if (uniqueInstance == nil) {
             uniqueInstance = [[GameLogic alloc] init];
             uniqueInstance.isServer = NO;
+            uniqueInstance.isGamePause = NO;
+            //uniqueInstance.isGamePause = YES;
+            uniqueInstance.isGameReady = NO;
             uniqueInstance.xCoord = 5;
             uniqueInstance.yCoord = 5;
             uniqueInstance.width = 20;

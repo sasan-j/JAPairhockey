@@ -25,6 +25,7 @@ UIAlertView *_alertView;
 @synthesize airHockeyView;
 @synthesize xCoord;
 @synthesize yCoord;
+@synthesize middleButton;
 
 @synthesize delegate = _delegate;
 @synthesize game = _game;
@@ -42,7 +43,8 @@ UIAlertView *_alertView;
 {
     GameLogic* gameLogic = [GameLogic GetInstance];
     
-    [gameLogic moveTheBall];
+    if(!gameLogic.isGamePause)
+        [gameLogic moveTheBall];
     [[self airHockeyView] setNeedsDisplay];
 
 }
@@ -71,15 +73,22 @@ UIAlertView *_alertView;
     NSLog(@"player name: %@",gameLogic.playerName);
     
     //NSArray *array=[gameLogic.connectedPlayers copy];
+    middleButton.alpha = 0.4;
+    middleButton.enabled = NO;
     if(gameLogic.isServer){
         NSLog(@"connected players: %@",gameLogic.connectedPlayers);
-        
         [gameLogic.game startServerGameWithSession:gameLogic.session playerName:gameLogic.playerName clients:gameLogic.connectedPlayers];
-        [gameLogic.game listPlayers];
-        NSLog(@"after list players in did load");
+        //[gameLogic.game listPlayers];
+        //NSLog(@"after list players in did load");
+
+        [middleButton setTitle:@"LOADING..." forState:UIControlStateNormal];
+
     }
     else{
-        //[_game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
+        [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
+        //_loadingLabel.text=@"CONNECED, WAITING FOR SERVER...";
+
+        [middleButton setTitle:@"WAITING FOR OTHERS..." forState:UIControlStateNormal];
         
     }
 
@@ -113,7 +122,6 @@ UIAlertView *_alertView;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     GameLogic* gameLogic = [GameLogic GetInstance];
-    NSString* str = @"teststring";
   //NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];
   //Packet *packet=[Packet packetWithData:data];
     
@@ -138,7 +146,8 @@ UIAlertView *_alertView;
         touchY >= gameLogic.padY-gameLogic.padHeight/2 &&
         touchY <= gameLogic.padY+gameLogic.padHeight/2)
     {
-        gameLogic.dragStarted = YES;
+        if(!gameLogic.isGamePause)
+            gameLogic.dragStarted = YES;
     }
     
     
@@ -255,4 +264,7 @@ UIAlertView *_alertView;
 	}
 }
 
+- (IBAction)startGame:(id)sender {
+    
+}
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+//@class Game;
 
 @class GameViewController;
 
@@ -27,5 +28,7 @@
 
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
+- (IBAction)startGame:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *middleButton;
 
 @end

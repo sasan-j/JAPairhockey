@@ -15,7 +15,6 @@
 
 @interface JoinGameViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) IBOutlet UIView *waitView;
@@ -55,11 +54,6 @@
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.nameTextField action:@selector(resignFirstResponder)];
 	gestureRecognizer.cancelsTouchesInView = NO;
 	[self.view addGestureRecognizer:gestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
     
 	if (_matchmakingClient == nil)
 	{
@@ -69,9 +63,17 @@
         _matchmakingClient.delegate = self;
 		[_matchmakingClient startSearchingForServersWithSessionID:SESSION_ID];
         
-		self.nameTextField.placeholder = _matchmakingClient.session.displayName;
+		self.nameTextField.text = _matchmakingClient.session.displayName;
 		[self.tableView reloadData];
 	}
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+    
+
 }
 
 - (void)viewDidUnload
@@ -188,14 +190,15 @@
     NSLog(@"connected to server");
     _loadingLabel.text=@"CONNECED";
     
-    
+    NSLog(@"player name should be: %@",name);
+    gameLogic.playerName= name;
+    NSLog(@"server name should be: %@",peerID);
     gameLogic.serverID = peerID;
-    
     NSLog(@"session: %@",_matchmakingClient.session);
     gameLogic.session = _matchmakingClient.session;
 
-    [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
-    _loadingLabel.text=@"CONNECED, WAITING FOR SERVER...";
+//    [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
+//    _loadingLabel.text=@"CONNECED, WAITING FOR SERVER...";
     
 
     

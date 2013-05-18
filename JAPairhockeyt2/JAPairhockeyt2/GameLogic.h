@@ -18,6 +18,8 @@
 @property (nonatomic) 	GKSession *session;
 @property (nonatomic) BOOL isServer;
 @property (nonatomic) NSString *serverID;
+@property (nonatomic) BOOL isGamePause;
+@property (nonatomic) BOOL isGameReady;
 
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
