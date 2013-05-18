@@ -32,5 +32,7 @@
 
 - (IBAction)goBack:(id)sender;
 - (IBAction)startAction:(id)sender;
+- (IBAction)exitAction:(id)sender;
+
 
 @end

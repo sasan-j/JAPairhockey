@@ -8,6 +8,7 @@
 
 #import "MainMenuViewController.h"
 #import "Game.h"
+#import "GameLogic.h"
 
 @interface MainMenuViewController ()
 
@@ -28,6 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    GameLogic* gameLogic = [GameLogic GetInstance];
 }
 
 - (void)didReceiveMemoryWarning

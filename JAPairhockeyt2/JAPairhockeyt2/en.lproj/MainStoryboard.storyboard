@@ -151,6 +151,7 @@
                     <connections>
                         <outlet property="hostGameIntendedPlayers" destination="yTz-e9-Ruh" id="upo-PL-dDf"/>
                         <outlet property="nameTextField" destination="aDE-wn-1y6" id="sKZ-MC-TVa"/>
+                        <outlet property="playerNameTextField" destination="aDE-wn-1y6" id="ZuX-Ke-hPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmB-zg-DNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,6 +176,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="exitAction:" destination="Udx-Za-cvk" eventType="touchUpInside" id="vpj-XI-4Ci"/>
                                     <action selector="goBack:" destination="Udx-Za-cvk" eventType="touchUpInside" id="EGT-aG-xe2"/>
                                 </connections>
                             </button>
@@ -191,7 +193,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startAction:" destination="Udx-Za-cvk" eventType="touchUpInside" id="8bh-bQ-3nv"/>
+                                    <action selector="startAction:" destination="Udx-Za-cvk" eventType="touchUpInside" id="UyS-L1-q4C"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HOSTING A GAME WITH X PLAYERS..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-Wv-GH6">
@@ -253,6 +255,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0i4-ER-VfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="839" y="-430"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="bck-T2-IHm">
+            <objects>
+                <viewController storyboardIdentifier="GameView" id="VuU-dU-GZT" customClass="GameViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lV9-D6-LHZ" customClass="AirHockeyView">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="airHockeyView" destination="lV9-D6-LHZ" id="7GU-wp-kht"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95e-32-f2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1239" y="67"/>
         </scene>
         <!--JOIN GAME-->
         <scene sceneID="g1T-9q-rJ6">
@@ -370,17 +393,28 @@
         </scene>
     </scenes>
     <classes>
+        <class className="AirHockeyView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AirHockeyView.h"/>
+        </class>
+        <class className="GameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="airHockeyView" candidateClass="UIView"/>
+            </relationships>
+        </class>
         <class className="HostGameConfigViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameConfigViewController.h"/>
             <relationships>
                 <relationship kind="action" name="goBack:"/>
                 <relationship kind="outlet" name="hostGameIntendedPlayers" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="playerNameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="HostGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="exitAction:"/>
                 <relationship kind="action" name="goBack:"/>
                 <relationship kind="action" name="startAction:"/>
                 <relationship kind="outlet" name="hostGameTitleLabel" candidateClass="UILabel"/>

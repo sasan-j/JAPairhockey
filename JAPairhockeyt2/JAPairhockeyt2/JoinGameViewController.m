@@ -9,6 +9,9 @@
 #import "JoinGameViewController.h"
 #import "PeerCell.h"
 #import "HostGameConfigViewController.h"
+#import "GameLogic.h"
+#import "Game.h"
+#import "Packet.h"
 
 @interface JoinGameViewController ()
 
@@ -173,13 +176,34 @@
 
 - (void)matchmakingClient:(MatchmakingClient *)client didConnectToServer:(NSString *)peerID
 {
-	NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    GameLogic *gameLogic=[GameLogic GetInstance];
+    Game *game = [[Game alloc] init];
+    gameLogic.game = game;
+    
+    NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	if ([name length] == 0)
 		name = _matchmakingClient.session.displayName;
     
 	[self.delegate joinGameViewController:self startGameWithSession:_matchmakingClient.session playerName:name server:peerID];
     NSLog(@"connected to server");
     _loadingLabel.text=@"CONNECED";
+    
+    
+    gameLogic.serverID = peerID;
+    
+    NSLog(@"session: %@",_matchmakingClient.session);
+    gameLogic.session = _matchmakingClient.session;
+
+    [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
+    _loadingLabel.text=@"CONNECED, WAITING FOR SERVER...";
+    
+
+    
+   UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"GameView"];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:vc animated:YES completion:NULL];
+    
 }
 
 - (void)matchmakingClientNoNetwork:(MatchmakingClient *)client

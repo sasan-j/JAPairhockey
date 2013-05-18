@@ -9,6 +9,7 @@
 #import "HostGameConfigViewController.h"
 #import "MatchmakingServer.h"
 #import "HostGameViewController.h"
+#import "GameLogic.h"
 
 @interface HostGameConfigViewController ()
 @property (nonatomic, weak) IBOutlet UITextField *nameTextField;
@@ -38,6 +39,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     NSLog(@"host game view did load");
+    
+    
     ///for dissmissing keyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.nameTextField action:@selector(resignFirstResponder)];
 	gestureRecognizer.cancelsTouchesInView = NO;
@@ -74,6 +77,9 @@
         HostGameViewController *dvc =[segue destinationViewController];
         //[dvc setIntendedPlayers:3+[_hostGameIntendedPlayers selectedSegmentIndex]];
         dvc.intendedPlayers=3+[_hostGameIntendedPlayers selectedSegmentIndex];
+        
+        GameLogic* gameLogic = [GameLogic GetInstance];
+        gameLogic.playerName = self.playerNameTextField.text;
     }
 }
 

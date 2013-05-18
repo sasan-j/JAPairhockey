@@ -10,6 +10,8 @@
 #import "MatchmakingServer.h"
 //#import "UIButton+SnapAdditions.h"
 #import "PeerCell.h"
+#import "GameLogic.h"
+#import "Game.h"
 
 
 @interface HostGameViewController ()
@@ -95,21 +97,42 @@
 {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-/*
+
 - (IBAction)startAction:(id)sender
 {
-	if (_matchmakingServer != nil && [_matchmakingServer connectedClientCount] > 0)
+    NSLog(@"gfdgffdhggfhdf");
+
+	if (_matchmakingServer != nil && [_matchmakingServer connectedClientCount] >= 0)
 	{
-		NSString *name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        GameLogic *gameLogic=[GameLogic GetInstance];
+        Game *game = [[Game alloc] init];
+        gameLogic.game = game;
+        gameLogic.isServer = YES;
+		NSString *name = [gameLogic.playerName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		if ([name length] == 0)
 			name = _matchmakingServer.session.displayName;
         
 		[_matchmakingServer stopAcceptingConnections];
         
-		[self.delegate hostGameViewController:self startGameWithSession:_matchmakingServer.session playerName:name clients:_matchmakingServer.connectedClients];
+		//[self.delegate hostGameViewController:self startGameWithSession:_matchmakingServer.session playerName:name clients:_matchmakingServer.connectedClients];
+        NSLog(@"session: %@",_matchmakingServer.session);
+        gameLogic.session = _matchmakingServer.session;
+        //NSMutableDictionary *array = [_matchmakingServer.connectedClients copy];
+        //NSArray *array=[_matchmakingServer.connectedClients copy];
+        for(NSString *key in _matchmakingServer.connectedClients){
+            [gameLogic.connectedPlayers addObject:key];
+        }
+        //gameLogic.connectedPlayers=_matchmakingServer.connectedClients;
+        NSLog(@"end of start action");
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"GameView"];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:vc animated:YES completion:NULL];
+        
 	}
 }
-*/
+
 - (IBAction)exitAction:(id)sender
 {
 	_quitReason = QuitReasonUserQuit;
@@ -185,10 +208,6 @@
 	_quitReason = QuitReasonNoNetwork;
 }
 
-- (IBAction)setGameName:(id)sender {
-    //_matchmakingServer.session.    peerID=self.nameTextField.text;
-
-}
 
 
 - (void)dealloc

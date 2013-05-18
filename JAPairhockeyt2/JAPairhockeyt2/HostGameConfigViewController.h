@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hostGameIntendedPlayers;
 
 - (IBAction)goBack:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *playerNameTextField;
 @end
