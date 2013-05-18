@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13A54EB21746702E00EFF92D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB11746702E00EFF92D /* GameViewController.m */; };
+		13A54EB51746714100EFF92D /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB41746714100EFF92D /* GameLogic.m */; };
+		13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB8174672FC00EFF92D /* AirHockeyView.m */; };
 		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
-		8A54FBBC17417BE200F04FE6 /* JoinGameLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
 		8AA4C116173EBB3200CE187A /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10F173EBB3200CE187A /* Packet.m */; };
@@ -37,10 +39,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13A54EB01746702E00EFF92D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		13A54EB11746702E00EFF92D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		13A54EB31746714100EFF92D /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
+		13A54EB41746714100EFF92D /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
+		13A54EB7174672FB00EFF92D /* AirHockeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirHockeyView.h; sourceTree = "<group>"; };
+		13A54EB8174672FC00EFF92D /* AirHockeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirHockeyView.m; sourceTree = "<group>"; };
 		8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameConfigViewController.h; sourceTree = "<group>"; };
 		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
-		8A54FBBA17417BDD00F04FE6 /* JoinGameLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGameLoadViewController.h; sourceTree = "<group>"; };
-		8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGameLoadViewController.m; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
 		8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingClient.m; sourceTree = "<group>"; };
 		8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingServer.h; sourceTree = "<group>"; };
@@ -51,16 +57,16 @@
 		8AA4C111173EBB3200CE187A /* PacketServerReady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketServerReady.m; sourceTree = "<group>"; };
 		8AA4C112173EBB3200CE187A /* PacketSignInResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketSignInResponse.h; sourceTree = "<group>"; };
 		8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketSignInResponse.m; sourceTree = "<group>"; };
-		8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketOtherClientQuit.h; path = JAPairhockeyt2/PacketOtherClientQuit.h; sourceTree = "<group>"; };
-		8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PacketOtherClientQuit.m; path = JAPairhockeyt2/PacketOtherClientQuit.m; sourceTree = "<group>"; };
+		8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketOtherClientQuit.h; sourceTree = "<group>"; };
+		8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketOtherClientQuit.m; sourceTree = "<group>"; };
 		8AA4C11F173EBC7D00CE187A /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8AA4C121173EBCCB00CE187A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		8AA4C123173EBD7500CE187A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = JAPairhockeyt2/Player.h; sourceTree = "<group>"; };
-		8AA4C124173EBD7500CE187A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = JAPairhockeyt2/Player.m; sourceTree = "<group>"; };
-		8AA4C126173EC79000CE187A /* PeerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerCell.h; path = JAPairhockeyt2/PeerCell.h; sourceTree = "<group>"; };
-		8AA4C127173EC79100CE187A /* PeerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerCell.m; path = JAPairhockeyt2/PeerCell.m; sourceTree = "<group>"; };
-		8AA4C12C173ECD5500CE187A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = JAPairhockeyt2/Game.h; sourceTree = "<group>"; };
-		8AA4C12D173ECD5500CE187A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = JAPairhockeyt2/Game.m; sourceTree = "<group>"; };
+		8AA4C123173EBD7500CE187A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		8AA4C124173EBD7500CE187A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		8AA4C126173EC79000CE187A /* PeerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerCell.h; sourceTree = "<group>"; };
+		8AA4C127173EC79100CE187A /* PeerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerCell.m; sourceTree = "<group>"; };
+		8AA4C12C173ECD5500CE187A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		8AA4C12D173ECD5500CE187A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		8AA4C12F173F15CB00CE187A /* NSData+SnapAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SnapAdditions.h"; path = "JAPairhockeyt2/NSData+SnapAdditions.h"; sourceTree = "<group>"; };
 		8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SnapAdditions.m"; path = "JAPairhockeyt2/NSData+SnapAdditions.m"; sourceTree = "<group>"; };
 		8AA4C132173F17EA00CE187A /* JoinGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGameViewController.h; sourceTree = "<group>"; };
@@ -101,9 +107,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13A54EB61746715800EFF92D /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				8AA4C12C173ECD5500CE187A /* Game.h */,
+				8AA4C12D173ECD5500CE187A /* Game.m */,
+				8AA4C126173EC79000CE187A /* PeerCell.h */,
+				8AA4C127173EC79100CE187A /* PeerCell.m */,
+				8AA4C123173EBD7500CE187A /* Player.h */,
+				8AA4C124173EBD7500CE187A /* Player.m */,
+				13A54EB31746714100EFF92D /* GameLogic.h */,
+				13A54EB41746714100EFF92D /* GameLogic.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
 		8AA4C109173EBAA300CE187A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */,
+				8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */,
 				8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */,
 				8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */,
 				8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */,
@@ -121,8 +144,6 @@
 		8AA4C135173F183B00CE187A /* Vew Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8A54FBBA17417BDD00F04FE6 /* JoinGameLoadViewController.h */,
-				8A54FBBB17417BE000F04FE6 /* JoinGameLoadViewController.m */,
 				8AAD6465173E85E100142029 /* MainMenuViewController.h */,
 				8AAD6466173E85E100142029 /* MainMenuViewController.m */,
 				8AAD646E173E88F800142029 /* HostGameViewController.h */,
@@ -132,6 +153,10 @@
 				8AAD645A173E77D600142029 /* MainStoryboard.storyboard */,
 				8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */,
 				8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */,
+				13A54EB01746702E00EFF92D /* GameViewController.h */,
+				13A54EB11746702E00EFF92D /* GameViewController.m */,
+				13A54EB7174672FB00EFF92D /* AirHockeyView.h */,
+				13A54EB8174672FC00EFF92D /* AirHockeyView.m */,
 			);
 			name = "Vew Controllers";
 			sourceTree = "<group>";
@@ -141,14 +166,6 @@
 			children = (
 				8AA4C12F173F15CB00CE187A /* NSData+SnapAdditions.h */,
 				8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */,
-				8AA4C12C173ECD5500CE187A /* Game.h */,
-				8AA4C12D173ECD5500CE187A /* Game.m */,
-				8AA4C126173EC79000CE187A /* PeerCell.h */,
-				8AA4C127173EC79100CE187A /* PeerCell.m */,
-				8AA4C123173EBD7500CE187A /* Player.h */,
-				8AA4C124173EBD7500CE187A /* Player.m */,
-				8AA4C11C173EBC4100CE187A /* PacketOtherClientQuit.h */,
-				8AA4C11D173EBC4100CE187A /* PacketOtherClientQuit.m */,
 				8AAD6448173E77D400142029 /* JAPairhockeyt2 */,
 				8AAD6441173E77D400142029 /* Frameworks */,
 				8AAD6440173E77D400142029 /* Products */,
@@ -178,6 +195,7 @@
 		8AAD6448173E77D400142029 /* JAPairhockeyt2 */ = {
 			isa = PBXGroup;
 			children = (
+				13A54EB61746715800EFF92D /* Logic */,
 				8AA4C135173F183B00CE187A /* Vew Controllers */,
 				8AA4C109173EBAA300CE187A /* Networking */,
 				8AAD6451173E77D500142029 /* AppDelegate.h */,
@@ -283,7 +301,9 @@
 				8AA4C131173F15CC00CE187A /* NSData+SnapAdditions.m in Sources */,
 				8AA4C134173F17F600CE187A /* JoinGameViewController.m in Sources */,
 				8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */,
-				8A54FBBC17417BE200F04FE6 /* JoinGameLoadViewController.m in Sources */,
+				13A54EB21746702E00EFF92D /* GameViewController.m in Sources */,
+				13A54EB51746714100EFF92D /* GameLogic.m in Sources */,
+				13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

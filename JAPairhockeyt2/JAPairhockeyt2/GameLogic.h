@@ -34,6 +34,7 @@
 
 @property (nonatomic) NSInteger fieldWidth;
 @property (nonatomic) NSInteger fieldHeight;
+@property (nonatomic) float fieldWidthRatio;
 
 @property (nonatomic) NSInteger padX;
 @property (nonatomic) NSInteger padY;
@@ -52,7 +53,9 @@
 @property (nonatomic) NSInteger padDragEndXComp;
 @property (nonatomic) BOOL dragStarted;
 
-- (void)recomputeReflectionVector;
+- (void)recomputeReflectionVectorForRectPad;
+
+- (void)computeReflectionVectorForCirclePad;
 
 - (void)moveTheBall;
 

@@ -39,7 +39,7 @@
     CGContextSetFillColorWithColor(context,
                                    unitColor);
     
-    CGRect rectangle = CGRectMake(gameLogic.xCoord, gameLogic.yCoord,gameLogic.width,gameLogic.height);
+    CGRect rectangle = CGRectMake(gameLogic.xCoord-gameLogic.width/2, gameLogic.yCoord-gameLogic.height/2,gameLogic.width,gameLogic.height);
     CGContextAddEllipseInRect(context, rectangle);
     CGContextFillPath(context);
     
@@ -61,10 +61,9 @@
                                    padColor);
     CGContextSetLineWidth(context, 3.0);
     
-    rectangle = CGRectMake(gameLogic.padX, gameLogic.padY,gameLogic.padWidth, gameLogic.padHeight);
-    CGContextAddRect(context, rectangle);
-    CGContextFillRect(context,rectangle);
-    
+    rectangle = CGRectMake(gameLogic.padX-gameLogic.padWidth/2, gameLogic.padY-gameLogic.padHeight/2,gameLogic.padWidth, gameLogic.padHeight);
+    CGContextAddEllipseInRect(context, rectangle);
+    CGContextFillPath(context);
     
     ///// Random stuff
     //    CGContextSetLineWidth(context, 2.0);
