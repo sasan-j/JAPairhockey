@@ -336,10 +336,12 @@ GameState;
 
 - (void)receiveData:(NSData *)data fromPeer:(NSString *)peerID inSession:(GKSession *)session context:(void *)context
 {
+    NSLog(@"Game: receive data from peer: %@, data: %@, length: %d", peerID, data, [data length]);
+
 #ifdef DEBUG
 	NSLog(@"Game: receive data from peer: %@, data: %@, length: %d", peerID, data, [data length]);
 #endif
-    
+  /*
 	Packet *packet = [Packet packetWithData:data];
 	if (packet == nil)
 	{
@@ -357,6 +359,7 @@ GameState;
 		[self serverReceivedPacket:packet fromPlayer:player];
 	else
 		[self clientReceivedPacket:packet];
+   */
 }
 
 #pragma mark - Networking
@@ -367,6 +370,12 @@ GameState;
 	NSData *data = [packet data];
 	NSError *error;
 
+    //NSLog(@"data mode is:%u",dataMode);
+    //NSLog(@"packet is:%@",data);
+    //NSLog(@"error is:%@",error);
+    
+    //NSLog(@"players are:%@",_players);
+    
     [_players enumerateKeysAndObjectsUsingBlock:^(id key, Player *obj, BOOL *stop)
      {
          obj.receivedResponse = [_session.peerID isEqualToString:obj.peerID];
@@ -411,6 +420,14 @@ GameState;
 			}
 		}
 	}
+}
+
+-(void)listPlayers{
+    //NSString *id;
+    NSLog(@"inside list players");
+    for (id key in _players) {
+        NSLog(@"Player name is : %@",[_players objectForKey:key]);
+    }
 }
 
 @end

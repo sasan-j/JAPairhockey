@@ -69,6 +69,8 @@ const size_t PACKET_HEADER_SIZE = 10;
 			return nil;
 	}
     
+    //Packet *packet=[Packet packetWithType:PacketTypeSignInRequest];
+
 	return packet;
 }
 
