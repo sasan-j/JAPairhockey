@@ -196,20 +196,34 @@ UIAlertView *_alertView;
     
     if (gameLogic.dragStarted)
     {
+       /* if ((int)roundf(padEndPosTouchPoint.x)   < gameLogic.fieldWidth &&  (int)roundf(padEndPosTouchPoint.x) > 0
+            &&(int)roundf(padEndPosTouchPoint.y) < gameLogic.fieldHeight && (int)roundf(padEndPosTouchPoint.y) > 0 ) {*/
+            gameLogic.padDragEndXComp = (int)roundf(padEndPosTouchPoint.x);
+            gameLogic.padDragNewXComp = (int)roundf(padEndPosTouchPoint.x);
+            gameLogic.padDragNewYComp = (int)roundf(padEndPosTouchPoint.y);
+     //   }
         
-        gameLogic.padDragEndXComp = (int)roundf(padEndPosTouchPoint.x);
-        gameLogic.padDragNewXComp = (int)roundf(padEndPosTouchPoint.x);
-        gameLogic.padDragNewYComp = (int)roundf(padEndPosTouchPoint.y);
+
         
         //gameLogic.padDrag = gameLogic.padDragEndXComp-gameLogic.padDragStartXComp;
-        gameLogic.padDrag = gameLogic.padDragNewXComp-gameLogic.padDragOldXComp;
-        gameLogic.padX += gameLogic.padDrag;
-        
-        gameLogic.padYDrag = gameLogic.padDragNewYComp-gameLogic.padDragOldYComp;
-        gameLogic.padY += gameLogic.padYDrag;
-        
-        gameLogic.padDragOldXComp = (int)roundf(padEndPosTouchPoint.x);
-        gameLogic.padDragOldYComp = (int)roundf(padEndPosTouchPoint.y);
+      
+            gameLogic.padDrag = gameLogic.padDragNewXComp-gameLogic.padDragOldXComp;
+        if (((gameLogic.padX + gameLogic.padDrag)<=gameLogic.fieldWidth-gameLogic.padWidth/2)
+            &&(gameLogic.padX + gameLogic.padDrag)> gameLogic.padWidth/2) {
+            
+             gameLogic.padX += gameLogic.padDrag;
+        }
+ 
+            gameLogic.padYDrag = gameLogic.padDragNewYComp-gameLogic.padDragOldYComp;
+            if (((gameLogic.padY+gameLogic.padYDrag)<=gameLogic.fieldHeight-gameLogic.padHeight/2)
+                &&(gameLogic.padY+gameLogic.padYDrag)>gameLogic.padHeight/2) {
+                
+                  gameLogic.padY += gameLogic.padYDrag;
+            }
+
+            gameLogic.padDragOldXComp = (int)roundf(padEndPosTouchPoint.x);
+            gameLogic.padDragOldYComp = (int)roundf(padEndPosTouchPoint.y);
+
     }
 }
 
@@ -397,6 +411,13 @@ UIAlertView *_alertView;
 - (IBAction)pauseGame:(id)sender {
     GameLogic* gameLogic = [GameLogic GetInstance];
     gameLogic.isGamePause=!gameLogic.isGamePause;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Paused"
+                                        message:@"Game is paused, what's your decision?"
+                                       delegate:nil
+                              cancelButtonTitle:@"Resume"
+                              otherButtonTitles:@"Quit", nil];
+    [alert show];
 }
 
 @end

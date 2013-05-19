@@ -352,15 +352,19 @@ static GameLogic *uniqueInstance;
        
             //Retrieve screen dimensions properly and set the field values accordingly
             CGRect screenRect = [[UIScreen mainScreen] bounds];
-            uniqueInstance.fieldWidth = (int)roundf(screenRect.size.width)*uniqueInstance.fieldWidthRatio;
-            uniqueInstance.fieldHeight = (int)roundf(screenRect.size.height);
+            uniqueInstance.fieldWidth = (int)roundf(screenRect.size.height *uniqueInstance.fieldWidthRatio);
+            NSLog(@"%f  width",screenRect.size.width);
+            uniqueInstance.fieldHeight = (int)roundf(screenRect.size.width);
             
             
             //Goal Definition
-            uniqueInstance.goalX = uniqueInstance.fieldWidth /4;
+            uniqueInstance.goalWidth = 150;
+            uniqueInstance.goalX = uniqueInstance.fieldWidth/2 - uniqueInstance.goalWidth/2;
+            NSLog(@"%i  width",uniqueInstance.fieldWidth);
+            NSLog(@"%i  height",uniqueInstance.fieldHeight);
+            
             uniqueInstance.goalY = uniqueInstance.fieldHeight - 30;
             uniqueInstance.goalHeight = uniqueInstance.fieldWidth/6;
-            uniqueInstance.goalWidth = 100;
             
             
             //Definition Pad 
