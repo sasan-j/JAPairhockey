@@ -314,15 +314,30 @@ UIAlertView *_alertView;
 }
 
 - (void)beginGame{
+    GameLogic* gameLogic = [GameLogic GetInstance];
+    gameLogic.isGamePause = NO;
     //else if(!gameLogic.isServer && _game._state==GameStateWaitingForReady){
-    NSLog(@"Start Game Client Ready");
-    Packet *packet = [Packet packetWithType:PacketTypeClientReady];
-    [_game sendPacketToServer:packet];
+    NSLog(@"Starting Game on Clients");
+    //Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+    //[_game sendPacketToServer:packet];
+    
+    //hidden the button
     [middleButton setEnabled:NO];
-    [middleButton setAlpha:0.4];
-    [middleButton setTitle:@"JUST A SECOND..." forState:UIControlStateNormal];
-    _game._state= GameStateReady;
+    [middleButton setHidden:YES];
+    _game._state= GameStatePlaying;
     //}
+    
+    
+    NSData *myData=[NSData data];
+    NSMutableArray *array=[[NSMutableArray alloc] initWithCapacity:5];
+    NSString *text=@"sasan";
+    NSNumber *number=[NSNumber numberWithFloat:1.23];
+    [array addObject:number];
+    [array addObject:text];
+    myData = [NSKeyedArchiver archivedDataWithRootObject:array];
+ //   Packet *packet=[Packet packetWithData:myData];
+ //   packet.packetType = PacketTypeClientQuit;
+  //  [_game sendPacketToServer:packet];
 }
 
 @end

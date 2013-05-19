@@ -84,7 +84,7 @@
 	Player *player = [[Player alloc] init];
 	player.name = name;
 	player.peerID = _session.peerID;
-	player.position = PlayerPositionBottom;
+	player.position = PlayerPositionFirst;
 	[_players setObject:player forKey:player.peerID];
     
 	// Add a Player object for each client.
@@ -96,11 +96,11 @@
 		[_players setObject:player forKey:player.peerID];
         
 		if (index == 0)
-			player.position = ([clients count] == 1) ? PlayerPositionTop : PlayerPositionLeft;
+			player.position = ([clients count] == 1) ? PlayerPositionThird : PlayerPositionSecond;
 		else if (index == 1)
-			player.position = PlayerPositionTop;
+			player.position = PlayerPositionThird;
 		else
-			player.position = PlayerPositionRight;
+			player.position = PlayerPositionForth;
         
 		index++;
 	}
@@ -195,8 +195,9 @@
 
 			if (_state == GameStateReady)
 			{
-                GameLogic* gameLogic = [GameLogic GetInstance];
-                gameLogic.isGamePause=NO;
+                //GameLogic* gameLogic = [GameLogic GetInstance];
+                //gameLogic.isGamePause=NO;
+                [_delegate beginGame];
 			}	
 			break;
             
@@ -289,7 +290,7 @@
     
 	Player *myPlayer = [self playerWithPeerID:_session.peerID];
 	int diff = myPlayer.position;
-	myPlayer.position = PlayerPositionBottom;
+	myPlayer.position = PlayerPositionFirst;
     
 	[_players enumerateKeysAndObjectsUsingBlock:^(id key, Player *obj, BOOL *stop)
      {
@@ -302,7 +303,7 @@
 
 - (Player *)playerAtPosition:(PlayerPosition)position
 {
-	NSAssert(position >= PlayerPositionBottom && position <= PlayerPositionRight, @"Invalid player position");
+	NSAssert(position >= PlayerPositionFirst && position <= PlayerPositionForth, @"Invalid player position");
     
 	__block Player *player;
 	[_players enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)

@@ -32,7 +32,7 @@ const size_t PACKET_HEADER_SIZE = 10;
 		return nil;
 	}
     
-	if ([data rw_int32AtOffset:0] != 'SNAP')
+	if ([data rw_int32AtOffset:0] != 'JAP!')
 	{
 		NSLog(@"Error: Packet has invalid header");
 		return nil;
@@ -56,6 +56,10 @@ const size_t PACKET_HEADER_SIZE = 10;
 		case PacketTypeSignInResponse:
 			packet = [PacketSignInResponse packetWithData:data];
 			break;
+            
+      //  case PacketTypeDataPacket:
+     //       packet = [PacketTypeDataPacket packetWithData:data];
+         //   break;
             
         case PacketTypeServerReady:
 			packet = [PacketServerReady packetWithData:data];
@@ -88,7 +92,7 @@ const size_t PACKET_HEADER_SIZE = 10;
 {
 	NSMutableData *data = [[NSMutableData alloc] initWithCapacity:100];
     
-	[data rw_appendInt32:'SNAP'];   // 0x534E4150
+	[data rw_appendInt32:'JAP!'];   // 
 	[data rw_appendInt32:0];
 	[data rw_appendInt16:self.packetType];
     

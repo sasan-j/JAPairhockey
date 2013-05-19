@@ -8,10 +8,10 @@
 
 typedef enum
 {
-	PlayerPositionBottom,  // the user
-	PlayerPositionLeft,
-	PlayerPositionTop,
-	PlayerPositionRight
+	PlayerPositionFirst,  // the user
+	PlayerPositionSecond,
+	PlayerPositionThird,
+	PlayerPositionForth
 }
 PlayerPosition;
 

@@ -41,6 +41,7 @@ GameState;
 //gameViewController
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
+- (void)beginGame;
 
 
 

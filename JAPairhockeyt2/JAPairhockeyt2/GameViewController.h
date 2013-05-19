@@ -17,6 +17,7 @@
 - (void)gameViewController:(GameViewController *)controller didQuitWithReason:(QuitReason)reason;
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
+- (void)beginGame;
 
 @end
 
@@ -35,6 +36,7 @@
 - (IBAction)startGame:(id)sender;
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
+- (void)beginGame;
 
 
 
