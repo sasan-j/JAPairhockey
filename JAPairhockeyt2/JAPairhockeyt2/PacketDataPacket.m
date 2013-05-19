@@ -33,9 +33,8 @@
 	size_t offset = PACKET_HEADER_SIZE;
 	size_t count;
     
-//	int numberOfPlayers = [data rw_int8AtOffset:offset];
+	int numberOfPlayers = [data rw_int8AtOffset:offset];
 	offset += 1;
-  /*
 	for (int t = 0; t < numberOfPlayers; ++t)
 	{
 		NSString *peerID = [data rw_stringAtOffset:offset bytesRead:&count];
@@ -53,7 +52,6 @@
 		player.position = position;
 		[players setObject:player forKey:player.peerID];
 	}
-    */
 	return [[self class] packetWithPlayers:players];
 }
 
