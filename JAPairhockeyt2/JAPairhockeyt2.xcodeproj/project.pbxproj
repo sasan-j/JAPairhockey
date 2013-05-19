@@ -10,6 +10,7 @@
 		13A54EB21746702E00EFF92D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB11746702E00EFF92D /* GameViewController.m */; };
 		13A54EB51746714100EFF92D /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB41746714100EFF92D /* GameLogic.m */; };
 		13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB8174672FC00EFF92D /* AirHockeyView.m */; };
+		8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A517DED17487F5B00599259 /* PacketDataPacket.m */; };
 		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
@@ -45,6 +46,8 @@
 		13A54EB41746714100EFF92D /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
 		13A54EB7174672FB00EFF92D /* AirHockeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirHockeyView.h; sourceTree = "<group>"; };
 		13A54EB8174672FC00EFF92D /* AirHockeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirHockeyView.m; sourceTree = "<group>"; };
+		8A517DEC17487F5A00599259 /* PacketDataPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDataPacket.h; sourceTree = "<group>"; };
+		8A517DED17487F5B00599259 /* PacketDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDataPacket.m; sourceTree = "<group>"; };
 		8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameConfigViewController.h; sourceTree = "<group>"; };
 		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				8AA4C111173EBB3200CE187A /* PacketServerReady.m */,
 				8AA4C112173EBB3200CE187A /* PacketSignInResponse.h */,
 				8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */,
+				8A517DEC17487F5A00599259 /* PacketDataPacket.h */,
+				8A517DED17487F5B00599259 /* PacketDataPacket.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				13A54EB21746702E00EFF92D /* GameViewController.m in Sources */,
 				13A54EB51746714100EFF92D /* GameLogic.m in Sources */,
 				13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */,
+				8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
