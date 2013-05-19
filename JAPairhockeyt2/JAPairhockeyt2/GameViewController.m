@@ -44,6 +44,8 @@ UIAlertView *_alertView;
     
     [gameLogic moveTheBall];
     [[self airHockeyView] setNeedsDisplay];
+    //Score Board Updates Te Scores
+    [self scoreBoardUpdateScores];
 
 }
 
@@ -57,6 +59,24 @@ UIAlertView *_alertView;
     drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
     self.game= [[Game alloc] init];
+    
+    //Score Board Names and initializing
+    [gameLogic scoreBoardInit];
+    NSMutableArray *playersName = [NSMutableArray arrayWithObjects:gameLogic.playerName,[NSNumber numberWithInt:0], nil];
+    [self scoreBoardInitWitNames:playersName];
+    //Disable fourth player label and score if the game is in three player mode unless it's n four player mode
+    self.fourthPlayerLabelView.hidden=YES;
+    self.fourthPlayerScoreView.hidden=YES;
+    NSLog(@"%i",gameLogic.numberOfPlayers);
+    if (gameLogic.numberOfPlayers==4)
+    {
+        self.fourthPlayerLabelView.hidden=NO;
+        self.fourthPlayerScoreView.hidden=NO;
+
+    }
+    
+    
+    
     
     CGFloat width = CGRectGetWidth(self.view.bounds);
     CGFloat height = CGRectGetHeight(self.view.bounds);
@@ -253,6 +273,41 @@ UIAlertView *_alertView;
         
 		[self.game quitGameWithReason:QuitReasonUserQuit];
 	}
+}
+
+
+-(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames{
+    
+    NSMutableString *tempName = [playerNames objectAtIndex:0];
+    self.firstPlayerLabelView.text = tempName;
+    
+}
+
+-(void)scoreBoardUpdateScores{
+    
+    GameLogic *gameLogic = [GameLogic GetInstance];
+    
+    NSNumber *temp = [gameLogic.score objectAtIndex:0];
+    NSString *format = [NSString stringWithFormat:@"%@",temp];
+    self.firstPlayerScoreView.text= format;
+    
+    temp = [gameLogic.score objectAtIndex:1];
+    format = [NSString stringWithFormat:@"%@",temp];
+    self.secondPlayerScoreView.text=format;
+    
+    temp = [gameLogic.score objectAtIndex:2];
+    format = [NSString stringWithFormat:@"%@",temp];
+    self.thirdPlayerScoreView.text=format;
+    
+    if (gameLogic.numberOfPlayers==4) {
+        
+        temp = [gameLogic.score objectAtIndex:3];
+        format = [NSString stringWithFormat:@"%@",temp];
+        self.fourthPlayerScoreView.text=format;
+    }
+
+    
+
 }
 
 @end

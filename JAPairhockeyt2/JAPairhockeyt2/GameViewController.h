@@ -27,5 +27,17 @@
 
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
+@property (weak, nonatomic) IBOutlet UILabel *firstPlayerLabelView;
+@property (weak, nonatomic) IBOutlet UILabel *firstPlayerScoreView; 
+@property (weak, nonatomic) IBOutlet UILabel *secondPlayerLabelView;
+@property (weak, nonatomic) IBOutlet UILabel *secondPlayerScoreView;
+@property (weak, nonatomic) IBOutlet UILabel *thirdPlayerLabelView;
+@property (weak, nonatomic) IBOutlet UILabel *thirdPlayerScoreView;
+@property (weak, nonatomic) IBOutlet UILabel *fourthPlayerLabelView;
+@property (weak, nonatomic) IBOutlet UILabel *fourthPlayerScoreView;
+
+
+-(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames;
+-(void)scoreBoardUpdateScores;
 
 @end

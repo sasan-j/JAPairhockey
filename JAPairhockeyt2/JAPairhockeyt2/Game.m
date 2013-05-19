@@ -30,12 +30,14 @@ GameState;
 	GKSession *_session;
 	NSString *_serverPeerID;
 	NSString *_localPlayerName;
+  
     
     NSMutableDictionary *_players;
 }
 
 @synthesize delegate = _delegate;
 @synthesize isServer = _isServer;
+
 
 - (id)init
 {
