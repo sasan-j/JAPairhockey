@@ -58,7 +58,10 @@ UIAlertView *_alertView;
     GameLogic* gameLogic = [GameLogic GetInstance];
     drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
-    self.game= [[Game alloc] init];
+    //self.game= [[Game alloc] init];
+    _game = gameLogic.game;
+    [_game setDelegate:self];
+    
     
     CGFloat width = CGRectGetWidth(self.view.bounds);
     CGFloat height = CGRectGetHeight(self.view.bounds);
@@ -265,6 +268,61 @@ UIAlertView *_alertView;
 }
 
 - (IBAction)startGame:(id)sender {
+    GameLogic* gameLogic = [GameLogic GetInstance];
+
     
+    if(gameLogic.isServer){
+        
+        NSLog(@"YOU WANNA STARTING SOMETHING?");
+        //WE SHOULD CALL START GAME FUNCTION
+        gameLogic.isGamePause=NO;
+        [middleButton setEnabled:NO];
+        [middleButton setHidden:YES];
+        Packet *packet=[Packet packetWithType:PacketTypeStartGame];
+        [_game sendPacketToAllClients:packet];
+    }
+    else if(!gameLogic.isServer && _game._state==GameStateWaitingForReady){
+        NSLog(@"Start Game Client Ready");
+        Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+        [_game sendPacketToServer:packet];
+        [middleButton setEnabled:NO];
+        [middleButton setAlpha:0.4];
+        [middleButton setTitle:@"JUST A SECOND..." forState:UIControlStateNormal];
+        _game._state= GameStateReady;
+    }
 }
+
+- (void)receivedServerReady:(NSString *)data
+{
+	NSLog(@"%@",data);
+    //[_game beginGame];
+    [middleButton setEnabled:YES];
+    [middleButton setAlpha:1.0];
+    [middleButton setTitle:@"READY?" forState:UIControlStateNormal];
+    NSLog(@"end of method");
+
+}
+
+- (void)allClientsReady:(NSString *)data
+{
+    NSLog(@"%@",data);
+    //[_game beginGame];
+    [middleButton setEnabled:YES];
+    [middleButton setAlpha:1.0];
+    [middleButton setTitle:@"START..." forState:UIControlStateNormal];
+    NSLog(@"end of method");
+}
+
+- (void)beginGame{
+    //else if(!gameLogic.isServer && _game._state==GameStateWaitingForReady){
+    NSLog(@"Start Game Client Ready");
+    Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+    [_game sendPacketToServer:packet];
+    [middleButton setEnabled:NO];
+    [middleButton setAlpha:0.4];
+    [middleButton setTitle:@"JUST A SECOND..." forState:UIControlStateNormal];
+    _game._state= GameStateReady;
+    //}
+}
+
 @end

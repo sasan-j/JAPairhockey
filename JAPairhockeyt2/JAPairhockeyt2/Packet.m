@@ -47,6 +47,7 @@ const size_t PACKET_HEADER_SIZE = 10;
 	{
 		case PacketTypeSignInRequest:
         case PacketTypeClientReady:
+        case PacketTypeStartGame:
         case PacketTypeServerQuit:
 		case PacketTypeClientQuit:            
 			packet = [Packet packetWithType:packetType];

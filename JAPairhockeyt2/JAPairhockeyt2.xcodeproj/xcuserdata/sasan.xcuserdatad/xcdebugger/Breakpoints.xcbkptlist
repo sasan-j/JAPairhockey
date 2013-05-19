@@ -4,28 +4,15 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "JAPairhockeyt2/HostGameViewController.m"
-         timestampString = "390543531.716505"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "181"
-         endingLineNumber = "181"
-         landmarkName = "@implementation HostGameViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JAPairhockeyt2/GameViewController.h"
-         timestampString = "390599867.028599"
+         timestampString = "390617715.822891"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
          landmarkName = "@interface GameViewController"
          landmarkType = "2">
       </FileBreakpoint>

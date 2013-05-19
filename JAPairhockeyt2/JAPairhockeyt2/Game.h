@@ -11,6 +11,19 @@
 @class Game;
 @class Packet;
 
+
+typedef enum
+{
+	GameStateWaitingForSignIn,
+	GameStateWaitingForReady,
+    GameStateReady,
+	GameStatePlaying,
+    GameStatePause,
+	GameStateGameOver,
+	GameStateQuitting,
+}
+GameState;
+
 @protocol GameDelegate <NSObject>
 
 - (void)game:(Game *)game didQuitWithReason:(QuitReason)reason;
@@ -24,12 +37,21 @@
 - (void)game:(Game *)game playerDidDisconnect:(Player *)disconnectedPlayer redistributedCards:(NSDictionary *)redistributedCards;
 - (void)game:(Game *)game playerCalledSnapWithNoMatch:(Player *)player;
 
+
+//gameViewController
+- (void)receivedServerReady:(NSString *)data;
+- (void)allClientsReady:(NSString *)data;
+
+
+
 @end
 
 @interface Game : NSObject <GKSessionDelegate>
 
 @property (nonatomic, weak) id <GameDelegate> delegate;
 @property (nonatomic, assign) BOOL isServer;
+@property (nonatomic) GameState _state;
+
 
 - (void)startClientGameWithSession:(GKSession *)session playerName:(NSString *)name server:(NSString *)peerID;
 - (void)startServerGameWithSession:(GKSession *)session playerName:(NSString *)name clients:(NSArray *)clients;
@@ -37,6 +59,8 @@
 - (Player *)playerAtPosition:(PlayerPosition)position;
 - (void)sendPacketToServer:(Packet *)packet;
 - (void)sendPacketToAllClients:(Packet *)packet;
+
+- (void)beginGame;
 
 
 

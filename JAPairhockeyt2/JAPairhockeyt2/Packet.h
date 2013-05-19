@@ -13,17 +13,11 @@ typedef enum
 	PacketTypeSignInRequest = 0x64,    // server to client
 	PacketTypeSignInResponse,          // client to server
     
+    PacketTypeStartGame,               // server to client
+    
+    
 	PacketTypeServerReady,             // server to client
 	PacketTypeClientReady,             // client to server
-    
-	PacketTypeDealCards,               // server to client
-	PacketTypeClientDealtCards,        // client to server
-    
-	PacketTypeActivatePlayer,          // server to client
-	PacketTypeClientTurnedCard,        // client to server
-    
-	PacketTypePlayerShouldSnap,        // client to server
-	PacketTypePlayerCalledSnap,        // server to client
     
 	PacketTypeOtherClientQuit,         // server to client
 	PacketTypeServerQuit,              // server to client

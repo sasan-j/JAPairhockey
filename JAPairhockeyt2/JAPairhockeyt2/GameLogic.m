@@ -168,8 +168,8 @@ static GameLogic *uniqueInstance;
         if (uniqueInstance == nil) {
             uniqueInstance = [[GameLogic alloc] init];
             uniqueInstance.isServer = NO;
-            uniqueInstance.isGamePause = NO;
-            //uniqueInstance.isGamePause = YES;
+            //uniqueInstance.isGamePause = NO;
+            uniqueInstance.isGamePause = YES;
             uniqueInstance.isGameReady = NO;
             uniqueInstance.xCoord = 5;
             uniqueInstance.yCoord = 5;

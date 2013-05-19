@@ -12,19 +12,9 @@
 #import "PacketServerReady.h"
 #import "PacketOtherClientQuit.h"
 #import "GameLogic.h"
+#import "GameViewController.h"
 
-typedef enum
-{
-	GameStateWaitingForSignIn,
-	GameStateWaitingForReady,
-    GameStateReady,
-	GameStatePlaying,
-	//GameStateDealing,
-    GameStatePause,
-	GameStateGameOver,
-	GameStateQuitting,
-}
-GameState;
+
 
 @implementation Game
 {
@@ -37,6 +27,7 @@ GameState;
     NSMutableDictionary *_players;
 }
 
+@synthesize _state;
 @synthesize delegate = _delegate;
 @synthesize isServer = _isServer;
 
@@ -152,43 +143,70 @@ GameState;
 		case PacketTypeSignInRequest:
 			if (_state == GameStateWaitingForSignIn)
 			{
-                NSLog(@"received sign in request");
+                NSLog(@"Client received PacketTypeSignInRequest");
 				_state = GameStateWaitingForReady;
-                
 				Packet *packet = [PacketSignInResponse packetWithPlayerName:_localPlayerName];
-                NSLog(@"after packed declaration sign in request");
                 NSLog(@"packet content:%@",packet);
-
 				[gameLogic.game sendPacketToServer:packet];
-                NSLog(@"end of received sign in request");
-
 			}
 			break;
             
         case PacketTypeServerReady:
+            NSLog(@"Client received PacketTypeServerReady");
 			if (_state == GameStateWaitingForReady)
 			{
 				_players = ((PacketServerReady *)packet).players;
                 [self changeRelativePositionsOfPlayers];
                 
-				Packet *packet = [Packet packetWithType:PacketTypeClientReady];
-				[self sendPacketToServer:packet];
+				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+				//[self sendPacketToServer:packet];
                 
-				[self beginGame];
+				//[self beginGame];
+                NSLog(@"before method");
+              
+                [_delegate receivedServerReady:@"SomeData"];
+                NSLog(@"after method");
+
+
 			}
 			break;
             
-        case PacketTypeOtherClientQuit:
-			if (_state != GameStateQuitting)
+            NSLog(@"Client received PacketTypeServerReady");
+			if (_state == GameStateWaitingForReady)
 			{
-				PacketOtherClientQuit *quitPacket = ((PacketOtherClientQuit *)packet);
-				[self clientDidDisconnect:quitPacket.peerID];
+				_players = ((PacketServerReady *)packet).players;
+                [self changeRelativePositionsOfPlayers];
+                
+				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+				//[self sendPacketToServer:packet];
+                
+				//[self beginGame];
+                NSLog(@"before method");
+                
+                [_delegate receivedServerReady:@"SomeData"];
+                NSLog(@"after method");
+                
+                
+			}
+			break;
+            
+        case PacketTypeStartGame:
+            NSLog(@"Client received PacketTypeStartGame");
+
+			if (_state == GameStateReady)
+			{
+                GameLogic* gameLogic = [GameLogic GetInstance];
+                gameLogic.isGamePause=NO;
 			}	
 			break;
             
         case PacketTypeServerQuit:
+            NSLog(@"Client received PacketTypeServerQuit");
+
 			[self quitGameWithReason:QuitReasonServerQuit];
 			break;            
+            
+            
             
 		default:
 			NSLog(@"Client received unexpected packet: %@", packet);
@@ -234,8 +252,10 @@ GameState;
             NSLog(@"State: %d, received Responses: %d", _state, [self receivedResponsesFromAllPlayers]);
 			if (_state == GameStateWaitingForReady && [self receivedResponsesFromAllPlayers])
 			{
+                _state = GameStateReady;
                 NSLog(@"Beginning game");
-				[self beginGame];
+				//[self beginGame];
+                [_delegate allClientsReady:@"Now you are able to begin that fucking game"];
 			}
 			break;       
             

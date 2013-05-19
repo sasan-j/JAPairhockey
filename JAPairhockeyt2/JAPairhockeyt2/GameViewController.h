@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
-//@class Game;
 
+//@class Game;
 @class GameViewController;
 
 @protocol GameViewControllerDelegate <NSObject>
 
 - (void)gameViewController:(GameViewController *)controller didQuitWithReason:(QuitReason)reason;
+- (void)receivedServerReady:(NSString *)data;
+- (void)allClientsReady:(NSString *)data;
 
 @end
 
-@interface GameViewController : UIViewController <UIAlertViewDelegate, GameDelegate>
+@interface GameViewController : UIViewController <GameDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, retain) NSTimer* drawTimer;
 @property (strong, nonatomic) IBOutlet UIView *airHockeyView;
@@ -28,7 +30,12 @@
 
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
-- (IBAction)startGame:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *middleButton;
+
+- (IBAction)startGame:(id)sender;
+- (void)receivedServerReady:(NSString *)data;
+- (void)allClientsReady:(NSString *)data;
+
+
 
 @end
