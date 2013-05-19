@@ -71,8 +71,6 @@
     CGContextAddLineToPoint(context, gameLogic.goalX+gameLogic.goalWidth, gameLogic.goalY);
     CGContextStrokePath(context);
     
-
-    
     ///// Random stuff
     //    CGContextSetLineWidth(context, 2.0);
     //    CGContextSetStrokeColorWithColor(context, [UIColor
