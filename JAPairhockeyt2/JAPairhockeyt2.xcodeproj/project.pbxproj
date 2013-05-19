@@ -11,6 +11,7 @@
 		13A54EB51746714100EFF92D /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB41746714100EFF92D /* GameLogic.m */; };
 		13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A54EB8174672FC00EFF92D /* AirHockeyView.m */; };
 		8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A517DED17487F5B00599259 /* PacketDataPacket.m */; };
+		8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A517DEF1748F53900599259 /* MainStoryboard.storyboard */; };
 		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
@@ -34,7 +35,7 @@
 		8AAD6455173E77D500142029 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6454173E77D500142029 /* Default.png */; };
 		8AAD6457173E77D500142029 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6456173E77D500142029 /* Default@2x.png */; };
 		8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6458173E77D500142029 /* Default-568h@2x.png */; };
-		8AAD645C173E77D600142029 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD645A173E77D600142029 /* MainStoryboard.storyboard */; };
+		8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD645A173E77D600142029 /* MainStoryboardSNJ.storyboard */; };
 		8AAD6467173E85E100142029 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6466173E85E100142029 /* MainMenuViewController.m */; };
 		8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD646F173E88F800142029 /* HostGameViewController.m */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		13A54EB8174672FC00EFF92D /* AirHockeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirHockeyView.m; sourceTree = "<group>"; };
 		8A517DEC17487F5A00599259 /* PacketDataPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDataPacket.h; sourceTree = "<group>"; };
 		8A517DED17487F5B00599259 /* PacketDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDataPacket.m; sourceTree = "<group>"; };
+		8A517DF01748F53900599259 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameConfigViewController.h; sourceTree = "<group>"; };
 		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		8AAD6454173E77D500142029 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8AAD6456173E77D500142029 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8AAD6458173E77D500142029 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8AAD645B173E77D600142029 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8AAD645B173E77D600142029 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboardSNJ.storyboard; sourceTree = "<group>"; };
 		8AAD6465173E85E100142029 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		8AAD6466173E85E100142029 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		8AAD646E173E88F800142029 /* HostGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameViewController.h; sourceTree = "<group>"; };
@@ -149,13 +151,14 @@
 		8AA4C135173F183B00CE187A /* Vew Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8A517DEF1748F53900599259 /* MainStoryboard.storyboard */,
 				8AAD6465173E85E100142029 /* MainMenuViewController.h */,
 				8AAD6466173E85E100142029 /* MainMenuViewController.m */,
 				8AAD646E173E88F800142029 /* HostGameViewController.h */,
 				8AAD646F173E88F800142029 /* HostGameViewController.m */,
 				8AA4C132173F17EA00CE187A /* JoinGameViewController.h */,
 				8AA4C133173F17EB00CE187A /* JoinGameViewController.m */,
-				8AAD645A173E77D600142029 /* MainStoryboard.storyboard */,
+				8AAD645A173E77D600142029 /* MainStoryboardSNJ.storyboard */,
 				8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */,
 				8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */,
 				13A54EB01746702E00EFF92D /* GameViewController.h */,
@@ -279,7 +282,8 @@
 				8AAD6455173E77D500142029 /* Default.png in Resources */,
 				8AAD6457173E77D500142029 /* Default@2x.png in Resources */,
 				8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */,
-				8AAD645C173E77D600142029 /* MainStoryboard.storyboard in Resources */,
+				8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */,
+				8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +320,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8A517DEF1748F53900599259 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A517DF01748F53900599259 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		8AAD644B173E77D500142029 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -324,12 +336,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		8AAD645A173E77D600142029 /* MainStoryboard.storyboard */ = {
+		8AAD645A173E77D600142029 /* MainStoryboardSNJ.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8AAD645B173E77D600142029 /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = MainStoryboardSNJ.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
