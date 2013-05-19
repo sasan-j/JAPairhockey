@@ -115,6 +115,7 @@
 - (void)quitGameWithReason:(QuitReason)reason
 {
 	_state = GameStateQuitting;
+    NSLog(@"Quit Game function in game.m %u",reason);
     
 	if (reason == QuitReasonUserQuit)
 	{

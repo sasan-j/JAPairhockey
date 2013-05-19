@@ -295,7 +295,6 @@ UIAlertView *_alertView;
 	if (buttonIndex != alertView.cancelButtonIndex)
 	{
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        
 		[self.game quitGameWithReason:QuitReasonUserQuit];
 	}
 }
@@ -408,16 +407,48 @@ UIAlertView *_alertView;
   //  [_game sendPacketToServer:packet];
 }
 
+
 - (IBAction)pauseGame:(id)sender {
     GameLogic* gameLogic = [GameLogic GetInstance];
     gameLogic.isGamePause=!gameLogic.isGamePause;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Paused"
-                                        message:@"Game is paused, what's your decision?"
-                                       delegate:nil
-                              cancelButtonTitle:@"Resume"
-                              otherButtonTitles:@"Quit", nil];
+    if (gameLogic.isGamePause==YES) {
+        [self pauseDialog];
+    }
+
+}
+
+- (void) pauseDialog {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pause"
+                                                    message:@"Game is paused, what's your decision?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Resume"
+                                          otherButtonTitles:@"Quit", nil];
     [alert show];
+    
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        NSLog(@"Resume shod");
+        [self resumeGame];
+    }
+    else
+        NSLog(@"quit shod");
+}
+
+-(void)resumeGame
+{
+    GameLogic *gameLogic = [GameLogic GetInstance];
+    gameLogic.isGamePause = ! gameLogic.isGamePause;
+}
+
+
+-(void)quitGame
+{
+    NSLog(@"Quit Game Fired");
+    [self.game quitGameWithReason:QuitReasonUserQuit];
 }
 
 @end
