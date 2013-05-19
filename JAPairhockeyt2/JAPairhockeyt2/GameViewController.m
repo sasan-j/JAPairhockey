@@ -394,4 +394,9 @@ UIAlertView *_alertView;
   //  [_game sendPacketToServer:packet];
 }
 
+- (IBAction)pauseGame:(id)sender {
+    GameLogic* gameLogic = [GameLogic GetInstance];
+    gameLogic.isGamePause=!gameLogic.isGamePause;
+}
+
 @end

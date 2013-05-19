@@ -45,6 +45,7 @@
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
 - (void)beginGame;
+- (IBAction)pauseGame:(id)sender;
 
 -(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames;
 -(void)scoreBoardUpdateScores;
