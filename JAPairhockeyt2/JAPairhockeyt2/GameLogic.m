@@ -57,15 +57,116 @@ static GameLogic *uniqueInstance;
 @synthesize padDragOldYComp;
 @synthesize dragStarted;
 
+
+@synthesize goalX;
+@synthesize goalY;
+@synthesize goalWidth;
+@synthesize goalHeight;
+
+@synthesize lastHit;
+@synthesize ballHolded;
+@synthesize score;
+@synthesize numberOfPlayers;
+
+
 - (void)moveTheBall
 {
+    
+    if (!(self.vecXComp==0 && self.vecYComp==0)){
     [self computeReflectionVectorForCirclePad];
+        
+    }
+    else{
+                
+        if ([self detectPadBallCollision]){
+            NSLog(@"the COl is fine");
+            self.vecXComp=10;
+            self.vecYComp=4;
+            //We Should Set this parameter to NO when we received the packet 
+            self.ballHolded=NO;
+        }
+    }
     
-    if (self.xCoord+self.width > self.fieldWidth || self.xCoord < 0) self.vecXComp = -self.vecXComp;
-    if (self.yCoord+self.height > self.fieldHeight || self.yCoord < 0) self.vecYComp = -self.vecYComp;
+    if ((self.yCoord+self.height >= self.fieldHeight)
+        &&(self.xCoord >= self.goalX)
+        && (self.xCoord+self.width <= self.goalX+self.goalWidth)) {
+        
+        // I received a Goal send Packet to the server
+        NSLog(@"I Received A GOAL!");
+        [self goalScored];
     
-    self.xCoord += self.vecXComp;
-    self.yCoord += self.vecYComp;
+    }
+    
+    //Detect if the ball is going outside of the screen--> send packet to right or left
+    switch (self.numberOfPlayers) {
+        case 3:
+            {
+                if (self.yCoord <= (-self.height))
+                {
+                    if (!ballHolded)
+                    {
+                    
+                        if ( (self.xCoord+self.width/2) <= self.fieldWidth/2 )
+                        {
+                        //Send Packet to the Left player with coordinates
+                        NSLog(@"Packet Ro Left");
+                        
+                        //  [self holdBall];
+                        }
+                        else{
+                        //Send Packet to the Right Player With Coordinates
+                        NSLog(@"Packet To Right");
+                        
+                        // [self holdBall];
+                        
+                        }
+                    
+                    }
+                }
+            }
+            break;
+            
+        case 4:
+            {
+                if (self.yCoord<= (-self.height)) {
+                    if(!ballHolded)
+                    {
+                       if ((self.xCoord+self.width <= self.fieldWidth/3.5))
+                       {
+                           //Send Packet To left
+                           NSLog(@"Send Packet To Left");
+                       }
+                        else if ((self.xCoord+self.width/2) > self.fieldWidth/3.5
+                                  &&(self.xCoord+self.width/2)<= self.fieldWidth/2)
+                           {
+                               //Senf Packet To Middle
+                               NSLog(@"Send Packet To Middle");
+                           }
+                           else
+                           {
+                               //Send Packet To Right
+                               NSLog(@"Send Packet To Right");
+                           }
+                    }
+                }
+            }
+            break;
+    }
+
+    
+       
+       
+        
+
+    
+
+    
+        if (self.xCoord+self.width > self.fieldWidth || self.xCoord < 0) self.vecXComp = -self.vecXComp;
+        if (self.yCoord+self.height > self.fieldHeight || self.yCoord < -self.height-3) self.vecYComp = -self.vecYComp;
+        self.xCoord += self.vecXComp;
+        self.yCoord += self.vecYComp;
+ 
+
 }
 
 - (float)computeIncidentAngle
@@ -157,10 +258,72 @@ static GameLogic *uniqueInstance;
     NSInteger pRad = self.padWidth/2;
     if (sqrt(pow(pX-bX, 2.0)+pow(pY-bY, 2.0)) < (bRad + pRad))
     {
+        
         return YES;
     }
+
     return NO;
 }
+
+-(void)goalScored
+{
+    
+        NSLog(@"Up Scored A Goal");
+        NSInteger add;
+        add=0;
+        add=[[score objectAtIndex:0] integerValue];
+        add+=1;
+        [score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
+        NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
+    
+    
+    [self resetBallPosition];
+   /*
+    if (isServer==YES)
+    {
+        [self scoreBoard:score];
+        
+    }
+    */
+}
+/*
+-(void)scoreBoard:(NSMutableArray*)score
+{
+    
+    NSLog(@"%@",[[self score]objectAtIndex:playerID]);
+}
+*/
+- (void) scoreBoardInit
+{
+    
+    self.score = [NSMutableArray array];
+    //self.score = [[NSMutableArray alloc]initWithObjects:(id), ..., nil];
+    for (NSInteger i = 0; i < self.numberOfPlayers ; i++){
+        [self.score addObject:[NSNumber numberWithInteger:0]];
+        NSLog(@"%@",[[self score]objectAtIndex:i]);
+        NSLog(@"numbe of players is: %i",numberOfPlayers);
+    }
+    
+}
+
+
+-(void)resetBallPosition{
+
+    self.xCoord = self.fieldWidth/2;
+    self.yCoord = self.fieldHeight/2;
+    self.vecYComp = 0;
+    self.vecXComp = 0;
+}
+
+-(void)holdBall{
+    
+    self.vecXComp = 0;
+    self.vecYComp = 0;
+    self.ballHolded = TRUE;
+    [self resetBallPosition];
+}
+
+
 
 + (GameLogic *)GetInstance
 {
@@ -170,11 +333,14 @@ static GameLogic *uniqueInstance;
             uniqueInstance.isServer = NO;
             //uniqueInstance.isGamePause = NO;
             uniqueInstance.isGamePause = YES;
+            // Definition of Ball
             uniqueInstance.isGameReady = NO;
             uniqueInstance.xCoord = 5;
             uniqueInstance.yCoord = 5;
             uniqueInstance.width = 20;
             uniqueInstance.height = 20;
+            
+            //Deifnition of the movement vectors
             uniqueInstance.vecXComp = 10;
             uniqueInstance.vecYComp = 4;
             uniqueInstance.transitionPointYComp = -1;
@@ -183,18 +349,30 @@ static GameLogic *uniqueInstance;
             uniqueInstance.dragStarted = NO;
             uniqueInstance.connectedPlayers = [NSMutableArray array];
             uniqueInstance.fieldWidthRatio = 0.8;
-
+       
             //Retrieve screen dimensions properly and set the field values accordingly
             CGRect screenRect = [[UIScreen mainScreen] bounds];
             uniqueInstance.fieldWidth = (int)roundf(screenRect.size.width)*uniqueInstance.fieldWidthRatio;
             uniqueInstance.fieldHeight = (int)roundf(screenRect.size.height);
             
+            
+            //Goal Definition
+            uniqueInstance.goalX = uniqueInstance.fieldWidth /4;
+            uniqueInstance.goalY = uniqueInstance.fieldHeight - 30;
+            uniqueInstance.goalHeight = uniqueInstance.fieldWidth/6;
+            uniqueInstance.goalWidth = 100;
+            
+            
+            //Definition Pad 
             uniqueInstance.padX = uniqueInstance.fieldWidth / 2;
             uniqueInstance.padY = uniqueInstance.fieldWidth - 50;
             uniqueInstance.padWidth = 60;
             uniqueInstance.padHeight = 60;
             
+            //uniqueInstance.lastHit = @"nil";
             uniqueInstance.padDrag = 0;
+            uniqueInstance.numberOfPlayers=4;
+            
         }
         return uniqueInstance;
     }

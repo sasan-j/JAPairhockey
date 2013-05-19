@@ -78,10 +78,14 @@
         //[dvc setIntendedPlayers:3+[_hostGameIntendedPlayers selectedSegmentIndex]];
         dvc.intendedPlayers=3+[_hostGameIntendedPlayers selectedSegmentIndex];
         
+        
         GameLogic* gameLogic = [GameLogic GetInstance];
         gameLogic.playerName = self.playerNameTextField.text;
+        //gameLogic.numberOfPlayers = 3+[_hostGameIntendedPlayers selectedSegmentIndex];
     }
 }
+
+
 
 
 - (IBAction)goBack:(id)sender {

@@ -55,11 +55,28 @@
 @property (nonatomic) NSInteger padDragEndXComp;
 @property (nonatomic) BOOL dragStarted;
 
+@property (nonatomic) NSInteger goalX;
+@property (nonatomic) NSInteger goalY;
+@property (nonatomic) NSInteger goalWidth;
+@property (nonatomic) NSInteger goalHeight;
+
+@property (nonatomic) BOOL ballHolded;
+@property (nonatomic) NSString *lastHit;
+@property (nonatomic) NSMutableArray *score;
+@property (nonatomic) int numberOfPlayers;
+
+
 - (void)recomputeReflectionVectorForRectPad;
 
 - (void)computeReflectionVectorForCirclePad;
 
 - (void)moveTheBall;
+
+- (void)scoreBoardInit;
+- (void)goalScored;
+- (void)holdBall;
+
+
 
 + (GameLogic *)GetInstance;
 
