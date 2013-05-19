@@ -411,6 +411,13 @@ UIAlertView *_alertView;
 - (IBAction)pauseGame:(id)sender {
     GameLogic* gameLogic = [GameLogic GetInstance];
     gameLogic.isGamePause=!gameLogic.isGamePause;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Paused"
+                                        message:@"Game is paused, what's your decision?"
+                                       delegate:nil
+                              cancelButtonTitle:@"Resume"
+                              otherButtonTitles:@"Quit", nil];
+    [alert show];
 }
 
 @end
