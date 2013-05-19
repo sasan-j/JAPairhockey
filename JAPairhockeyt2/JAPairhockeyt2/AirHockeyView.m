@@ -65,6 +65,14 @@
     CGContextAddEllipseInRect(context, rectangle);
     CGContextFillPath(context);
     
+    CGContextMoveToPoint(context, gameLogic.goalX, gameLogic.goalY);
+    CGContextAddLineToPoint(context, gameLogic.goalX, gameLogic.fieldHeight);
+    CGContextAddLineToPoint(context, gameLogic.goalX+gameLogic.goalWidth, gameLogic.fieldHeight);
+    CGContextAddLineToPoint(context, gameLogic.goalX+gameLogic.goalWidth, gameLogic.goalY);
+    CGContextStrokePath(context);
+    
+
+    
     ///// Random stuff
     //    CGContextSetLineWidth(context, 2.0);
     //    CGContextSetStrokeColorWithColor(context, [UIColor
