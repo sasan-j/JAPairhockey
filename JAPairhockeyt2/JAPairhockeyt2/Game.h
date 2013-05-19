@@ -10,6 +10,7 @@
 
 @class Game;
 @class Packet;
+@class GameData;
 
 
 typedef enum
@@ -42,6 +43,8 @@ GameState;
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
 - (void)beginGame;
+- (void)receivedGameData:(GameData *)gameData;
+
 
 
 
@@ -52,6 +55,7 @@ GameState;
 @property (nonatomic, weak) id <GameDelegate> delegate;
 @property (nonatomic, assign) BOOL isServer;
 @property (nonatomic) GameState _state;
+@property (nonatomic) NSMutableDictionary *_players;
 
 
 - (void)startClientGameWithSession:(GKSession *)session playerName:(NSString *)name server:(NSString *)peerID;
@@ -60,7 +64,6 @@ GameState;
 - (Player *)playerAtPosition:(PlayerPosition)position;
 - (void)sendPacketToServer:(Packet *)packet;
 - (void)sendPacketToAllClients:(Packet *)packet;
-
 - (void)beginGame;
 
 

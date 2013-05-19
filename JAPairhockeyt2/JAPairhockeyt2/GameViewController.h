@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "GameData.h"
 
 //@class Game;
 @class GameViewController;
@@ -49,5 +50,6 @@
 
 -(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames;
 -(void)scoreBoardUpdateScores;
+-(void)receivedGameData:(GameData *)gameData;
 
 @end

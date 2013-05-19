@@ -91,12 +91,15 @@ const size_t PACKET_HEADER_SIZE = 10;
 
 - (NSData *)data
 {
+    //NSLog(@"inside data method");
 	NSMutableData *data = [[NSMutableData alloc] initWithCapacity:100];
-    
-	[data rw_appendInt32:'JAP!'];   // 
+    //NSLog(@"after data allocation");
+
+	[data rw_appendInt32:'JAP!'];   //
 	[data rw_appendInt32:0];
 	[data rw_appendInt16:self.packetType];
-    
+    //NSLog(@"before calling add payloadToData");
+
     [self addPayloadToData:data];
     
 	return data;
