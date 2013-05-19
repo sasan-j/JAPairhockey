@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) GameData *gameData;
 
-+ (id)packetWithData:(GameData *)gameData;
++ (id)packetWithGameData:(GameData *)gameData;
 
 @end
 

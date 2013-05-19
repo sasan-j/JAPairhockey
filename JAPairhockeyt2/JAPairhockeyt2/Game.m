@@ -13,6 +13,8 @@
 #import "PacketOtherClientQuit.h"
 #import "GameLogic.h"
 #import "GameViewController.h"
+#import "GameData.h"
+#import "PacketDataPacket.h"
 
 
 
@@ -31,6 +33,8 @@
 @synthesize _state;
 @synthesize delegate = _delegate;
 @synthesize isServer = _isServer;
+@synthesize _players;
+
 
 
 - (id)init
@@ -233,7 +237,7 @@
 {
 	switch (packet.packetType)
 	{
-		case PacketTypeSignInResponse:
+  		case PacketTypeSignInResponse:
 			if (_state == GameStateWaitingForSignIn)
 			{
 				player.name = ((PacketSignInResponse *)packet).playerName;
@@ -251,6 +255,23 @@
 				}
 			}
 			break;
+        case PacketTypeDataPacket:
+
+			if (YES)//_state == GameStatePlaying)
+			{
+                NSLog(@"Server received PacketTypeDataPacket");
+                GameData *gameData;
+                NSLog(@"GameStatePlaying");
+				gameData = ((PacketDataPacket *)packet).gameData;
+				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+				//[self sendPacketToServer:packet];
+				//[self beginGame];
+                NSLog(@"before method");
+                
+                [_delegate receivedGameData:gameData];
+                NSLog(@"after method");
+			}
+			break;
             
         case PacketTypeClientReady:
             NSLog(@"State: %d, received Responses: %d", _state, [self receivedResponsesFromAllPlayers]);
@@ -261,7 +282,10 @@
 				//[self beginGame];
                 [_delegate allClientsReady:@"Now you are able to begin that fucking game"];
 			}
-			break;       
+			break;
+            
+            
+            
             
         case PacketTypeClientQuit:
 			[self clientDidDisconnect:player.peerID];
@@ -430,15 +454,15 @@
 - (void)sendPacketToServer:(Packet *)packet
 {
     NSLog(@"sendPacketToServer");
-
 	GKSendDataMode dataMode = GKSendDataReliable;
+    NSLog(@"data mode is:%u",dataMode);
+
 	NSData *data = [packet data];
+    NSLog(@"packet is:%@",data);
+
 	NSError *error;
     
-    
-    //NSLog(@"data mode is:%u",dataMode);
-    //NSLog(@"packet is:%@",data);
-    //NSLog(@"error is:%@",error);
+    NSLog(@"error is:%@",error);
     
     //NSLog(@"players are:%@",_players);
 

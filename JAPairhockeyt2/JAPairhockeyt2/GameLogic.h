@@ -12,8 +12,11 @@
 
 @interface GameLogic : NSObject
 
+
+
 @property (nonatomic) Game *game;
 @property (nonatomic) NSString *playerName;
+@property (nonatomic) NSString *peerID;
 @property (nonatomic) NSMutableArray *connectedPlayers;
 @property (nonatomic) 	GKSession *session;
 @property (nonatomic) BOOL isServer;
@@ -75,6 +78,7 @@
 - (void)scoreBoardInit;
 - (void)goalScored;
 - (void)holdBall;
+-(void)sendBallMovement:(NSInteger)xPos;
 
 
 

@@ -196,6 +196,8 @@
     gameLogic.serverID = peerID;
     NSLog(@"session: %@",_matchmakingClient.session);
     gameLogic.session = _matchmakingClient.session;
+    gameLogic.peerID = _matchmakingClient.session.peerID;
+    gameLogic.lastHit = gameLogic.peerID;
 
 //    [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];
 //    _loadingLabel.text=@"CONNECED, WAITING FOR SERVER...";

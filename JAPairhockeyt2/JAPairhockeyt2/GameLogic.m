@@ -8,6 +8,8 @@
 
 #import "GameLogic.h"
 #import "Game.h"
+#import "GameData.h"
+#import "PacketDataPacket.h"
 
 static GameLogic *uniqueInstance;
 
@@ -24,7 +26,10 @@ static GameLogic *uniqueInstance;
 
 
 
+
+
 //player data
+@synthesize peerID;
 @synthesize playerName;
 
 //Ball attributes
@@ -105,7 +110,9 @@ static GameLogic *uniqueInstance;
                 {
                     if (!ballHolded)
                     {
-                    
+                        [self sendBallMovement:self.xCoord];
+                        
+                        
                         if ( (self.xCoord+self.width/2) <= self.fieldWidth/2 )
                         {
                         //Send Packet to the Left player with coordinates
@@ -131,6 +138,8 @@ static GameLogic *uniqueInstance;
                 if (self.yCoord<= (-self.height)) {
                     if(!ballHolded)
                     {
+                        [self sendBallMovement:self.xCoord];
+                        
                        if ((self.xCoord+self.width <= self.fieldWidth/3.5))
                        {
                            //Send Packet To left
@@ -183,6 +192,9 @@ static GameLogic *uniqueInstance;
 {
     if ([self detectPadBallCollision])
     {
+        //setting last hit to current player for computing Goal event later in game
+        self.lastHit=self.peerID;
+
         float incidentAngle = [self computeIncidentAngle];
         if (incidentAngle > 0 && incidentAngle <= 30)
         {
@@ -335,6 +347,7 @@ static GameLogic *uniqueInstance;
             uniqueInstance.isGamePause = YES;
             // Definition of Ball
             uniqueInstance.isGameReady = NO;
+            uniqueInstance.lastHit = @"Undefined Player";
             uniqueInstance.xCoord = 5;
             uniqueInstance.yCoord = 5;
             uniqueInstance.width = 20;
@@ -381,5 +394,21 @@ static GameLogic *uniqueInstance;
         return uniqueInstance;
     }
 }
+
+-(void)sendBallMovement:(NSInteger)xPos{
+    NSLog(@"sending ball position to server");
+    GameData *gameData = [[GameData alloc] init];
+    gameData.peerID=self.peerID;
+    gameData.vecXComp = self.vecXComp;
+    gameData.vecYComp = -self.vecYComp;
+    gameData.ballHorizonOffset=0.3;
+    gameData.lastHitPeerID = self.lastHit;
+    
+    PacketDataPacket *packet=[PacketDataPacket packetWithGameData:gameData];
+    
+    if(!self.isServer)
+        [self.game sendPacketToServer:packet];
+}
+
 
 @end

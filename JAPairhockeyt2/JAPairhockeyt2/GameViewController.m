@@ -66,6 +66,7 @@ UIAlertView *_alertView;
     
     //Score Board Names and initializing
     [gameLogic scoreBoardInit];
+    //NSLog(@"%@",gameLogic.game._players);
     NSMutableArray *playersName = [NSMutableArray arrayWithObjects:gameLogic.playerName,[NSNumber numberWithInt:0], nil];
     [self scoreBoardInitWitNames:playersName];
     //Disable fourth player label and score if the game is in three player mode unless it's n four player mode
@@ -449,6 +450,10 @@ UIAlertView *_alertView;
 {
     NSLog(@"Quit Game Fired");
     [self.game quitGameWithReason:QuitReasonUserQuit];
+}
+
+-(void)receivedGameData:(GameData *)gameData{
+    NSLog(@"method in gameView: %@",gameData);
 }
 
 @end

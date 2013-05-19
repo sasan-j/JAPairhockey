@@ -123,8 +123,7 @@
             [gameLogic.connectedPlayers addObject:key];
         }
         //gameLogic.connectedPlayers=_matchmakingServer.connectedClients;
-        NSLog(@"end of start action");
-        
+        gameLogic.peerID = _matchmakingServer.session.peerID;
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"GameView"];
         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
