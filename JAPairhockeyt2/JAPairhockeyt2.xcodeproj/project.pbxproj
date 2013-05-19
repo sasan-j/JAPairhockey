@@ -13,6 +13,10 @@
 		8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A517DED17487F5B00599259 /* PacketDataPacket.m */; };
 		8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A517DEF1748F53900599259 /* MainStoryboard.storyboard */; };
 		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
+		8A9C2D75174924E300E42D33 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C2D74174924E300E42D33 /* GameData.m */; };
+		8A9C2D771749328300E42D33 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C2D761749328300E42D33 /* splash.jpg */; };
+		8A9C2D791749346E00E42D33 /* splash-jpg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C2D781749346E00E42D33 /* splash-jpg.png */; };
+		8A9C2D7B1749348200E42D33 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C2D7A1749348200E42D33 /* Default@2x.png */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
 		8AA4C116173EBB3200CE187A /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10F173EBB3200CE187A /* Packet.m */; };
@@ -52,6 +56,11 @@
 		8A517DF01748F53900599259 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8A54FBB7174137EB00F04FE6 /* HostGameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameConfigViewController.h; sourceTree = "<group>"; };
 		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
+		8A9C2D73174924E300E42D33 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		8A9C2D74174924E300E42D33 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
+		8A9C2D761749328300E42D33 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
+		8A9C2D781749346E00E42D33 /* splash-jpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-jpg.png"; sourceTree = "<group>"; };
+		8A9C2D7A1749348200E42D33 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
 		8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingClient.m; sourceTree = "<group>"; };
 		8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingServer.h; sourceTree = "<group>"; };
@@ -123,6 +132,8 @@
 				8AA4C124173EBD7500CE187A /* Player.m */,
 				13A54EB31746714100EFF92D /* GameLogic.h */,
 				13A54EB41746714100EFF92D /* GameLogic.m */,
+				8A9C2D73174924E300E42D33 /* GameData.h */,
+				8A9C2D74174924E300E42D33 /* GameData.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -172,6 +183,8 @@
 		8AAD6436173E77D100142029 = {
 			isa = PBXGroup;
 			children = (
+				8A9C2D7A1749348200E42D33 /* Default@2x.png */,
+				8A9C2D781749346E00E42D33 /* splash-jpg.png */,
 				8AA4C12F173F15CB00CE187A /* NSData+SnapAdditions.h */,
 				8AA4C130173F15CC00CE187A /* NSData+SnapAdditions.m */,
 				8AAD6448173E77D400142029 /* JAPairhockeyt2 */,
@@ -216,6 +229,7 @@
 		8AAD6449173E77D500142029 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A9C2D761749328300E42D33 /* splash.jpg */,
 				8AAD644A173E77D500142029 /* JAPairhockeyt2-Info.plist */,
 				8AAD644B173E77D500142029 /* InfoPlist.strings */,
 				8AAD644E173E77D500142029 /* main.m */,
@@ -284,6 +298,9 @@
 				8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */,
 				8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */,
 				8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */,
+				8A9C2D771749328300E42D33 /* splash.jpg in Resources */,
+				8A9C2D791749346E00E42D33 /* splash-jpg.png in Resources */,
+				8A9C2D7B1749348200E42D33 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +331,7 @@
 				13A54EB51746714100EFF92D /* GameLogic.m in Sources */,
 				13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */,
 				8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */,
+				8A9C2D75174924E300E42D33 /* GameData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,13 @@
 //
 
 #import "Packet.h"
+#import "GameData.h"
 
 @interface PacketDataPacket : Packet
 
-@property (nonatomic, strong) NSMutableDictionary *data;
+@property (nonatomic, strong) GameData *gameData;
 
-+ (id)packetWithData:(NSMutableDictionary *)data;
++ (id)packetWithData:(GameData *)gameData;
 
 @end
 
