@@ -248,6 +248,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="hostGameTitleLabel" destination="uXb-Wv-GH6" id="zhL-gU-D7O"/>
+                        <outlet property="loadGameButton" destination="QCb-uB-EMC" id="9GN-CS-p4k"/>
                         <outlet property="startButton" destination="QCb-uB-EMC" id="9C7-ka-8Re"/>
                         <outlet property="tableView" destination="FSF-SQ-ilD" id="Aj0-nZ-sPS"/>
                     </connections>

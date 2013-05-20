@@ -29,6 +29,7 @@
 @property (nonatomic, weak) id <HostGameViewControllerDelegate> delegate;
 @property (nonatomic) int intendedPlayers;
 
+@property (weak, nonatomic) IBOutlet UIButton *loadGameButton;
 
 - (IBAction)goBack:(id)sender;
 - (IBAction)startAction:(id)sender;

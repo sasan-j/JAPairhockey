@@ -51,7 +51,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
+    [_loadGameButton setEnabled:NO];
+    [_loadGameButton setAlpha:0.4];
+    [_loadGameButton setTitle:@"LOAD GAME" forState:UIControlStateNormal];
+    
     _hostGameTitleLabel.text=[NSString stringWithFormat:@"HOSTING A GAME WITH %d PLAYERS...",_intendedPlayers];
     NSLog(@"start matchmaking process");
     NSLog(@"intendedPlayers=%d",_intendedPlayers);
@@ -184,6 +188,11 @@
 {
 	[self.tableView reloadData];
     NSLog(@"client connected and %d clients total",[_matchmakingServer connectedClientCount]);
+    if([_matchmakingServer.connectedClients count]>1){
+        [_loadGameButton setEnabled:YES];
+        [_loadGameButton setAlpha:1.0];
+        [_loadGameButton setTitle:@"LOAD GAME" forState:UIControlStateNormal];
+    }
     
 }
 
@@ -191,7 +200,11 @@
 {
 	[self.tableView reloadData];
     NSLog(@"client disconnected");
-
+    if([_matchmakingServer.connectedClients count]<2){
+        [_loadGameButton setEnabled:NO];
+        [_loadGameButton setAlpha:0.4];
+        [_loadGameButton setTitle:@"LOAD GAME" forState:UIControlStateNormal];
+    }
 }
 
 - (void)matchmakingServerSessionDidEnd:(MatchmakingServer *)server

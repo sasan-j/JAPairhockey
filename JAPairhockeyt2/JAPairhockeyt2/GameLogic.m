@@ -347,7 +347,8 @@ static GameLogic *uniqueInstance;
 }
 
 -(void)holdBall{
-    
+    self.xCoord = 20;
+    self.yCoord = -20;
     self.vecXComp =0;
     self.vecYComp =0;
     self.ballHolded = TRUE;
@@ -368,10 +369,11 @@ static GameLogic *uniqueInstance;
             // Definition of Ball
             uniqueInstance.isGameReady = NO;
             uniqueInstance.lastHit = @"Undefined Player";
-            uniqueInstance.xCoord = - uniqueInstance.width;
-            uniqueInstance.yCoord = - uniqueInstance.height;
             uniqueInstance.width = 20;
             uniqueInstance.height = 20;
+            uniqueInstance.xCoord = 0;//- uniqueInstance.width;
+            uniqueInstance.yCoord = 0;//- uniqueInstance.height;
+
             
             //Deifnition of the movement vectors
             uniqueInstance.vecXComp = 0;

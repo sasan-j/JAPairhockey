@@ -60,7 +60,7 @@ UIAlertView *_alertView;
 	// Do any additional setup after loading the view.
     
     GameLogic* gameLogic = [GameLogic GetInstance];
-    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
+    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
     //self.game= [[Game alloc] init];
     _game = gameLogic.game;
@@ -86,6 +86,12 @@ UIAlertView *_alertView;
 
     //self.scoreNameLabels=scoreNameLabels;
     //self.scoreNumberLabels=scoreNumberLabels;
+ 
+    
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
+    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    swipeRecognizer.numberOfTouchesRequired = 3;
+    [self.view addGestureRecognizer:swipeRecognizer];
     
     
     /*
@@ -560,8 +566,11 @@ UIAlertView *_alertView;
         NSLog(@"Resume shod");
         [self resumeGame];
     }
-    else
+    else{
         NSLog(@"quit shod");
+        [self quitGame];
+
+    }
 }
 
 -(void)resumeGame
@@ -602,6 +611,24 @@ UIAlertView *_alertView;
         gameLogic.ballHolded=!gameLogic.ballHolded;
     }
     
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        // User was shaking the device. Post a notification named "shake."
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shake" object:self];
+    }
+}
+
+- (void)swiped:(UISwipeGestureRecognizer *)recognizer
+{
+    if(recognizer.state == UIGestureRecognizerStateRecognized)
+    {
+        // got a three-finger swipe
+        NSLog(@"3-finger");
+        [self quitGame];
+    }
 }
 
 @end

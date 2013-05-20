@@ -41,6 +41,7 @@
     NSLog(@"host game view did load");
     
     
+    
     ///for dissmissing keyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.nameTextField action:@selector(resignFirstResponder)];
 	gestureRecognizer.cancelsTouchesInView = NO;
