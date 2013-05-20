@@ -147,6 +147,20 @@
     GameLogic *gameLogic = [GameLogic GetInstance];
 	switch (packet.packetType)
 	{
+            
+        case PacketTypeDataPacket:
+            if (YES)//_state == GameStatePlaying)
+			{
+                NSLog(@"client received PacketTypeDataPacket");
+                GameData *gameData;
+				gameData = ((PacketDataPacket *)packet).gameData;
+				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
+				//[self sendPacketToServer:packet];
+				//[self beginGame];
+                [_delegate receivedGameData:gameData];
+			}
+			break;
+            
 		case PacketTypeSignInRequest:
 			if (_state == GameStateWaitingForSignIn)
 			{
@@ -162,14 +176,16 @@
             NSLog(@"Client received PacketTypeServerReady");
 			if (_state == GameStateWaitingForReady)
 			{
+                
+                
 				_players = ((PacketServerReady *)packet).players;
                 [self changeRelativePositionsOfPlayers];
                 
+                NSLog(@"game.m : players from gameLogic.game : %@",gameLogic.game._players);                
 				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
 				//[self sendPacketToServer:packet];
                 
 				//[self beginGame];
-                NSLog(@"before method");
               
                 [_delegate receivedServerReady:@"SomeData"];
                 NSLog(@"after method");
@@ -266,10 +282,13 @@
 				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
 				//[self sendPacketToServer:packet];
 				//[self beginGame];
-                NSLog(@"before method");
-                
-                [_delegate receivedGameData:gameData];
-                NSLog(@"after method");
+                if(gameData.peerID==_session.peerID)
+                    [_delegate receivedGameData:gameData];
+                else{
+                    [self sendPacketToClient:packet destPeerID:gameData.peerID];
+
+                }
+                //NSLog(@"after method");
 			}
 			break;
             
@@ -448,6 +467,27 @@
 	if (![_session sendDataToAllPeers:data withDataMode:dataMode error:&error])
 	{
 		NSLog(@"Error sending data to clients: %@", error);
+	}
+}
+
+- (void)sendPacketToClient:(Packet *)packet  destPeerID:(NSString *)peerID;
+{
+    NSLog(@"sendPacketToServer");
+	GKSendDataMode dataMode = GKSendDataReliable;
+    NSLog(@"data mode is:%u",dataMode);
+    
+	NSData *data = [packet data];
+    NSLog(@"packet is:%@",data);
+    
+	NSError *error;
+    
+    NSLog(@"error is:%@",error);
+    
+    //NSLog(@"players are:%@",_players);
+    
+	if (![_session sendData:data toPeers:[NSArray arrayWithObject:peerID] withDataMode:dataMode error:&error])
+	{
+		NSLog(@"Error sending data to server: %@", error);
 	}
 }
 

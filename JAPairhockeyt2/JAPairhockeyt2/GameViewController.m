@@ -26,6 +26,8 @@ UIAlertView *_alertView;
 @synthesize xCoord;
 @synthesize yCoord;
 @synthesize middleButton;
+@synthesize scoreNameLabels;
+@synthesize scoreNumberLabels;
 
 @synthesize delegate = _delegate;
 @synthesize game = _game;
@@ -64,8 +66,28 @@ UIAlertView *_alertView;
     _game = gameLogic.game;
     [_game setDelegate:self];
     
+    NSLog(@"players from gameLogic.game : %@",gameLogic.game._players);
+    NSLog(@"players from _game : %@",_game._players);
+
+    
+
+    self.firstPlayerLabelView.hidden=YES;
+    self.firstPlayerScoreView.hidden=YES;
+    self.secondPlayerLabelView.hidden=YES;
+    self.secondPlayerScoreView.hidden=YES;
+    self.thirdPlayerLabelView.hidden=YES;
+    self.thirdPlayerScoreView.hidden=YES;
+    self.fourthPlayerLabelView.hidden=YES;
+    self.fourthPlayerScoreView.hidden=YES;
+
+    //self.scoreNameLabels=scoreNameLabels;
+    //self.scoreNumberLabels=scoreNumberLabels;
+    
+    
+    /*
+    
     //Score Board Names and initializing
-    [gameLogic scoreBoardInit];
+    //[gameLogic scoreBoardInit];
     //NSLog(@"%@",gameLogic.game._players);
     NSMutableArray *playersName = [NSMutableArray arrayWithObjects:gameLogic.playerName,[NSNumber numberWithInt:0], nil];
     [self scoreBoardInitWitNames:playersName];
@@ -79,7 +101,7 @@ UIAlertView *_alertView;
         self.fourthPlayerScoreView.hidden=NO;
 
     }
-    
+    */
     
     
     
@@ -148,16 +170,6 @@ UIAlertView *_alertView;
   //NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];
   //Packet *packet=[Packet packetWithData:data];
     
-    
-    if (gameLogic.isServer){
-    Packet *packet = [Packet packetWithType:PacketTypeSignInRequest];
-    [gameLogic.game sendPacketToAllClients:packet];
-    }
-    else {
-    Packet *packet = [Packet packetWithType:PacketTypeSignInRequest];
-    [gameLogic.game sendPacketToServer:packet];
-    
-    }
     UITouch* touch = [touches anyObject];
     CGPoint padStartPosTouchPoint = [touch locationInView:self.view];
     
@@ -300,13 +312,46 @@ UIAlertView *_alertView;
 	}
 }
 
-
--(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames{
+-(void)scoreBoardInitWitNames:(NSArray*)playerNames{
     
-    NSMutableString *tempName = [playerNames objectAtIndex:0];
-    self.firstPlayerLabelView.text = tempName;
+    GameLogic* gameLogic = [GameLogic GetInstance];
     
+    NSLog(@"score board init : %@",playerNames);
+    int count = [playerNames count];
+    NSLog(@"score board init : playernames count %d",count);
+    Player *tempPlayer;
+    
+    if(count>=1){
+        tempPlayer = [playerNames objectAtIndex:0];
+        self.firstPlayerLabelView.text=tempPlayer.name;
+        self.firstPlayerLabelView.hidden=NO;
+        self.firstPlayerScoreView.text=@"0";
+        self.firstPlayerScoreView.hidden=NO;
+    }
+    if(count>=2){
+        tempPlayer = [playerNames objectAtIndex:1];
+        self.secondPlayerLabelView.text=tempPlayer.name;
+        self.secondPlayerLabelView.hidden=NO;
+        self.secondPlayerScoreView.text=@"0";
+        self.secondPlayerScoreView.hidden=NO;
+    }
+    if(count>=3){
+        tempPlayer = [playerNames objectAtIndex:2];
+        self.thirdPlayerLabelView.text=tempPlayer.name;
+        self.thirdPlayerLabelView.hidden=NO;
+        self.thirdPlayerScoreView.text=@"0";
+        self.thirdPlayerScoreView.hidden=NO;
+    }
+        if(count==4){
+            tempPlayer = [playerNames objectAtIndex:3];
+            self.fourthPlayerLabelView.text=tempPlayer.name;
+            self.fourthPlayerLabelView.hidden=NO;
+            self.fourthPlayerScoreView.text=@"0";
+            self.fourthPlayerScoreView.hidden=NO;
+    }
+        
 }
+
 
 -(void)scoreBoardUpdateScores{
     
@@ -364,10 +409,17 @@ UIAlertView *_alertView;
 {
 	NSLog(@"%@",data);
     //[_game beginGame];
+    GameLogic* gameLogic = [GameLogic GetInstance];
+
     [middleButton setEnabled:YES];
     [middleButton setAlpha:1.0];
     [middleButton setTitle:@"READY?" forState:UIControlStateNormal];
-    NSLog(@"end of method");
+    NSMutableArray *players=[NSMutableArray array];
+    //players=[gameLogic.game._players copy];
+    for(NSString * key in gameLogic.game._players)
+        [players addObject:[gameLogic.game._players objectForKey:key]];
+    
+    [self scoreBoardInitWitNames:players];
 
 }
 
@@ -388,7 +440,6 @@ UIAlertView *_alertView;
     NSLog(@"Starting Game on Clients");
     //Packet *packet = [Packet packetWithType:PacketTypeClientReady];
     //[_game sendPacketToServer:packet];
-    
     //hidden the button
     [middleButton setEnabled:NO];
     [middleButton setHidden:YES];
@@ -453,7 +504,9 @@ UIAlertView *_alertView;
 }
 
 -(void)receivedGameData:(GameData *)gameData{
+    
     NSLog(@"method in gameView: %@",gameData);
+    
 }
 
 @end

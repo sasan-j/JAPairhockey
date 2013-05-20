@@ -64,6 +64,8 @@ GameState;
 - (Player *)playerAtPosition:(PlayerPosition)position;
 - (void)sendPacketToServer:(Packet *)packet;
 - (void)sendPacketToAllClients:(Packet *)packet;
+- (void)sendPacketToClient:(Packet *)packet  destPeerID:(NSString *)peerID;
+
 - (void)beginGame;
 
 

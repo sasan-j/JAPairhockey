@@ -69,6 +69,7 @@
 @property (nonatomic) int numberOfPlayers;
 
 
+
 - (void)recomputeReflectionVectorForRectPad;
 
 - (void)computeReflectionVectorForCirclePad;

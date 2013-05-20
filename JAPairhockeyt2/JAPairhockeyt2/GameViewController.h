@@ -41,6 +41,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *thirdPlayerScoreView;
 @property (weak, nonatomic) IBOutlet UILabel *fourthPlayerLabelView;
 @property (weak, nonatomic) IBOutlet UILabel *fourthPlayerScoreView;
+@property (weak) NSMutableArray *scoreNumberLabels;
+@property (weak) NSMutableArray *scoreNameLabels;
+
 
 - (IBAction)startGame:(id)sender;
 - (void)receivedServerReady:(NSString *)data;
