@@ -68,6 +68,7 @@
 @property (nonatomic) NSMutableArray *score;
 @property (nonatomic) int numberOfPlayers;
 @property (nonatomic) NSMutableArray * playerPositions;
+@property (nonatomic) NSMutableDictionary * playerScores;
 
 
 

@@ -49,7 +49,7 @@ UIAlertView *_alertView;
         [gameLogic moveTheBall];
     [[self airHockeyView] setNeedsDisplay];
     //Score Board Updates Te Scores
-    [self scoreBoardUpdateScores];
+    //[self scoreBoardUpdateScores];
 
 }
 
@@ -132,7 +132,6 @@ UIAlertView *_alertView;
 
         NSLog(@"players: %@",gameLogic.game._players);
         //NSLog(@"player name: %@",gameLogic.playerName);
-        
         
         
         NSMutableArray *players=[NSMutableArray array];
@@ -374,10 +373,10 @@ UIAlertView *_alertView;
 
 
 -(void)scoreBoardUpdateScores{
-    
+    NSLog(@"scoreBoardUpdateScores");
     GameLogic *gameLogic = [GameLogic GetInstance];
     
-    NSNumber *temp = [gameLogic.score objectAtIndex:0];
+ /*   NSNumber *temp = [gameLogic.score objectAtIndex:0];
     NSString *format = [NSString stringWithFormat:@"%@",temp];
     self.firstPlayerScoreView.text= format;
     
@@ -394,7 +393,35 @@ UIAlertView *_alertView;
         temp = [gameLogic.score objectAtIndex:3];
         format = [NSString stringWithFormat:@"%@",temp];
         self.fourthPlayerScoreView.text=format;
+    }*/
+
+    NSMutableArray *array=[NSMutableArray array];
+    Player *player;
+    for(NSString* key in gameLogic.game._players){
+        player=[gameLogic.game._players objectForKey:key];
+        [array addObject:[NSString stringWithFormat:@"%d",player.score]];
     }
+    NSLog(@"%@",array);
+    
+
+    int count = [array count];
+    NSLog(@"score board init : playernames count %d",count);
+        
+    
+    if(count>=1){
+
+        self.firstPlayerScoreView.text=[array objectAtIndex:0];
+    }
+    if(count>=2){
+        self.secondPlayerScoreView.text=[array objectAtIndex:1];
+    }
+    if(count>=3){
+        self.thirdPlayerScoreView.text=[array objectAtIndex:2];
+    }
+    if(count==4){
+        self.fourthPlayerScoreView.text=[array objectAtIndex:3];
+    }
+    
 
     
 
@@ -456,6 +483,7 @@ UIAlertView *_alertView;
 - (void)beginGame{
     GameLogic* gameLogic = [GameLogic GetInstance];
     gameLogic.isGamePause = NO;
+    [gameLogic scoreBoardInit];
     //else if(!gameLogic.isServer && _game._state==GameStateWaitingForReady){
     NSLog(@"Starting Game on Clients");
     //Packet *packet = [Packet packetWithType:PacketTypeClientReady];
@@ -533,6 +561,7 @@ UIAlertView *_alertView;
         gameLogic.vecYComp = gameData.vecYComp;
         gameLogic.xCoord = gameLogic.fieldWidth/2;
         gameLogic.yCoord = 30;
+        gameLogic.lastHit = gameData.lastHitPeerID;
         gameLogic.ballHolded=!gameLogic.ballHolded;
     }
     

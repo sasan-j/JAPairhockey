@@ -41,6 +41,8 @@
 		8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD645A173E77D600142029 /* MainStoryboardSNJ.storyboard */; };
 		8AAD6467173E85E100142029 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6466173E85E100142029 /* MainMenuViewController.m */; };
 		8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD646F173E88F800142029 /* HostGameViewController.m */; };
+		8AB735A1174A02F10006D8C3 /* PacketGameEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB735A0174A02F10006D8C3 /* PacketGameEvent.m */; };
+		8AB735A4174A16700006D8C3 /* PacketScoreUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB735A3174A16700006D8C3 /* PacketScoreUpdate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,10 @@
 		8AAD6466173E85E100142029 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		8AAD646E173E88F800142029 /* HostGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostGameViewController.h; sourceTree = "<group>"; };
 		8AAD646F173E88F800142029 /* HostGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameViewController.m; sourceTree = "<group>"; };
+		8AB7359F174A02F10006D8C3 /* PacketGameEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketGameEvent.h; sourceTree = "<group>"; };
+		8AB735A0174A02F10006D8C3 /* PacketGameEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketGameEvent.m; sourceTree = "<group>"; };
+		8AB735A2174A166F0006D8C3 /* PacketScoreUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketScoreUpdate.h; sourceTree = "<group>"; };
+		8AB735A3174A16700006D8C3 /* PacketScoreUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketScoreUpdate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,10 @@
 				8AA4C113173EBB3200CE187A /* PacketSignInResponse.m */,
 				8A517DEC17487F5A00599259 /* PacketDataPacket.h */,
 				8A517DED17487F5B00599259 /* PacketDataPacket.m */,
+				8AB7359F174A02F10006D8C3 /* PacketGameEvent.h */,
+				8AB735A0174A02F10006D8C3 /* PacketGameEvent.m */,
+				8AB735A2174A166F0006D8C3 /* PacketScoreUpdate.h */,
+				8AB735A3174A16700006D8C3 /* PacketScoreUpdate.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -328,6 +338,8 @@
 				13A54EB9174672FC00EFF92D /* AirHockeyView.m in Sources */,
 				8A517DEE17487F5C00599259 /* PacketDataPacket.m in Sources */,
 				8A9C2D75174924E300E42D33 /* GameData.m in Sources */,
+				8AB735A1174A02F10006D8C3 /* PacketGameEvent.m in Sources */,
+				8AB735A4174A16700006D8C3 /* PacketScoreUpdate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

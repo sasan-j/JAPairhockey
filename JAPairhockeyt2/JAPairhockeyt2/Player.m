@@ -15,6 +15,8 @@
 @synthesize peerID = _peerID;
 @synthesize receivedResponse = _receivedResponse;
 @synthesize gamesWon = _gamesWon;
+@synthesize score;
+
 
 - (void)dealloc
 {
@@ -25,7 +27,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@ peerID = %@, name = %@, position = %d", [super description], self.peerID, self.name, self.position];
+	return [NSString stringWithFormat:@"%@ peerID = %@, name = %@, position = %d, score= %d", [super description], self.peerID, self.name, self.position, self.score];
 }
 
 @end

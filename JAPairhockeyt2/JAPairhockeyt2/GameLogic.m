@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "GameData.h"
 #import "PacketDataPacket.h"
+#import "PacketGameEvent.h"
 
 static GameLogic *uniqueInstance;
 
@@ -90,6 +91,7 @@ static GameLogic *uniqueInstance;
             self.vecYComp=4;
             //We Should Set this parameter to NO when we received the packet 
             self.ballHolded=NO;
+            
         }
     }
     
@@ -281,21 +283,23 @@ static GameLogic *uniqueInstance;
 
 -(void)goalScored
 {
-    
-    NSLog(@"Up Scored A Goal");
-    Packet *packet=[Packet packetWithType:PacketTypeReceivedGoal];
-    
+    NSLog(@"Scored A Goal");
+        
     if(!self.isServer){
+        Packet *packet=[Packet packetWithType:PacketTypeReceivedGoal];
+        [self.game sendPacketToServer:packet];
+        
+        packet=[PacketGameEvent packetWithRecPeerID:self.lastHit];
         [self.game sendPacketToServer:packet];
     }
     else{
-        NSInteger add;
-        add=0;
-        add=[[score objectAtIndex:0] integerValue];
-        add+=1;
-        [score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
+       // NSInteger add;
+       // add=0;
+       // add=[[score objectAtIndex:0] integerValue];
+       // add+=1;
+        //[score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
         //NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
-        NSLog(@"should send updated scored to others");
+        [game receiveGoal:self.peerID lastHitPeerID:lastHit];
     }
     [self resetBallPosition];
    /*
@@ -323,6 +327,12 @@ static GameLogic *uniqueInstance;
         NSLog(@"%@",[[self score]objectAtIndex:i]);
         NSLog(@"numbe of players is: %i",numberOfPlayers);
     }
+    Player *player;
+    for(NSString * key in game._players){
+        player=[game._players objectForKey:key];
+    player.score = 0;
+    }
+    NSLog(@"after initializing score with zero: %@",game._players);
     
 }
 
@@ -350,6 +360,7 @@ static GameLogic *uniqueInstance;
     @synchronized(self) {
         if (uniqueInstance == nil) {
             uniqueInstance = [[GameLogic alloc] init];
+            uniqueInstance.playerScores = [NSMutableDictionary dictionary];
             uniqueInstance.isServer = NO;
             //uniqueInstance.isGamePause = NO;
             uniqueInstance.isGamePause = YES;
@@ -407,7 +418,7 @@ static GameLogic *uniqueInstance;
 -(void)sendBallMovement:(NSInteger)xPos destPeerID:(NSString *)peerID{
     NSLog(@"sending ball position to server");
     GameData *gameData = [[GameData alloc] init];
-    gameData.peerID=self.peerID;
+    gameData.peerID=peerID;
     
     gameData.vecXComp = self.vecXComp;
     gameData.vecYComp = -self.vecYComp;

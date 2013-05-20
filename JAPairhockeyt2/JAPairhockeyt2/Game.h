@@ -44,6 +44,7 @@ GameState;
 - (void)allClientsReady:(NSString *)data;
 - (void)beginGame;
 - (void)receivedGameData:(GameData *)gameData;
+-(void)scoreBoardUpdateScores;
 
 
 
@@ -67,7 +68,7 @@ GameState;
 - (void)sendPacketToClient:(Packet *)packet  destPeerID:(NSString *)peerID;
 
 - (void)beginGame;
--(void)receiveGoal: (NSString*)reveiverPeerID;
+-(void)receiveGoal: (NSString*)receiverPeerID lastHitPeerID:(NSString *)lastHitPeerID;
 
 
 

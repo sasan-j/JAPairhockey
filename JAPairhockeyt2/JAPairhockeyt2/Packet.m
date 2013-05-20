@@ -12,6 +12,8 @@
 #import "PacketOtherClientQuit.h"
 #import "PacketDataPacket.h"
 #import "NSData+SnapAdditions.h"
+#import "PacketGameEvent.h"
+#import "PacketScoreUpdate.h"
 
 
 const size_t PACKET_HEADER_SIZE = 10;
@@ -58,11 +60,15 @@ const size_t PACKET_HEADER_SIZE = 10;
 		case PacketTypeSignInResponse:
 			packet = [PacketSignInResponse packetWithData:data];
 			break;
-            
+		case PacketTypeGameEvent:
+			packet = [PacketGameEvent packetWithData:data];
+			break;
         case PacketTypeDataPacket:
             packet = [PacketDataPacket packetWithData:data];
             break;
-            
+        case PacketTypeScoreUpdate:
+			packet = [PacketScoreUpdate packetWithData:data];
+			break;
         case PacketTypeServerReady:
 			packet = [PacketServerReady packetWithData:data];
 			break;
