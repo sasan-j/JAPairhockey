@@ -629,7 +629,9 @@
     //GameLogic* gameLogic = [GameLogic GetInstance];
     NSLog(@"%@ scores one over %@",lastHitPeerID,receiverPeerID);
     Player *player=[_players objectForKey:lastHitPeerID];
+    if(lastHitPeerID!=receiverPeerID){
     player.score= player.score+1;
+    }
     player=[_players objectForKey:receiverPeerID];
     player.score= player.score-1;
     NSLog(@"Send Packet for score update : %@",_players);
