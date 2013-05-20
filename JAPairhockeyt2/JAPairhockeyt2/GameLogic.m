@@ -266,6 +266,7 @@ static GameLogic *uniqueInstance;
 
 - (BOOL)detectPadBallCollision
 {
+    
     NSInteger bX = self.xCoord;
     NSInteger bY = self.yCoord;
     NSInteger pX = self.padX;
@@ -299,7 +300,7 @@ static GameLogic *uniqueInstance;
        // add+=1;
         //[score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
         //NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
-        [game receiveGoal:self.peerID lastHitPeerID:lastHit];
+        [game receiveGoal:self.peerID lastHitPeerID:self.lastHit];
     }
     [self resetBallPosition];
    /*
@@ -395,8 +396,8 @@ static GameLogic *uniqueInstance;
             NSLog(@"%i  width",uniqueInstance.fieldWidth);
             NSLog(@"%i  height",uniqueInstance.fieldHeight);
             
-            uniqueInstance.goalY = uniqueInstance.fieldHeight - 30;
-            uniqueInstance.goalHeight = uniqueInstance.fieldWidth/6;
+            uniqueInstance.goalY = uniqueInstance.fieldHeight - 5;
+            uniqueInstance.goalHeight = 5;
             
             
             //Definition Pad 
@@ -445,6 +446,7 @@ static GameLogic *uniqueInstance;
         self.yCoord=fieldHeight/2;
     }
 }
+
 
 
 @end

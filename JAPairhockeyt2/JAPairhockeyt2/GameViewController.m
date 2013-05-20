@@ -60,7 +60,7 @@ UIAlertView *_alertView;
 	// Do any additional setup after loading the view.
     
     GameLogic* gameLogic = [GameLogic GetInstance];
-    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
+    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
     //self.game= [[Game alloc] init];
     _game = gameLogic.game;
@@ -133,12 +133,11 @@ UIAlertView *_alertView;
         NSLog(@"players: %@",gameLogic.game._players);
         //NSLog(@"player name: %@",gameLogic.playerName);
         
-        
+       
         NSMutableArray *players=[NSMutableArray array];
         //players=[gameLogic.game._players copy];
         for(NSString * key in gameLogic.game._players)
             [players addObject:[gameLogic.game._players objectForKey:key]];
-        
         [self scoreBoardInitWitNames:players];
         
         
@@ -346,6 +345,7 @@ UIAlertView *_alertView;
         self.firstPlayerLabelView.hidden=NO;
         self.firstPlayerScoreView.text=@"0";
         self.firstPlayerScoreView.hidden=NO;
+        NSLog(@"case aval");
     }
     if(count>=2){
         tempPlayer = [playerNames objectAtIndex:1];
@@ -353,6 +353,7 @@ UIAlertView *_alertView;
         self.secondPlayerLabelView.hidden=NO;
         self.secondPlayerScoreView.text=@"0";
         self.secondPlayerScoreView.hidden=NO;
+        NSLog(@"case Dovom");
     }
     if(count>=3){
         tempPlayer = [playerNames objectAtIndex:2];
@@ -360,6 +361,7 @@ UIAlertView *_alertView;
         self.thirdPlayerLabelView.hidden=NO;
         self.thirdPlayerScoreView.text=@"0";
         self.thirdPlayerScoreView.hidden=NO;
+        NSLog(@"case sevom");
     }
         if(count==4){
             tempPlayer = [playerNames objectAtIndex:3];
@@ -435,6 +437,7 @@ UIAlertView *_alertView;
         
         NSLog(@"YOU WANNA STARTING SOMETHING?");
         //WE SHOULD CALL START GAME FUNCTION
+
         gameLogic.isGamePause=NO;
         _game._state=GameStatePlaying;
         [middleButton setEnabled:NO];
@@ -473,6 +476,12 @@ UIAlertView *_alertView;
 
 - (void)allClientsReady:(NSString *)data
 {
+    GameLogic *gameLogic = [GameLogic GetInstance];
+    NSMutableArray *players=[NSMutableArray array];
+    //players=[gameLogic.game._players copy];
+    for(NSString * key in gameLogic.game._players)
+        [players addObject:[gameLogic.game._players objectForKey:key]];
+    [self scoreBoardInitWitNames:players];
     NSLog(@"%@",data);
     //[_game beginGame];
     [middleButton setEnabled:YES];
