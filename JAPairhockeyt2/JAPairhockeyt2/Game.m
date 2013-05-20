@@ -176,8 +176,8 @@
             NSLog(@"Client received PacketTypeServerReady");
 			if (_state == GameStateWaitingForReady)
 			{
-                
-                
+                GameLogic* gameLogic = [GameLogic GetInstance];
+
 				_players = ((PacketServerReady *)packet).players;
                 [self changeRelativePositionsOfPlayers];
                 
@@ -186,7 +186,18 @@
 				//[self sendPacketToServer:packet];
                 
 				//[self beginGame];
-              
+                NSString * tempPeerID;
+                //NSLog(@"gameLogic: %@",gameLogic.peerID);
+                for(NSString * key in _players)
+                {
+                    tempPeerID=[[_players objectForKey:key] peerID];
+                    //NSLog(@"tempPeerID: %@",tempPeerID);
+                    if([tempPeerID caseInsensitiveCompare:gameLogic.peerID]!=NSOrderedSame)
+                        [gameLogic.playerPositions addObject:tempPeerID];
+                }
+                //NSLog(@"player positions: %@",gameLogic.playerPositions);
+                
+                
                 [_delegate receivedServerReady:@"SomeData"];
                 NSLog(@"after method");
 
@@ -266,6 +277,23 @@
                     
 					Packet *packet = [PacketServerReady packetWithPlayers:_players];
                     NSLog(@"server ready sent");
+                    
+                //setting player positions
+                    GameLogic* gameLogic = [GameLogic GetInstance];
+  
+                    //[self beginGame];
+                    NSString * tempPeerID;
+                    //NSLog(@"gameLogic: %@",gameLogic.peerID);
+                    for(NSString * key in _players)
+                    {
+                        tempPeerID=[[_players objectForKey:key] peerID];
+                        //NSLog(@"tempPeerID: %@",tempPeerID);
+                        if([tempPeerID caseInsensitiveCompare:gameLogic.peerID]!=NSOrderedSame)
+                            [gameLogic.playerPositions addObject:tempPeerID];
+                    }
+                    //NSLog(@"player positions: %@",gameLogic.playerPositions);
+                    
+                    
 
 					[self sendPacketToAllClients:packet];
 				}
@@ -303,7 +331,12 @@
 			}
 			break;
             
-            
+        case PacketTypeReceivedGoal:
+            NSLog(@"Player received GOAL");
+
+            NSLog(@"Player %@ received GOAL",player.name);
+			//[self clientDidDisconnect:player.peerID];
+			break;
             
             
         case PacketTypeClientQuit:

@@ -126,6 +126,19 @@ UIAlertView *_alertView;
         //[gameLogic.game listPlayers];
         //NSLog(@"after list players in did load");
 
+        NSLog(@"players: %@",gameLogic.game._players);
+        //NSLog(@"player name: %@",gameLogic.playerName);
+        
+        
+        
+        NSMutableArray *players=[NSMutableArray array];
+        //players=[gameLogic.game._players copy];
+        for(NSString * key in gameLogic.game._players)
+            [players addObject:[gameLogic.game._players objectForKey:key]];
+        
+        [self scoreBoardInitWitNames:players];
+        
+        
         [middleButton setTitle:@"LOADING..." forState:UIControlStateNormal];
 
     }
@@ -320,6 +333,9 @@ UIAlertView *_alertView;
     int count = [playerNames count];
     NSLog(@"score board init : playernames count %d",count);
     Player *tempPlayer;
+    
+    [gameLogic scoreBoardInit];
+    
     
     if(count>=1){
         tempPlayer = [playerNames objectAtIndex:0];

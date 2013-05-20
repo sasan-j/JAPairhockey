@@ -67,6 +67,7 @@
 @property (nonatomic) NSString *lastHit;
 @property (nonatomic) NSMutableArray *score;
 @property (nonatomic) int numberOfPlayers;
+@property (nonatomic) NSMutableArray * playerPositions;
 
 
 
@@ -79,7 +80,7 @@
 - (void)scoreBoardInit;
 - (void)goalScored;
 - (void)holdBall;
--(void)sendBallMovement:(NSInteger)xPos;
+-(void)sendBallMovement:(NSInteger)xPos destPeerID:(NSString *)peerID;
 
 
 
