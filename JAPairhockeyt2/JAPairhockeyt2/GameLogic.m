@@ -299,7 +299,6 @@ static GameLogic *uniqueInstance;
        // add+=1;
         //[score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
         //NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
-        [game receiveGoal:self.peerID lastHitPeerID:lastHit];
     }
     [self resetBallPosition];
    /*
