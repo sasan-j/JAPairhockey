@@ -43,6 +43,10 @@
 		8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD646F173E88F800142029 /* HostGameViewController.m */; };
 		8AB735A1174A02F10006D8C3 /* PacketGameEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB735A0174A02F10006D8C3 /* PacketGameEvent.m */; };
 		8AB735A4174A16700006D8C3 /* PacketScoreUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB735A3174A16700006D8C3 /* PacketScoreUpdate.m */; };
+		A2925466174A54250095F1F0 /* puck.png in Resources */ = {isa = PBXBuildFile; fileRef = A2925465174A54250095F1F0 /* puck.png */; };
+		A292546B174A58020095F1F0 /* puck2.png in Resources */ = {isa = PBXBuildFile; fileRef = A2925469174A58020095F1F0 /* puck2.png */; };
+		A292546C174A58020095F1F0 /* puck3.png in Resources */ = {isa = PBXBuildFile; fileRef = A292546A174A58020095F1F0 /* puck3.png */; };
+		A292546E174A5E430095F1F0 /* field.png in Resources */ = {isa = PBXBuildFile; fileRef = A292546D174A5E430095F1F0 /* field.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +111,10 @@
 		8AB735A0174A02F10006D8C3 /* PacketGameEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketGameEvent.m; sourceTree = "<group>"; };
 		8AB735A2174A166F0006D8C3 /* PacketScoreUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketScoreUpdate.h; sourceTree = "<group>"; };
 		8AB735A3174A16700006D8C3 /* PacketScoreUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketScoreUpdate.m; sourceTree = "<group>"; };
+		A2925465174A54250095F1F0 /* puck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = puck.png; path = ../../../puck.png; sourceTree = "<group>"; };
+		A2925469174A58020095F1F0 /* puck2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = puck2.png; path = ../../../puck2.png; sourceTree = "<group>"; };
+		A292546A174A58020095F1F0 /* puck3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = puck3.png; path = ../../../puck3.png; sourceTree = "<group>"; };
+		A292546D174A5E430095F1F0 /* field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = field.png; path = ../../../field.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +244,10 @@
 		8AAD6449173E77D500142029 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A292546D174A5E430095F1F0 /* field.png */,
+				A2925469174A58020095F1F0 /* puck2.png */,
+				A292546A174A58020095F1F0 /* puck3.png */,
+				A2925465174A54250095F1F0 /* puck.png */,
 				8A9C2D761749328300E42D33 /* splash.jpg */,
 				8AAD644A173E77D500142029 /* JAPairhockeyt2-Info.plist */,
 				8AAD644B173E77D500142029 /* InfoPlist.strings */,
@@ -307,6 +319,10 @@
 				8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */,
 				8A9C2D771749328300E42D33 /* splash.jpg in Resources */,
 				8A9C2D7B1749348200E42D33 /* Default@2x.png in Resources */,
+				A2925466174A54250095F1F0 /* puck.png in Resources */,
+				A292546B174A58020095F1F0 /* puck2.png in Resources */,
+				A292546C174A58020095F1F0 /* puck3.png in Resources */,
+				A292546E174A5E430095F1F0 /* field.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

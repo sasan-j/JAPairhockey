@@ -60,7 +60,7 @@ UIAlertView *_alertView;
 	// Do any additional setup after loading the view.
     
     GameLogic* gameLogic = [GameLogic GetInstance];
-    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
+    drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
     //self.game= [[Game alloc] init];
     _game = gameLogic.game;

@@ -396,8 +396,8 @@ static GameLogic *uniqueInstance;
             NSLog(@"%i  width",uniqueInstance.fieldWidth);
             NSLog(@"%i  height",uniqueInstance.fieldHeight);
             
-            uniqueInstance.goalY = uniqueInstance.fieldHeight - 30;
-            uniqueInstance.goalHeight = uniqueInstance.fieldWidth/6;
+            uniqueInstance.goalY = uniqueInstance.fieldHeight - 5;
+            uniqueInstance.goalHeight = 5;
             
             
             //Definition Pad 

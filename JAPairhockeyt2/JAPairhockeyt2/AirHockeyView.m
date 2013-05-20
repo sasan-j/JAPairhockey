@@ -39,9 +39,12 @@
     CGContextSetFillColorWithColor(context,
                                    unitColor);
     
-    CGRect rectangle = CGRectMake(gameLogic.xCoord-gameLogic.width/2, gameLogic.yCoord-gameLogic.height/2,gameLogic.width,gameLogic.height);
-    CGContextAddEllipseInRect(context, rectangle);
-    CGContextFillPath(context);
+   /* UIImage *imageVary2 = [UIImage imageNamed:@"field.png"];
+    CGRect rectForImage = CGRectMake(0, 0, gameLogic.fieldWidth, gameLogic.fieldHeight);
+    CGRect imageRect = rectForImage;
+    [imageVary2 drawInRect:imageRect];
+    */
+    
     
     CGColorRef fieldColor = [UIColor redColor].CGColor;
     
@@ -49,7 +52,7 @@
                                      fieldColor);
     CGContextSetLineWidth(context, 3.0);
     
-    rectangle = CGRectMake(0, 0,gameLogic.fieldWidth, gameLogic.fieldHeight);
+    CGRect rectangle = CGRectMake(0, 0,gameLogic.fieldWidth, gameLogic.fieldHeight);
     CGContextAddRect(context, rectangle);
     CGContextStrokeRect(context,rectangle);
     
@@ -61,9 +64,42 @@
                                    padColor);
     CGContextSetLineWidth(context, 3.0);
     
-    rectangle = CGRectMake(gameLogic.padX-gameLogic.padWidth/2, gameLogic.padY-gameLogic.padHeight/2,gameLogic.padWidth, gameLogic.padHeight);
+    //Add Ellipse in front of the goal
+    CGColorRef EllipsColor = [UIColor redColor].CGColor;
+    CGContextSetStrokeColorWithColor(context,EllipsColor);
+    rectangle = CGRectMake(gameLogic.fieldWidth/6,gameLogic.fieldHeight/1.7 ,gameLogic.fieldWidth-gameLogic.fieldWidth/3,gameLogic.goalWidth*2);
+    CGContextAddEllipseInRect(context, rectangle);
+    CGContextStrokePath(context);
+    
+    //Ball Drawing
+    
+    /*UIImage *imageVar = [UIImage imageNamed:@"puck3.png"];
+    CGRect rectForImage = CGRectMake(gameLogic.xCoord-gameLogic.width/2, gameLogic.yCoord-gameLogic.height/2, gameLogic.width, gameLogic.height);
+    CGRect imageRect = rectForImage;
+    [imageVar drawInRect:imageRect];
+    */
+    rectangle = CGRectMake(gameLogic.xCoord-gameLogic.width/2, gameLogic.yCoord-gameLogic.height/2,gameLogic.width,gameLogic.height);
     CGContextAddEllipseInRect(context, rectangle);
     CGContextFillPath(context);
+
+    
+    
+    //PAD Drawing
+    UIImage *imageVary = [UIImage imageNamed:@"puck.png"];
+     CGRect rectForImage = CGRectMake(gameLogic.padX-gameLogic.padWidth/2, gameLogic.padY-gameLogic.padHeight/2, gameLogic.padWidth, gameLogic.padHeight);
+    CGRect imageRect = rectForImage;
+    [imageVary drawInRect:imageRect];
+    
+    
+    
+   //rectangle = CGRectMake(gameLogic.padX-gameLogic.padWidth/2, gameLogic.padY-gameLogic.padHeight/2,gameLogic.padWidth, gameLogic.padHeight);
+    //CGContextAddEllipseInRect(context, rectangle);
+    //CGContextFillPath(context);
+    
+
+    
+
+    
     
     CGContextMoveToPoint(context, gameLogic.goalX, gameLogic.goalY);
     CGContextAddLineToPoint(context, gameLogic.goalX, gameLogic.fieldHeight);
