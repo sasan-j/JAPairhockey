@@ -329,10 +329,10 @@ static GameLogic *uniqueInstance;
 
 -(void)holdBall{
     
-    self.vecXComp = 0;
-    self.vecYComp = 0;
+    self.vecXComp =0;
+    self.vecYComp =0;
     self.ballHolded = TRUE;
-    [self resetBallPosition];
+    //[self resetBallPosition];
 }
 
 
@@ -348,14 +348,14 @@ static GameLogic *uniqueInstance;
             // Definition of Ball
             uniqueInstance.isGameReady = NO;
             uniqueInstance.lastHit = @"Undefined Player";
-            uniqueInstance.xCoord = 5;
-            uniqueInstance.yCoord = 5;
+            uniqueInstance.xCoord = - uniqueInstance.width;
+            uniqueInstance.yCoord = - uniqueInstance.height;
             uniqueInstance.width = 20;
             uniqueInstance.height = 20;
             
             //Deifnition of the movement vectors
-            uniqueInstance.vecXComp = 10;
-            uniqueInstance.vecYComp = 4;
+            uniqueInstance.vecXComp = 0;
+            uniqueInstance.vecYComp = 0;
             uniqueInstance.transitionPointYComp = -1;
             uniqueInstance.goingLeft = NO;
             uniqueInstance.goingUp = NO;
@@ -408,6 +408,14 @@ static GameLogic *uniqueInstance;
     
     if(!self.isServer)
         [self.game sendPacketToServer:packet];
+}
+
+-(void)initGameStartingState
+{
+    if (!self.isServer)
+    {
+        [self holdBall];
+    }
 }
 
 

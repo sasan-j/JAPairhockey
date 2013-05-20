@@ -80,7 +80,7 @@
 - (void)goalScored;
 - (void)holdBall;
 -(void)sendBallMovement:(NSInteger)xPos;
-
+-(void)initGameStartingState;
 
 
 + (GameLogic *)GetInstance;
