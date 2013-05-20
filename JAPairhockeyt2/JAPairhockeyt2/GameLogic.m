@@ -107,7 +107,7 @@ static GameLogic *uniqueInstance;
     switch (self.numberOfPlayers) {
         case 3:
             {
-                if (self.yCoord <= (-self.height))
+                if (self.yCoord <= (-self.height) && self.vecYComp < 0)
                 {
                     if (!ballHolded)
                     {                        
@@ -119,14 +119,14 @@ static GameLogic *uniqueInstance;
                             [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:0]];
 
                         
-                        //  [self holdBall];
+                          [self holdBall];
                         }
                         else{
                         //Send Packet to the Right Player With Coordinates
                         NSLog(@"Packet To Right");
                             [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:1]];
 
-                        // [self holdBall];
+                         [self holdBall];
                         
                         }
                     
@@ -137,7 +137,7 @@ static GameLogic *uniqueInstance;
             
         case 4:
             {
-                if (self.yCoord<= (-self.height)) {
+                if (self.yCoord<= (-self.height) && self.vecYComp < 0) {
                     if(!ballHolded)
                     {
                         [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:1]];
@@ -408,15 +408,19 @@ static GameLogic *uniqueInstance;
     NSLog(@"sending ball position to server");
     GameData *gameData = [[GameData alloc] init];
     gameData.peerID=self.peerID;
+    
     gameData.vecXComp = self.vecXComp;
     gameData.vecYComp = -self.vecYComp;
     gameData.ballHorizonOffset=0.3;
     gameData.lastHitPeerID = self.lastHit;
+    NSLog(@"game data to send: %@",gameData);
     
     PacketDataPacket *packet=[PacketDataPacket packetWithGameData:gameData];
-    
     if(!self.isServer)
         [self.game sendPacketToServer:packet];
+    else{
+        [self.game sendPacketToClient:packet destPeerID:peerID];
+    }
 }
 
 -(void)initGameStartingState
@@ -424,6 +428,10 @@ static GameLogic *uniqueInstance;
     if (!self.isServer)
     {
         [self holdBall];
+    }
+    else{
+        self.xCoord=fieldWidth/2;
+        self.yCoord=fieldHeight/2;
     }
 }
 

@@ -67,7 +67,7 @@ GameState;
 - (void)sendPacketToClient:(Packet *)packet  destPeerID:(NSString *)peerID;
 
 - (void)beginGame;
-
+-(void)receiveGoal: (NSString*)reveiverPeerID;
 
 
 

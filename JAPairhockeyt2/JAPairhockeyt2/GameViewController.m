@@ -65,6 +65,10 @@ UIAlertView *_alertView;
     //self.game= [[Game alloc] init];
     _game = gameLogic.game;
     [_game setDelegate:self];
+    
+    if(gameLogic.isServer)
+        NSLog(@"device is server");
+    else NSLog(@"device isn't server");
     [gameLogic initGameStartingState];
     NSLog(@"players from gameLogic.game : %@",gameLogic.game._players);
     NSLog(@"players from _game : %@",_game._players);
@@ -525,9 +529,11 @@ UIAlertView *_alertView;
     //Returns the ball from holding state to normal state by putting the xcomp and ycomp to the values received by packet!
     GameLogic *gameLogic = [GameLogic GetInstance];
     if (gameLogic.ballHolded) {
-        gameLogic.ballHolded=!gameLogic.ballHolded;
         gameLogic.vecXComp = gameData.vecXComp;
-        gameLogic.vecYComp = -gameData.vecYComp;
+        gameLogic.vecYComp = gameData.vecYComp;
+        gameLogic.xCoord = gameLogic.fieldWidth/2;
+        gameLogic.yCoord = 30;
+        gameLogic.ballHolded=!gameLogic.ballHolded;
     }
     
 }

@@ -12,8 +12,8 @@
 
 @property (nonatomic) NSString *peerID;
 
-@property (nonatomic) NSInteger vecXComp;
-@property (nonatomic) NSInteger vecYComp;
+@property (nonatomic) int vecXComp;
+@property (nonatomic) int vecYComp;
 @property (nonatomic) float ballHorizonOffset;
 
 @property (nonatomic) NSString *lastHitPeerID;

@@ -505,16 +505,16 @@
 
 - (void)sendPacketToClient:(Packet *)packet  destPeerID:(NSString *)peerID;
 {
-    NSLog(@"sendPacketToServer");
+    //NSLog(@"sendPacketToServer");
 	GKSendDataMode dataMode = GKSendDataReliable;
-    NSLog(@"data mode is:%u",dataMode);
+    //NSLog(@"data mode is:%u",dataMode);
     
 	NSData *data = [packet data];
-    NSLog(@"packet is:%@",data);
+    //NSLog(@"packet is:%@",data);
     
 	NSError *error;
     
-    NSLog(@"error is:%@",error);
+    //NSLog(@"error is:%@",error);
     
     //NSLog(@"players are:%@",_players);
     
@@ -526,16 +526,16 @@
 
 - (void)sendPacketToServer:(Packet *)packet
 {
-    NSLog(@"sendPacketToServer");
+    //NSLog(@"sendPacketToServer");
 	GKSendDataMode dataMode = GKSendDataReliable;
-    NSLog(@"data mode is:%u",dataMode);
+    //NSLog(@"data mode is:%u",dataMode);
 
 	NSData *data = [packet data];
-    NSLog(@"packet is:%@",data);
+    //NSLog(@"packet is:%@",data);
 
 	NSError *error;
     
-    NSLog(@"error is:%@",error);
+    //NSLog(@"error is:%@",error);
     
     //NSLog(@"players are:%@",_players);
 
@@ -568,6 +568,13 @@
 		}
 	}
 }
+
+
+-(void)receiveGoal: (NSString*)reveiverPeerID{
+    
+    
+}
+
 
 -(void)listPlayers{
     //NSString *id;

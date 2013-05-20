@@ -42,13 +42,12 @@
 
 		NSString *peerID = [data rw_stringAtOffset:offset bytesRead:&count];
 		offset += count;
-        
-        NSInteger vecXComp = [data rw_int32AtOffset:offset];
-		offset += 4;
 
-        NSInteger vecYComp = [data rw_int32AtOffset:offset];
-        offset += 4;
+        NSString *vecXComp = [data rw_stringAtOffset:offset bytesRead:&count];
+        offset += count;
     
+        NSString *vecYComp = [data rw_stringAtOffset:offset bytesRead:&count];
+        offset += count;
     
         NSString *ballHorizonOffsetStr = [data rw_stringAtOffset:offset bytesRead:&count];
         offset += count;
@@ -57,8 +56,8 @@
         offset += count;
     
 		packetGameData.peerID = peerID;
-    packetGameData.vecXComp = vecXComp;
-    packetGameData.vecYComp = vecYComp;
+    packetGameData.vecXComp = [vecXComp integerValue];
+    packetGameData.vecYComp = [vecYComp integerValue];
     packetGameData.ballHorizonOffset = [ballHorizonOffsetStr floatValue];
 	packetGameData.lastHitPeerID= lastHitPeerId;
 
@@ -73,10 +72,12 @@
     //NSLog(@"%@",gameData);
 	//data that we want to send
     //[data rw_appendInt8:[self.gameData count]];
+        NSString *vecXCompStr = [NSString stringWithFormat:@"%d", gameData.vecXComp];
+        NSString *vecYCompStr = [NSString stringWithFormat:@"%d", gameData.vecYComp];
          NSString *ballHorizonOffsetStr = [NSString stringWithFormat:@"%f", gameData.ballHorizonOffset];
          [data rw_appendString:gameData.peerID];
-         [data rw_appendInt32:(int)gameData.vecXComp];
-         [data rw_appendInt32:(int)gameData.vecYComp];
+         [data rw_appendString:vecXCompStr];
+         [data rw_appendString:vecYCompStr];
          [data rw_appendString:ballHorizonOffsetStr];
          [data rw_appendString:gameData.lastHitPeerID];
 }
