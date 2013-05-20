@@ -260,11 +260,43 @@
 			}
 			break;*/
             
+        case PacketTypePauseGame:
+            NSLog(@"Client received PacketTypePauseGame");
+            
+			if (_state == GameStatePlaying)
+			{
+            NSLog(@"Client handling PacketTypePauseGame");
+
+                GameLogic* gameLogic = [GameLogic GetInstance];
+                gameLogic.isGamePause=YES;
+                _state=GameStatePause;
+                
+                [_delegate pauseDialog];
+			}
+			break;
+         
+            /*
+        case PacketTypeResumeGame:
+            NSLog(@"Client received PacketTypeResumeGame");
+            
+			if (_state == GameStatePause)
+			{
+                GameLogic* gameLogic = [GameLogic GetInstance];
+                gameLogic.isGamePause=NO;
+                self._state=GameStatePlaying;
+                
+                [_delegate dissmissAlert];
+			}
+			break;
+             */
+            
+            
         case PacketTypeStartGame:
             NSLog(@"Client received PacketTypeStartGame");
 
 			if (_state == GameStateReady)
 			{
+                _state = GameStatePlaying;
                 //GameLogic* gameLogic = [GameLogic GetInstance];
                 //gameLogic.isGamePause=NO;
                 [_delegate beginGame];
@@ -379,7 +411,7 @@
 			if (_state == GameStateWaitingForReady && [self receivedResponsesFromAllPlayers])
 			{
                 _state = GameStateReady;
-                NSLog(@"Beginning game");
+                NSLog(@"Server Beginning game");
 				//[self beginGame];
                 [_delegate allClientsReady:@"Now you are able to begin that fucking game"];
 			}
@@ -392,6 +424,38 @@
             //[self receiveGoal:player.peerID];
 			//[self clientDidDisconnect:player.peerID];
 			break;
+ 
+            
+        case PacketTypePauseRequest:
+            NSLog(@"Server received PacketTypePauseRequest");
+            if(self._state==GameStatePlaying){
+            NSLog(@"Handling PacketTypePauseRequest");
+
+            GameLogic* gameLogic = [GameLogic GetInstance];
+            Packet *packet=[Packet packetWithType:PacketTypePauseGame];
+            [self sendPacketToAllClients:packet];
+            self._state = GameStatePause;
+            gameLogic.isGamePause=YES;
+            [_delegate pauseDialog];
+            //[self receiveGoal:player.peerID];
+			//[self clientDidDisconnect:player.peerID];
+            }
+			break;
+            
+         /*
+        case PacketTypeResumeRequest:
+            NSLog(@"Server received PacketTypeResumeRequest");
+            if(self._state==GameStatePause){
+                GameLogic* gameLogic = [GameLogic GetInstance];
+                Packet *packet=[Packet packetWithType:PacketTypeResumeGame];
+                [self sendPacketToAllClients:packet];
+                self._state = GameStatePlaying;
+                gameLogic.isGamePause=YES;
+                [_delegate dissmissAlert];
+                //[self receiveGoal:player.peerID];
+                //[self clientDidDisconnect:player.peerID];
+            }
+			break;*/
             
             
         case PacketTypeClientQuit:

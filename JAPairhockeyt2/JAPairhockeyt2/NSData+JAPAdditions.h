@@ -1,12 +1,12 @@
 //
-//  NSData+SnapAdditions.h
+//  NSData+JAPAdditions.h
 //  Snap
 //
 //  Created by Ray Wenderlich on 5/25/12.
 //  Copyright (c) 2012 Hollance. All rights reserved.
 //
 
-@interface NSData (SnapAdditions)
+@interface NSData (JAPAdditions)
 
 - (int)rw_int32AtOffset:(size_t)offset;
 - (short)rw_int16AtOffset:(size_t)offset;
@@ -15,7 +15,7 @@
 
 @end
 
-@interface NSMutableData (SnapAdditions)
+@interface NSMutableData (JAPAdditions)
 
 - (void)rw_appendInt32:(int)value;
 - (void)rw_appendInt16:(short)value;

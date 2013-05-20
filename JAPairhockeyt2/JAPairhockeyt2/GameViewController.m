@@ -7,6 +7,7 @@
 //
 
 #import "GameViewController.h"
+#import "MainMenuViewController.h"
 #import "GameLogic.h"
 #import "Game.h"
 #import "Packet.h"
@@ -28,7 +29,6 @@ UIAlertView *_alertView;
 @synthesize middleButton;
 @synthesize scoreNameLabels;
 @synthesize scoreNumberLabels;
-
 @synthesize delegate = _delegate;
 @synthesize game = _game;
 
@@ -405,7 +405,7 @@ UIAlertView *_alertView;
     
 
     int count = [array count];
-    NSLog(@"score board init : playernames count %d",count);
+    //NSLog(@"score board init : playernames count %d",count);
         
     
     if(count>=1){
@@ -436,6 +436,7 @@ UIAlertView *_alertView;
         NSLog(@"YOU WANNA STARTING SOMETHING?");
         //WE SHOULD CALL START GAME FUNCTION
         gameLogic.isGamePause=NO;
+        _game._state=GameStatePlaying;
         [middleButton setEnabled:NO];
         [middleButton setHidden:YES];
         Packet *packet=[Packet packetWithType:PacketTypeStartGame];
@@ -510,22 +511,38 @@ UIAlertView *_alertView;
 
 - (IBAction)pauseGame:(id)sender {
     GameLogic* gameLogic = [GameLogic GetInstance];
-    gameLogic.isGamePause=!gameLogic.isGamePause;
     
-    if (gameLogic.isGamePause==YES) {
+    if (_game._state==GameStatePlaying) {
+    
+        gameLogic.isGamePause=YES;//!gameLogic.isGamePause;
+        gameLogic.game._state=GameStatePause;
+        
+        if (gameLogic.isServer) {
+            Packet *packet=[Packet packetWithType:PacketTypePauseGame];
+            [_game sendPacketToAllClients:packet];
+        }
+        else {
+            Packet *packet=[Packet packetWithType:PacketTypePauseRequest];
+            [_game sendPacketToServer:packet];
+        }
+
         [self pauseDialog];
     }
-
 }
 
 - (void) pauseDialog {
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pause"
+
+    
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Pause"
                                                     message:@"Game is paused, what's your decision?"
                                                    delegate:self
                                           cancelButtonTitle:@"Resume"
                                           otherButtonTitles:@"Quit", nil];
+    
     [alert show];
+    
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -541,15 +558,26 @@ UIAlertView *_alertView;
 -(void)resumeGame
 {
     GameLogic *gameLogic = [GameLogic GetInstance];
-    gameLogic.isGamePause = ! gameLogic.isGamePause;
+    
+    if (_game._state==GameStatePause) {
+        gameLogic.isGamePause=NO;//!gameLogic.isGamePause;
+        gameLogic.game._state=GameStatePlaying;
+    }
 }
 
 
 -(void)quitGame
 {
     NSLog(@"Quit Game Fired");
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MainMenu"];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:vc animated:YES completion:NULL];
+    
     [self.game quitGameWithReason:QuitReasonUserQuit];
 }
+
 
 -(void)receivedGameData:(GameData *)gameData{
     

@@ -14,7 +14,11 @@ typedef enum
 	PacketTypeSignInResponse,          // client to server
     
     PacketTypeStartGame,               // server to client
+    PacketTypePauseGame,
+    PacketTypeResumeGame,
+    PacketTypePauseRequest,
     PacketTypeReceivedGoal,
+    PacketTypeResumeRequest,
     PacketTypeGameEvent,
     PacketTypeScoreUpdate,
     PacketTypeDataPacket,

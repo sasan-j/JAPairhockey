@@ -49,6 +49,7 @@
 - (void)receivedServerReady:(NSString *)data;
 - (void)allClientsReady:(NSString *)data;
 - (void)beginGame;
+-(void)dismissAlert;
 - (IBAction)pauseGame:(id)sender;
 
 -(void)scoreBoardInitWitNames:(NSMutableArray*)playerNames;

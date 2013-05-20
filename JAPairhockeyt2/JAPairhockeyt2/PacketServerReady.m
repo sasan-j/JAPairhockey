@@ -7,7 +7,7 @@
 //
 
 #import "PacketServerReady.h"
-#import "NSData+SnapAdditions.h"
+#import "NSData+JAPAdditions.h"
 #import "Player.h"
 
 @implementation PacketServerReady

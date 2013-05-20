@@ -11,7 +11,7 @@
 #import "PacketServerReady.h"
 #import "PacketOtherClientQuit.h"
 #import "PacketDataPacket.h"
-#import "NSData+SnapAdditions.h"
+#import "NSData+JAPAdditions.h"
 #import "PacketGameEvent.h"
 #import "PacketScoreUpdate.h"
 
@@ -51,6 +51,10 @@ const size_t PACKET_HEADER_SIZE = 10;
 		case PacketTypeSignInRequest:
         case PacketTypeClientReady:
         case PacketTypeStartGame:
+        case PacketTypePauseGame:
+        case PacketTypePauseRequest:
+        case PacketTypeResumeGame:
+        case PacketTypeResumeRequest:
         case PacketTypeReceivedGoal:
         case PacketTypeServerQuit:
 		case PacketTypeClientQuit:            
