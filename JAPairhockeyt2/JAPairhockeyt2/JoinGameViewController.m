@@ -197,6 +197,8 @@
     NSLog(@"session: %@",_matchmakingClient.session);
     gameLogic.session = _matchmakingClient.session;
     gameLogic.peerID = _matchmakingClient.session.peerID;
+    NSLog(@"peerID should be: %@",gameLogic.peerID);
+
     gameLogic.lastHit = gameLogic.peerID;
 
 //    [gameLogic.game startClientGameWithSession:gameLogic.session playerName:gameLogic.playerName server:gameLogic.serverID];

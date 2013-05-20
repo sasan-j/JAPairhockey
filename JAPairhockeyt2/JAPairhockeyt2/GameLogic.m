@@ -72,6 +72,7 @@ static GameLogic *uniqueInstance;
 @synthesize ballHolded;
 @synthesize score;
 @synthesize numberOfPlayers;
+@synthesize playerPositions;
 
 
 - (void)moveTheBall
@@ -109,21 +110,22 @@ static GameLogic *uniqueInstance;
                 if (self.yCoord <= (-self.height))
                 {
                     if (!ballHolded)
-                    {
-                        [self sendBallMovement:self.xCoord];
-                        
+                    {                        
                         
                         if ( (self.xCoord+self.width/2) <= self.fieldWidth/2 )
                         {
                         //Send Packet to the Left player with coordinates
-                        NSLog(@"Packet Ro Left");
+                        NSLog(@"Packet To Left");
+                            [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:0]];
+
                         
                         //  [self holdBall];
                         }
                         else{
                         //Send Packet to the Right Player With Coordinates
                         NSLog(@"Packet To Right");
-                        
+                            [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:1]];
+
                         // [self holdBall];
                         
                         }
@@ -138,7 +140,7 @@ static GameLogic *uniqueInstance;
                 if (self.yCoord<= (-self.height)) {
                     if(!ballHolded)
                     {
-                        [self sendBallMovement:self.xCoord];
+                        [self sendBallMovement:self.xCoord destPeerID:[self.playerPositions objectAtIndex:1]];
                         
                        if ((self.xCoord+self.width <= self.fieldWidth/3.5))
                        {
@@ -280,15 +282,21 @@ static GameLogic *uniqueInstance;
 -(void)goalScored
 {
     
-        NSLog(@"Up Scored A Goal");
+    NSLog(@"Up Scored A Goal");
+    Packet *packet=[Packet packetWithType:PacketTypeReceivedGoal];
+    
+    if(!self.isServer){
+        [self.game sendPacketToServer:packet];
+    }
+    else{
         NSInteger add;
         add=0;
         add=[[score objectAtIndex:0] integerValue];
         add+=1;
         [score setObject:[NSNumber numberWithInt:add] atIndexedSubscript:0];
-        NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
-    
-    
+        //NSLog(@"UP player's Score is : %@",[score objectAtIndex:0]);
+        NSLog(@"should send updated scored to others");
+    }
     [self resetBallPosition];
    /*
     if (isServer==YES)
@@ -388,14 +396,15 @@ static GameLogic *uniqueInstance;
             
             //uniqueInstance.lastHit = @"nil";
             uniqueInstance.padDrag = 0;
-            uniqueInstance.numberOfPlayers=4;
+            uniqueInstance.numberOfPlayers=3;
+            uniqueInstance.playerPositions = [NSMutableArray array];
             
         }
         return uniqueInstance;
     }
 }
 
--(void)sendBallMovement:(NSInteger)xPos{
+-(void)sendBallMovement:(NSInteger)xPos destPeerID:(NSString *)peerID{
     NSLog(@"sending ball position to server");
     GameData *gameData = [[GameData alloc] init];
     gameData.peerID=self.peerID;
