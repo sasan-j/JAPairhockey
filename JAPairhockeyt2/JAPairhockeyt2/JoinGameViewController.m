@@ -9,6 +9,7 @@
 #import "JoinGameViewController.h"
 #import "PeerCell.h"
 #import "HostGameConfigViewController.h"
+#import "MainMenuViewController.h"
 #import "GameLogic.h"
 #import "Game.h"
 #import "Packet.h"
@@ -219,7 +220,11 @@
 }
 
 - (IBAction)goBack:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MainMenu"];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:vc animated:YES completion:NULL];
+    //[self dismissModalViewControllerAnimated:YES];
 }
 
 

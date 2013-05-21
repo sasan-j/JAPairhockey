@@ -32,6 +32,7 @@
 
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
+@property (nonatomic) BOOL isGameInitiated;
 @property (weak, nonatomic) IBOutlet UIButton *middleButton;
 @property (weak, nonatomic) IBOutlet UILabel *firstPlayerLabelView;
 @property (weak, nonatomic) IBOutlet UILabel *firstPlayerScoreView; 
@@ -43,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fourthPlayerScoreView;
 @property (weak) NSMutableArray *scoreNumberLabels;
 @property (weak) NSMutableArray *scoreNameLabels;
+@property (weak, nonatomic) IBOutlet UIButton *pauseGameButton;
 
 
 - (IBAction)startGame:(id)sender;

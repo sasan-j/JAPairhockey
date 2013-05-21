@@ -31,6 +31,7 @@ UIAlertView *_alertView;
 @synthesize scoreNumberLabels;
 @synthesize delegate = _delegate;
 @synthesize game = _game;
+@synthesize isGameInitiated;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,16 +63,24 @@ UIAlertView *_alertView;
     GameLogic* gameLogic = [GameLogic GetInstance];
     drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawGame) userInfo:nil repeats:YES];
     [drawTimer fire];
+    isGameInitiated=NO;
     //self.game= [[Game alloc] init];
     _game = gameLogic.game;
     [_game setDelegate:self];
     
-    if(gameLogic.isServer)
-        NSLog(@"device is server");
-    else NSLog(@"device isn't server");
+    if(gameLogic.isServer){
+        NSLog(@"Device is server");
+    }
+    else {
+        [_pauseGameButton setEnabled:YES];
+        [_pauseGameButton setAlpha:1.0];
+        [_pauseGameButton setTitle:@"BACK" forState:UIControlStateNormal];
+        NSLog(@"Device isn't server");
+    }
     [gameLogic initGameStartingState];
     NSLog(@"players from gameLogic.game : %@",gameLogic.game._players);
     NSLog(@"players from _game : %@",_game._players);
+
 
     
 
@@ -94,27 +103,7 @@ UIAlertView *_alertView;
     [self.view addGestureRecognizer:swipeRecognizer];
     
     
-    /*
-    
-    //Score Board Names and initializing
-    //[gameLogic scoreBoardInit];
-    //NSLog(@"%@",gameLogic.game._players);
-    NSMutableArray *playersName = [NSMutableArray arrayWithObjects:gameLogic.playerName,[NSNumber numberWithInt:0], nil];
-    [self scoreBoardInitWitNames:playersName];
-    //Disable fourth player label and score if the game is in three player mode unless it's n four player mode
-    self.fourthPlayerLabelView.hidden=YES;
-    self.fourthPlayerScoreView.hidden=YES;
-    NSLog(@"%i",gameLogic.numberOfPlayers);
-    if (gameLogic.numberOfPlayers==4)
-    {
-        self.fourthPlayerLabelView.hidden=NO;
-        self.fourthPlayerScoreView.hidden=NO;
-
-    }
-    */
-    
-    
-    
+   
     CGFloat width = CGRectGetWidth(self.view.bounds);
     CGFloat height = CGRectGetHeight(self.view.bounds);
     //Swaping height and width for fixing a bug!
@@ -482,6 +471,7 @@ UIAlertView *_alertView;
 
 - (void)allClientsReady:(NSString *)data
 {
+    isGameInitiated=YES;
     GameLogic *gameLogic = [GameLogic GetInstance];
     NSMutableArray *players=[NSMutableArray array];
     //players=[gameLogic.game._players copy];
@@ -498,6 +488,7 @@ UIAlertView *_alertView;
 
 - (void)beginGame{
     GameLogic* gameLogic = [GameLogic GetInstance];
+    isGameInitiated=YES;
     gameLogic.isGamePause = NO;
     [gameLogic scoreBoardInit];
     //else if(!gameLogic.isServer && _game._state==GameStateWaitingForReady){
@@ -505,6 +496,10 @@ UIAlertView *_alertView;
     //Packet *packet = [Packet packetWithType:PacketTypeClientReady];
     //[_game sendPacketToServer:packet];
     //hidden the button
+    
+    //turn back button to pause
+    [_pauseGameButton setTitle:@"PAUSE" forState:UIControlStateNormal];
+    
     [middleButton setEnabled:NO];
     [middleButton setHidden:YES];
     _game._state= GameStatePlaying;
@@ -527,7 +522,16 @@ UIAlertView *_alertView;
 - (IBAction)pauseGame:(id)sender {
     GameLogic* gameLogic = [GameLogic GetInstance];
     
-    if (_game._state==GameStatePlaying) {
+
+        if (!isGameInitiated) {
+            
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+            MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"JoinGame"];
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:vc animated:YES completion:NULL];
+        }
+    
+   else if (_game._state==GameStatePlaying) {
     
         gameLogic.isGamePause=YES;//!gameLogic.isGamePause;
         gameLogic.game._state=GameStatePause;
@@ -588,11 +592,15 @@ UIAlertView *_alertView;
 {
     NSLog(@"Quit Game Fired");
     
+    //turn back button to pause
+    //[_pauseGameButton setTitle:@"PAUSE" forState:UIControlStateNormal];
+    //isGameInitiated=NO;
+    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MainMenu"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:vc animated:YES completion:NULL];
-    
+      
     [self.game quitGameWithReason:QuitReasonUserQuit];
 }
 

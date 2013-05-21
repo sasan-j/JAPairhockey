@@ -161,7 +161,7 @@
         <!--Host Game View Controller - HOST GAME-->
         <scene sceneID="lyc-Bh-yNU">
             <objects>
-                <viewController title="HOST GAME" wantsFullScreenLayout="YES" id="Udx-Za-cvk" customClass="HostGameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostGame" title="HOST GAME" wantsFullScreenLayout="YES" id="Udx-Za-cvk" customClass="HostGameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6HO-UD-8Sp">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -414,6 +414,7 @@
                         <outlet property="fourthPlayerLabelView" destination="tLd-fo-fHc" id="nLk-Du-kKI"/>
                         <outlet property="fourthPlayerScoreView" destination="HTg-h0-ozo" id="Tsz-LY-0p0"/>
                         <outlet property="middleButton" destination="L4D-nY-fhf" id="cnN-mn-zcf"/>
+                        <outlet property="pauseGameButton" destination="lVe-rT-WB9" id="DQS-yr-WnR"/>
                         <outlet property="secondPlayerLabelView" destination="owR-gw-dKC" id="Ysp-jR-FGH"/>
                         <outlet property="secondPlayerScoreView" destination="5sH-Ux-NUh" id="XG4-GK-mXa"/>
                         <outlet property="thirdPlayerLabelView" destination="aiU-57-DO1" id="NdD-se-ysc"/>
@@ -427,7 +428,7 @@
         <!--JOIN GAME-->
         <scene sceneID="g1T-9q-rJ6">
             <objects>
-                <viewController title="JOIN GAME" wantsFullScreenLayout="YES" id="UIb-fB-t43" userLabel="JOIN GAME" customClass="JoinGameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinGame" title="JOIN GAME" wantsFullScreenLayout="YES" id="UIb-fB-t43" userLabel="JOIN GAME" customClass="JoinGameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ml6-Xc-hNi" userLabel="JOIN GAME">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,6 +540,69 @@
             <point key="canvasLocation" x="-9" y="180"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AirHockeyView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AirHockeyView.h"/>
+        </class>
+        <class className="GameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="exitAction:"/>
+                <relationship kind="action" name="pauseGame:"/>
+                <relationship kind="action" name="startGame:"/>
+                <relationship kind="outlet" name="airHockeyView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="firstPlayerLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="firstPlayerScoreView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fourthPlayerLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fourthPlayerScoreView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="middleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pauseGameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="secondPlayerLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondPlayerScoreView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thirdPlayerLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thirdPlayerScoreView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HostGameConfigViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameConfigViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="hostGameIntendedPlayers" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="playerNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="HostGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HostGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="exitAction:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="startAction:"/>
+                <relationship kind="outlet" name="hostGameTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loadGameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="JoinGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="exitAction:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="waitLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="waitView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MainMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
