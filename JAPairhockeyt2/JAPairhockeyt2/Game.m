@@ -136,7 +136,7 @@
 			[self sendPacketToServer:packet];
 		}
 	}
-    
+    //[_delegate quitGame];///quit game hardly!
 	[_session disconnectFromAllPeers];
 	_session.delegate = nil;
 	_session = nil;

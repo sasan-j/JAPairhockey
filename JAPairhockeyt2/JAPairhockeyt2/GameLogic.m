@@ -1,9 +1,9 @@
 //
 //  GameLogic.m
-//  AirHockey
+//  JAPairhockeyt2
 //
-//  Created by Arash Atashpendar on 5/15/13.
-//  Copyright (c) 2013 SHT. All rights reserved.
+//  Created by Hossein Arshad on 5/11/13.
+//  Copyright (c) 2013 Hossein Arshad. All rights reserved.
 //
 
 #import "GameLogic.h"

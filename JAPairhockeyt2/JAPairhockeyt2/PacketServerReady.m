@@ -1,9 +1,9 @@
 //
 //  PacketServerReady.m
-//  Snap
+//  JAPairhockeyt2
 //
-//  Created by Ray Wenderlich on 5/26/12.
-//  Copyright (c) 2012 Hollance. All rights reserved.
+//  Created by Hossein Arshad on 5/11/13.
+//  Copyright (c) 2013 Hossein Arshad. All rights reserved.
 //
 
 #import "PacketServerReady.h"

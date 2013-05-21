@@ -1,9 +1,9 @@
 //
 //  NSData+JAPAdditions.h
-//  Snap
+//  JAPairhockeyt2
 //
-//  Created by Ray Wenderlich on 5/25/12.
-//  Copyright (c) 2012 Hollance. All rights reserved.
+//  Created by Tahereh Pazouki on 5/11/13.
+//  Copyright (c) 2013 Tahereh Pazouki. All rights reserved.
 //
 
 @interface NSData (JAPAdditions)
