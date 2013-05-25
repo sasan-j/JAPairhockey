@@ -614,7 +614,7 @@ UIAlertView *_alertView;
         gameLogic.vecXComp = gameData.vecXComp;
         gameLogic.vecYComp = gameData.vecYComp;
         gameLogic.xCoord = gameLogic.fieldWidth/2;
-        gameLogic.yCoord = 30;
+        gameLogic.yCoord = 0;
         gameLogic.lastHit = gameData.lastHitPeerID;
         gameLogic.ballHolded=!gameLogic.ballHolded;
     }

@@ -174,7 +174,7 @@ static GameLogic *uniqueInstance;
     
 
     
-        if (self.xCoord+self.width > self.fieldWidth || self.xCoord < 0) self.vecXComp = -self.vecXComp;
+        if (self.xCoord+self.width > self.fieldWidth || self.xCoord - self.width < 0) self.vecXComp = -self.vecXComp;
         if (self.yCoord+self.height > self.fieldHeight || self.yCoord < -self.height-3) self.vecYComp = -self.vecYComp;
         self.xCoord += self.vecXComp;
         self.yCoord += self.vecYComp;
@@ -347,7 +347,7 @@ static GameLogic *uniqueInstance;
 }
 
 -(void)holdBall{
-    self.xCoord = 20;
+    self.xCoord = self.fieldWidth/2;
     self.yCoord = -20;
     self.vecXComp =0;
     self.vecYComp =0;
