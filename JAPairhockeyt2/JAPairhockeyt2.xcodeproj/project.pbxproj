@@ -14,8 +14,8 @@
 		8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A517DEF1748F53900599259 /* MainStoryboard.storyboard */; };
 		8A54FBB9174137EB00F04FE6 /* HostGameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */; };
 		8A9C2D75174924E300E42D33 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C2D74174924E300E42D33 /* GameData.m */; };
-		8A9C2D771749328300E42D33 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C2D761749328300E42D33 /* splash.jpg */; };
 		8A9C2D7B1749348200E42D33 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C2D7A1749348200E42D33 /* Default@2x.png */; };
+		8AA3CB841752B9040002F7FF /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA3CB831752B9040002F7FF /* bg.png */; };
 		8AA4C114173EBB3200CE187A /* MatchmakingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */; };
 		8AA4C115173EBB3200CE187A /* MatchmakingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10D173EBB3200CE187A /* MatchmakingServer.m */; };
 		8AA4C116173EBB3200CE187A /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C10F173EBB3200CE187A /* Packet.m */; };
@@ -29,15 +29,13 @@
 		8AA4C12E173ECD5600CE187A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C12D173ECD5500CE187A /* Game.m */; };
 		8AA4C131173F15CC00CE187A /* NSData+JAPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C130173F15CC00CE187A /* NSData+JAPAdditions.m */; };
 		8AA4C134173F17F600CE187A /* JoinGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4C133173F17EB00CE187A /* JoinGameViewController.m */; };
+		8AA9D4F61752B3150051FF56 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D4F51752B3150051FF56 /* splash.png */; };
 		8AAD6443173E77D400142029 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6442173E77D400142029 /* UIKit.framework */; };
 		8AAD6445173E77D400142029 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6444173E77D400142029 /* Foundation.framework */; };
 		8AAD6447173E77D400142029 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD6446173E77D400142029 /* CoreGraphics.framework */; };
 		8AAD644D173E77D500142029 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD644B173E77D500142029 /* InfoPlist.strings */; };
 		8AAD644F173E77D500142029 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD644E173E77D500142029 /* main.m */; };
 		8AAD6453173E77D500142029 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6452173E77D500142029 /* AppDelegate.m */; };
-		8AAD6455173E77D500142029 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6454173E77D500142029 /* Default.png */; };
-		8AAD6457173E77D500142029 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6456173E77D500142029 /* Default@2x.png */; };
-		8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD6458173E77D500142029 /* Default-568h@2x.png */; };
 		8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD645A173E77D600142029 /* MainStoryboardSNJ.storyboard */; };
 		8AAD6467173E85E100142029 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD6466173E85E100142029 /* MainMenuViewController.m */; };
 		8AAD6470173E88F800142029 /* HostGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD646F173E88F800142029 /* HostGameViewController.m */; };
@@ -59,8 +57,8 @@
 		8A54FBB8174137EB00F04FE6 /* HostGameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostGameConfigViewController.m; sourceTree = "<group>"; };
 		8A9C2D73174924E300E42D33 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		8A9C2D74174924E300E42D33 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
-		8A9C2D761749328300E42D33 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		8A9C2D7A1749348200E42D33 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8AA3CB831752B9040002F7FF /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		8AA4C10A173EBB3200CE187A /* MatchmakingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingClient.h; sourceTree = "<group>"; };
 		8AA4C10B173EBB3200CE187A /* MatchmakingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchmakingClient.m; sourceTree = "<group>"; };
 		8AA4C10C173EBB3200CE187A /* MatchmakingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchmakingServer.h; sourceTree = "<group>"; };
@@ -85,6 +83,7 @@
 		8AA4C130173F15CC00CE187A /* NSData+JAPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSData+JAPAdditions.m"; path = "JAPairhockeyt2/NSData+JAPAdditions.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8AA4C132173F17EA00CE187A /* JoinGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGameViewController.h; sourceTree = "<group>"; };
 		8AA4C133173F17EB00CE187A /* JoinGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGameViewController.m; sourceTree = "<group>"; };
+		8AA9D4F51752B3150051FF56 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		8AAD643F173E77D400142029 /* JAPairhockeyt2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAPairhockeyt2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAD6442173E77D400142029 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8AAD6444173E77D400142029 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,9 +94,6 @@
 		8AAD6450173E77D500142029 /* JAPairhockeyt2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JAPairhockeyt2-Prefix.pch"; sourceTree = "<group>"; };
 		8AAD6451173E77D500142029 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8AAD6452173E77D500142029 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8AAD6454173E77D500142029 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		8AAD6456173E77D500142029 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		8AAD6458173E77D500142029 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8AAD645B173E77D600142029 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboardSNJ.storyboard; sourceTree = "<group>"; };
 		8AAD6465173E85E100142029 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		8AAD6466173E85E100142029 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
@@ -236,14 +232,12 @@
 		8AAD6449173E77D500142029 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A9C2D761749328300E42D33 /* splash.jpg */,
+				8AA3CB831752B9040002F7FF /* bg.png */,
+				8AA9D4F51752B3150051FF56 /* splash.png */,
 				8AAD644A173E77D500142029 /* JAPairhockeyt2-Info.plist */,
 				8AAD644B173E77D500142029 /* InfoPlist.strings */,
 				8AAD644E173E77D500142029 /* main.m */,
 				8AAD6450173E77D500142029 /* JAPairhockeyt2-Prefix.pch */,
-				8AAD6454173E77D500142029 /* Default.png */,
-				8AAD6456173E77D500142029 /* Default@2x.png */,
-				8AAD6458173E77D500142029 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -300,13 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AAD644D173E77D500142029 /* InfoPlist.strings in Resources */,
-				8AAD6455173E77D500142029 /* Default.png in Resources */,
-				8AAD6457173E77D500142029 /* Default@2x.png in Resources */,
-				8AAD6459173E77D500142029 /* Default-568h@2x.png in Resources */,
 				8AAD645C173E77D600142029 /* MainStoryboardSNJ.storyboard in Resources */,
 				8A517DF11748F53900599259 /* MainStoryboard.storyboard in Resources */,
-				8A9C2D771749328300E42D33 /* splash.jpg in Resources */,
 				8A9C2D7B1749348200E42D33 /* Default@2x.png in Resources */,
+				8AA9D4F61752B3150051FF56 /* splash.png in Resources */,
+				8AA3CB841752B9040002F7FF /* bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
