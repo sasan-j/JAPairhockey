@@ -681,7 +681,7 @@ UIAlertView *_alertView;
 -(void)gameFinished:(NSString *)winnerName{
     GameLogic* gameLogic = [GameLogic GetInstance];
     NSString *winMsg;
-    if(winnerName==gameLogic.playerName)
+    if([winnerName caseInsensitiveCompare:gameLogic.playerName]==NSOrderedSame)
         winMsg=[NSString stringWithFormat:@"YOU ARE THE WINNER"];
     else
         winMsg=[NSString stringWithFormat:@"%@ IS THE WINNER",winnerName];
