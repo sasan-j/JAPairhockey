@@ -340,7 +340,7 @@ UIAlertView *_alertView;
         self.firstPlayerLabelView.hidden=NO;
         self.firstPlayerScoreView.text=@"0";
         self.firstPlayerScoreView.hidden=NO;
-        NSLog(@"case aval");
+       // NSLog(@"case aval");
     }
     if(count>=2){
         tempPlayer = [playerNames objectAtIndex:1];
@@ -348,7 +348,7 @@ UIAlertView *_alertView;
         self.secondPlayerLabelView.hidden=NO;
         self.secondPlayerScoreView.text=@"0";
         self.secondPlayerScoreView.hidden=NO;
-        NSLog(@"case Dovom");
+       // NSLog(@"case Dovom");
     }
     if(count>=3){
         tempPlayer = [playerNames objectAtIndex:2];
@@ -356,7 +356,7 @@ UIAlertView *_alertView;
         self.thirdPlayerLabelView.hidden=NO;
         self.thirdPlayerScoreView.text=@"0";
         self.thirdPlayerScoreView.hidden=NO;
-        NSLog(@"case sevom");
+      //  NSLog(@"case sevom");
     }
         if(count==4){
             tempPlayer = [playerNames objectAtIndex:3];
@@ -372,31 +372,16 @@ UIAlertView *_alertView;
 -(void)scoreBoardUpdateScores{
     NSLog(@"scoreBoardUpdateScores");
     GameLogic *gameLogic = [GameLogic GetInstance];
-    
- /*   NSNumber *temp = [gameLogic.score objectAtIndex:0];
-    NSString *format = [NSString stringWithFormat:@"%@",temp];
-    self.firstPlayerScoreView.text= format;
-    
-    temp = [gameLogic.score objectAtIndex:1];
-    format = [NSString stringWithFormat:@"%@",temp];
-    self.secondPlayerScoreView.text=format;
-    
-    temp = [gameLogic.score objectAtIndex:2];
-    format = [NSString stringWithFormat:@"%@",temp];
-    self.thirdPlayerScoreView.text=format;
-    
-    if (gameLogic.numberOfPlayers==4) {
-        
-        temp = [gameLogic.score objectAtIndex:3];
-        format = [NSString stringWithFormat:@"%@",temp];
-        self.fourthPlayerScoreView.text=format;
-    }*/
 
     NSMutableArray *array=[NSMutableArray array];
     Player *player;
     for(NSString* key in gameLogic.game._players){
         player=[gameLogic.game._players objectForKey:key];
         [array addObject:[NSString stringWithFormat:@"%d",player.score]];
+        if (player.score==5) {
+            NSString *winner=player.name;
+            [self gameFinished:winner];
+        }
     }
     NSLog(@"%@",array);
     
@@ -560,6 +545,7 @@ UIAlertView *_alertView;
                                                    delegate:self
                                           cancelButtonTitle:@"Resume"
                                           otherButtonTitles:@"Quit", nil];
+    _alertView.tag=0;
     
     [_alertView show];
     
@@ -567,14 +553,18 @@ UIAlertView *_alertView;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex==0) {
-        NSLog(@"Resume shod");
-        [self resumeGame];
+    if(alertView.tag==0){
+        if (buttonIndex==0) {
+            NSLog(@"Resume shod");
+            [self resumeGame];
+        }
+        else{
+            NSLog(@"quit shod");
+            [self selfQuitGame];
+        }
     }
-    else{
-        NSLog(@"quit shod");
-        [self selfQuitGame];
-
+    else if(alertView.tag==1){
+        [self quitGame];
     }
 }
 
@@ -686,6 +676,23 @@ UIAlertView *_alertView;
     gameLogic.numberOfPlayers = 3;
     
 
+}
+
+-(void)gameFinished:(NSString *)winnerName{
+    GameLogic* gameLogic = [GameLogic GetInstance];
+    NSString *winMsg;
+    if(winnerName==gameLogic.playerName)
+        winMsg=[NSString stringWithFormat:@"YOU ARE THE WINNER"];
+    else
+        winMsg=[NSString stringWithFormat:@"%@ IS THE WINNER",winnerName];
+    UIAlertView * finishAlert = [[UIAlertView alloc] initWithTitle:@"Game is OVER"
+                                            message:winMsg
+                                           delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil
+                                  ,nil];
+    finishAlert.tag=1;
+    [finishAlert show];
 }
 
 

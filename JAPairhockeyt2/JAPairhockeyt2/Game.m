@@ -366,7 +366,7 @@
         case PacketTypeGameEvent:
             if (YES)//_state == GameStatePlaying)
 			{
-                NSLog(@"server received PacketTypeDataPacket");
+                NSLog(@"server received PacketTypeGameEvent");
                 NSString *recPeerID;
 				recPeerID = ((PacketGameEvent *)packet).recPeerID;
 				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];

@@ -211,11 +211,11 @@ static GameLogic *uniqueInstance;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle > 60 && incidentAngle <= 90)
         {
-            self.vecXComp = 2;
+            self.vecXComp = 4;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle > 90 && incidentAngle <= 120)
         {
-            self.vecXComp = -2;
+            self.vecXComp = -4;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle > 120 && incidentAngle <= 150)
         {
@@ -235,11 +235,11 @@ static GameLogic *uniqueInstance;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle < -60 && incidentAngle >= -90)
         {
-            self.vecXComp = 2;
+            self.vecXComp = 4;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle < -90 && incidentAngle >= -120)
         {
-            self.vecXComp = -2;
+            self.vecXComp = -4;
             self.vecYComp = -self.vecYComp;
         } else if (incidentAngle < -120 && incidentAngle >= -150)
         {
