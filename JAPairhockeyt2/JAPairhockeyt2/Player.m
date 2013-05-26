@@ -27,7 +27,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@ peerID = %@, name = %@, position = %d, score= %d", [super description], self.peerID, self.name, self.position, self.score];
+	return [NSString stringWithFormat:@"%@ peerID = %@, name = %@, position = %d, score= %d, receivedResponse=%c", [super description], self.peerID, self.name, self.position, self.score,self.receivedResponse];
 }
 
 @end

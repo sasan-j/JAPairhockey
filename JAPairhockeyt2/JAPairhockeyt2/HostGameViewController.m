@@ -71,6 +71,7 @@
         //NSLog(@"Starting matchmaking server '%@' for %d players",self.nameTextField.text,_intendedPlayers);
     }
     else {
+        
         //_matchmakingServer.maxClients = _intendedPlayers-1;
         //[_matchmakingServer displayNameForPeerID:self.nameTextField.text];
         //NSLog(@"Starting matchmaking server '%@' for %d players",self.nameTextField.text,_intendedPlayers);
@@ -111,6 +112,7 @@
         GameLogic *gameLogic=[GameLogic GetInstance];
         Game *game = [[Game alloc] init];
         gameLogic.game = game;
+        //gameLogic.game._state =
         gameLogic.isServer = YES;
 		NSString *name = [gameLogic.playerName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		if ([name length] == 0)

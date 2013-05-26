@@ -311,13 +311,7 @@ static GameLogic *uniqueInstance;
     }
     */
 }
-/*
--(void)scoreBoard:(NSMutableArray*)score
-{
-    
-    NSLog(@"%@",[[self score]objectAtIndex:playerID]);
-}
-*/
+
 - (void) scoreBoardInit
 {
     

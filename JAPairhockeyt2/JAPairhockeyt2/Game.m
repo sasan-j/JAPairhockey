@@ -136,7 +136,7 @@
 			[self sendPacketToServer:packet];
 		}
 	}
-    //[_delegate quitGame];///quit game hardly!
+    [_delegate quitGame];///quit game hardly!
 	[_session disconnectFromAllPeers];
 	_session.delegate = nil;
 	_session = nil;
@@ -186,19 +186,7 @@
 				_players = ((PacketServerReady *)packet).players;
                 
                 NSLog(@"game.m : players from gameLogic.game : %@",gameLogic.game._players);
-				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
-				//[self sendPacketToServer:packet];
-                /*
-				//[self beginGame];
-                NSString * tempPeerID;
-                //NSLog(@"gameLogic: %@",gameLogic.peerID);
-                for(NSString * key in _players)
-                {
-                    tempPeerID=[[_players objectForKey:key] peerID];
-                    //NSLog(@"tempPeerID: %@",tempPeerID);
-                    if([tempPeerID caseInsensitiveCompare:gameLogic.peerID]!=NSOrderedSame)
-                        [gameLogic.playerPositions addObject:tempPeerID];
-                }*/
+
                 NSLog(@"player positions: %@",gameLogic.game._players);
                 
                 [_delegate scoreBoardUpdateScores];
@@ -215,7 +203,7 @@
                 GameLogic* gameLogic = [GameLogic GetInstance];
 
 				_players = ((PacketServerReady *)packet).players;
-                [self changeRelativePositionsOfPlayers];
+                //[self changeRelativePositionsOfPlayers];
                 
                 NSLog(@"game.m : players from gameLogic.game : %@",gameLogic.game._players);                
 				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
@@ -240,25 +228,7 @@
 
 			}
 			break;
-            /*
-            NSLog(@"Client received PacketTypeServerReady");
-			if (_state == GameStateWaitingForReady)
-			{
-				_players = ((PacketServerReady *)packet).players;
-                [self changeRelativePositionsOfPlayers];
-                
-				//Packet *packet = [Packet packetWithType:PacketTypeClientReady];
-				//[self sendPacketToServer:packet];
-                
-				//[self beginGame];
-                NSLog(@"before method");
-                
-                [_delegate receivedServerReady:@"SomeData"];
-                NSLog(@"after method");
-                
-                
-			}
-			break;*/
+
             
         case PacketTypePauseGame:
             NSLog(@"Client received PacketTypePauseGame");
@@ -275,20 +245,6 @@
 			}
 			break;
          
-            /*
-        case PacketTypeResumeGame:
-            NSLog(@"Client received PacketTypeResumeGame");
-            
-			if (_state == GameStatePause)
-			{
-                GameLogic* gameLogic = [GameLogic GetInstance];
-                gameLogic.isGamePause=NO;
-                self._state=GameStatePlaying;
-                
-                [_delegate dissmissAlert];
-			}
-			break;
-             */
             
             
         case PacketTypeStartGame:
@@ -309,7 +265,17 @@
 			[self quitGameWithReason:QuitReasonServerQuit];
 			break;            
             
+ 
+        case PacketTypeOtherClientQuit:
+            NSLog(@"Client received PacketTypeOtherClientQuit");
+
+			if (_state != GameStateQuitting)
+			{
+                [_delegate quitGame];
+			}
+			break;
             
+
             
 		default:
 			NSLog(@"Client received unexpected packet: %@", packet);
@@ -319,9 +285,13 @@
 
 - (BOOL)receivedResponsesFromAllPlayers
 {
+    NSLog(@"inside receivedResponsesFromAllPlayers");
+    NSLog(@"these are players %@",_players);
+
 	for (NSString *peerID in _players)
 	{
 		Player *player = [self playerWithPeerID:peerID];
+        NSLog(@"inside for player: %@",player);
 		if (!player.receivedResponse)
 			return NO;
 	}
@@ -340,7 +310,10 @@
 
                 
 				if ([self receivedResponsesFromAllPlayers])
+                    
 				{
+                    NSLog(@"received sign in response for all");
+
 					_state = GameStateWaitingForReady;
                     
 					Packet *packet = [PacketServerReady packetWithPlayers:_players];
@@ -442,24 +415,15 @@
             }
 			break;
             
-         /*
-        case PacketTypeResumeRequest:
-            NSLog(@"Server received PacketTypeResumeRequest");
-            if(self._state==GameStatePause){
-                GameLogic* gameLogic = [GameLogic GetInstance];
-                Packet *packet=[Packet packetWithType:PacketTypeResumeGame];
-                [self sendPacketToAllClients:packet];
-                self._state = GameStatePlaying;
-                gameLogic.isGamePause=YES;
-                [_delegate dissmissAlert];
-                //[self receiveGoal:player.peerID];
-                //[self clientDidDisconnect:player.peerID];
-            }
-			break;*/
+
             
             
         case PacketTypeClientQuit:
+            NSLog(@"Server received PacketTypeClientQuit");
 			[self clientDidDisconnect:player.peerID];
+            _state = GameStateQuitting;
+            [_delegate quitGame];
+            [_delegate clearGameData];
 			break;            
             
 		default:
@@ -588,6 +552,7 @@
 	Player *player = [self playerWithPeerID:peerID];
     if (player != nil)
 	{
+        NSLog(@"Received packed- response from %@ is turned to yes",peerID);
 		player.receivedResponse = YES;  // this is the new bit
 	}
     
@@ -639,7 +604,7 @@
     
 	if (![_session sendData:data toPeers:[NSArray arrayWithObject:peerID] withDataMode:dataMode error:&error])
 	{
-		NSLog(@"Error sending data to server: %@", error);
+		NSLog(@"Error sending data to client: %@", error);
 	}
 }
 
@@ -654,9 +619,10 @@
 
 	NSError *error;
     
-    //NSLog(@"error is:%@",error);
+    NSLog(@"error is:%@",error);
     
-    //NSLog(@"players are:%@",_players);
+    NSLog(@"players are:%@",_players);
+    NSLog(@"server is %@",_serverPeerID);
 
 	if (![_session sendData:data toPeers:[NSArray arrayWithObject:_serverPeerID] withDataMode:dataMode error:&error])
 	{
@@ -666,6 +632,7 @@
 
 - (void)clientDidDisconnect:(NSString *)peerID
 {
+    NSLog(@"Client did disconnect function");
 	if (_state != GameStateQuitting)
 	{
 		Player *player = [self playerWithPeerID:peerID];
@@ -682,7 +649,7 @@
 					[self sendPacketToAllClients:packet];
 				}			
                 
-				[self.delegate game:self playerDidDisconnect:player];
+				//[self.delegate game:self playerDidDisconnect:player];
 			}
 		}
 	}

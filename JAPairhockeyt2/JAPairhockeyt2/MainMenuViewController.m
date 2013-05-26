@@ -30,6 +30,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     GameLogic* gameLogic = [GameLogic GetInstance];
+    
+    
+    for (UIWindow* window in [UIApplication sharedApplication].windows) {
+        NSArray* subviews = window.subviews;
+        if ([subviews count] > 0)
+            if ([[subviews objectAtIndex:0] isKindOfClass:[UIAlertView class]])
+                [(UIAlertView *)[subviews objectAtIndex:0] dismissWithClickedButtonIndex:[(UIAlertView *)[subviews objectAtIndex:0] cancelButtonIndex] animated:NO];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -454,6 +454,7 @@ UIAlertView *_alertView;
 - (void)receivedServerReady:(NSString *)data
 {
 	NSLog(@"%@",data);
+    NSLog(@"receivedServerReady");
     //[_game beginGame];
     GameLogic* gameLogic = [GameLogic GetInstance];
 
@@ -554,13 +555,13 @@ UIAlertView *_alertView;
 
     
     
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Pause"
+    _alertView = [[UIAlertView alloc] initWithTitle:@"Pause"
                                                     message:@"Game is paused, what's your decision?"
                                                    delegate:self
                                           cancelButtonTitle:@"Resume"
                                           otherButtonTitles:@"Quit", nil];
     
-    [alert show];
+    [_alertView show];
     
     
 }
@@ -572,7 +573,7 @@ UIAlertView *_alertView;
     }
     else{
         NSLog(@"quit shod");
-        [self quitGame];
+        [self selfQuitGame];
 
     }
 }
@@ -596,12 +597,32 @@ UIAlertView *_alertView;
     //[_pauseGameButton setTitle:@"PAUSE" forState:UIControlStateNormal];
     //isGameInitiated=NO;
     
+    [_alertView dismissWithClickedButtonIndex:0 animated:YES];
+    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MainMenu"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:vc animated:YES completion:NULL];
-      
+    
+    [self clearGameData];
+    //[self.game quitGameWithReason:QuitReasonUserQuit];
+}
+
+-(void)selfQuitGame
+{
+    NSLog(@"Self Quit Game Fired");
+ 
+    
     [self.game quitGameWithReason:QuitReasonUserQuit];
+    //turn back button to pause
+    //[_pauseGameButton setTitle:@"PAUSE" forState:UIControlStateNormal];
+    //isGameInitiated=NO;
+    
+  //  UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+  //  MainMenuViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MainMenu"];
+  //  vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+// [self presentViewController:vc animated:YES completion:NULL];
+    [self clearGameData];
 }
 
 
@@ -638,5 +659,62 @@ UIAlertView *_alertView;
         [self quitGame];
     }
 }
+
+
+#pragma mark - Misc Methods
+
+-(void) clearGameData{
+    NSLog(@"inside clearGameData");
+    GameLogic* gameLogic = [GameLogic GetInstance];
+
+    if(gameLogic.isServer){
+        //gameLogic.session = [GKSession new];
+        [gameLogic.session disconnectFromAllPeers];
+        
+        //[gameLogic.session.
+    }
+    _game._players = [NSMutableDictionary dictionaryWithCapacity:4];
+    gameLogic.connectedPlayers = [NSMutableArray array];
+    gameLogic.playerPositions = [NSMutableArray array];
+    _game._state = GameStateNewGame;
+    gameLogic.isServer = NO;
+    //uniqueInstance.isGamePause = NO;
+    gameLogic.isGamePause = YES;
+    // Definition of Ball
+    gameLogic.isGameReady = NO;
+    gameLogic.lastHit = @"Undefined Player";
+    gameLogic.numberOfPlayers = 3;
+    
+
+}
+
+
+
+#pragma mark - Alerts
+
+- (void)showNoNetworkAlert
+{
+	UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"No Network", @"No network alert title")
+                              message:NSLocalizedString(@"To use multiplayer, please enable Bluetooth or Wi-Fi in your device's Settings.", @"No network alert message")
+                              delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK", @"Button: OK")
+                              otherButtonTitles:nil];
+    
+	[alertView show];
+}
+
+- (void)showDisconnectedAlert
+{
+	UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"Disconnected", @"Client disconnected alert title")
+                              message:NSLocalizedString(@"You were disconnected from the game.", @"Client disconnected alert message")
+                              delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK", @"Button: OK")
+                              otherButtonTitles:nil];
+    
+	[alertView show];
+}
+
 
 @end

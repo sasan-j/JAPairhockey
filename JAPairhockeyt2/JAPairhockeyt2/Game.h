@@ -15,6 +15,7 @@
 
 typedef enum
 {
+    GameStateNewGame,
 	GameStateWaitingForSignIn,
 	GameStateWaitingForReady,
     GameStateReady,
@@ -47,6 +48,8 @@ GameState;
 -(void)scoreBoardUpdateScores;
 - (void) pauseDialog;
 -(void)resumeGame;
+-(void)quitGame;
+-(void)clearGameData;
 
 
 
